@@ -107,7 +107,7 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
       </div>
 
       {/* Mobile Navbar Header */}
-      <div className='md:hidden flex justify-between items-center px-5 h-full'>
+      <div className='md:hidden flex justify-between items-center px-5 h-full bg-rgba[0,0]'>
         <Link to="/">
       <div className="w-[50px] h-[50px] cursor-pointer">
         <img src={Logo} alt="Logo" className="w-full h-full object-contain" />

@@ -11,6 +11,7 @@ import ProjectsSection from "./components/ProjectsSection";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import { Faq } from "./components/Faq";
+import ChatBot from "./components/Chat";
 const Home = () => (
   <>
     <div id="home">
@@ -35,6 +36,7 @@ const App = () => {
   return (
     <div className="overflow-hidden">
       <Navbar />
+      <ChatBot/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

@@ -38,7 +38,7 @@ const Hero = () => {
       <p className="text-sm md:text-lg mb-6 slide-up">
         Discover our services and get started today!
       </p>
-      <button className="bg-[#9a2e00] hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-xl shadow-lg animate-bounce mt-2">
+      <button className="bg-[#9a2e00] hover:bg- text-white font-semibold py-2 px-6 rounded-xl shadow-lg animate-bounce mt-2">
         Get Started
       </button>
     </div>
