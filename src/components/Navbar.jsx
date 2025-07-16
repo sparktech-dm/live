@@ -71,10 +71,10 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
   };
 
   return (
-    <div className='w-full h-[80px] fixed top-0 z-50 font-[Inter] '>
+    <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter] '>
       {/* Desktop Capsule Navbar */}
       <div className='hidden md:flex justify-center'>
-        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl bg-black flex items-center mt-5'>
+        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl  flex items-center mt-5  backdrop-blur bg-white/10'>
           <ul className='flex justify-evenly items-center w-full'>
             {menuItems.map((item) => (
               <li key={item.name} onClick={() => handleItemClick(item)}>
@@ -83,7 +83,7 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
                     to={item.path}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? 'bg-[#262424] text-[#BE6A26]'
+                        ? ' bg-white/10 text-[#BE6A26]'
                         : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
                     }`}
                   >
@@ -107,7 +107,7 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
       </div>
 
       {/* Mobile Navbar Header */}
-      <div className='md:hidden flex justify-between items-center px-5 h-full bg-rgba[0,0]'>
+      <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-white/10'>
         <Link to="/">
       <div className="w-[50px] h-[50px] cursor-pointer">
         <img src={Logo} alt="Logo" className="w-full h-full object-contain" />
