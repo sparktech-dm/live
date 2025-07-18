@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Seo from "./Seo";
 import {
   FaInstagram,
@@ -71,83 +71,87 @@ const services = [
   },
 ];
 
-/* ---------- animation helpers ---------- */
+/* ---------- card animation variants ---------- */
 const cardVariants = {
   hidden: (direction) => ({
     opacity: 0,
-   x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
-   y: direction === "bottom" ? 80 : 0,
-
-    scale: 0.95,
+    x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
+    y: 30,
+    scale: 0.9,
   }),
   visible: {
     opacity: 1,
     x: 0,
+    y: 0,
     scale: 1,
     transition: {
       type: "spring",
-      bounce: 0.3,
-      duration: 0.7,
+      stiffness: 120,
+      damping: 15,
     },
   },
 };
 
-const Services = () => {
-  const cursorStyle = (name) => ({
-    backgroundColor: "rgba(31,29,29,1)",
-    cursor: `url('/mouse/${name}.svg') 4 4, auto`,
-  });
+/* ---------- Card Component with InView ---------- */
+const AnimatedCard = ({ svc, direction }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-10% 0px" });
 
+  return (
+    <motion.div
+      ref={ref}
+      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] hover:scale-[1.07] transition duration-300"
+      style={{
+        backgroundColor: "rgba(20,25,29,4)",
+        cursor: `url('/mouse/${svc.cursor}.svg') 4 4, auto`,
+      }}
+      custom={direction}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      <div>
+        <div className="text-2xl mb-4 text-orange-400">{svc.icon}</div>
+        <h3 className="text-2xl font-semibold mb-2">{svc.title}</h3>
+        <p className="text-gray-300 text-sm">{svc.desc}</p>
+      </div>
+      <button className="mt-6 text-white font-semibold flex items-center gap-1 hover:underline">
+        LEARN&nbsp;MORE
+      </button>
+    </motion.div>
+  );
+};
+
+/* ---------- Main Services Component ---------- */
+const Services = () => {
   return (
     <>
       <Seo
         title="Services | Spark Tech Digital"
         description="Explore our digital marketing, branding, and web development services."
       />
-
-      <section className="bg-black text-white py-16 px-6">
+      <section className="bg-[#1a1a1a] text-white py-16 px-6">
         {/* heading */}
-        <div>
+        <div className="text-center mb-12">
           <span className="text-[#F58327] text-xs font-black uppercase tracking-wide inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             Services
           </span>
+          <h2
+            className="text-4xl sm:text-6xl font-bold"
+            style={{ fontFamily: "Unbounded Placeholder, sans-serif" }}
+          >
+            What we are Offering
+          </h2>
         </div>
 
-        <h2
-          className="text-4xl sm:text-6xl font-bold text-center mb-12"
-          style={{ fontFamily: "Unbounded Placeholder, sans-serif" }}
-        >
-          What we are Offering
-        </h2>
-
-        {/* cards */}
+        {/* grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((svc, i) => {
-  const direction = i % 2 === 0 ? "left" : "right";
-
-  return (
-    <motion.div
-      key={svc.title}
-      custom={direction}
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ twice: true, amount: 0.4  }}
-      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#1f1d1d] hover:scale-[1.07] transition duration-300"
-      style={cursorStyle(svc.cursor)}
-    >
-      <div>
-        <div className="text-2xl mb-4 text-orange-400">{svc.icon}</div>
-        <h3 className="text-2xl font-semibold mb-2">{svc.title}</h3>
-        <p className="text-gray-400 text-sm">{svc.desc}</p>
-      </div>
-
-      <button className="mt-6 text-white font-semibold flex items-center gap-1 hover:underline">
-        LEARN&nbsp;MORE
-      </button>
-    </motion.div>
-  );
-})}
+            const direction = i % 2 === 0 ? "left" : "right";
+            return (
+              <AnimatedCard key={svc.title} svc={svc} direction={direction} />
+            );
+          })}
         </div>
       </section>
     </>

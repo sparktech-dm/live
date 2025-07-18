@@ -12,6 +12,9 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import { Faq } from "./components/Faq";
 import ChatBot from "./components/Chat";
+import ScrollTriggered from "./ScrollTriggered";
+
+
 const Home = () => (
   <>
     <div id="home">
@@ -19,6 +22,7 @@ const Home = () => (
     </div>
     <div id="services">
       <Services />
+      {/* <ScrollTriggered/> */}
     </div>
     <div id="faq">
       <Faq />

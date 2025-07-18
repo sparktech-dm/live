@@ -71,7 +71,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black px-6 sm:px-10 py-20">
+    <footer className="bg-[#1a1a1a] px-6 sm:px-10 py-20">
       <div className="mx-auto max-w-[1652px]">
         <div className="mb-16">
           <div className="bg-white/5 rounded-[30px] p-6 sm:p-8">
