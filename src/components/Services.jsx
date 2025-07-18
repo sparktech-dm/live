@@ -72,7 +72,6 @@ const services = [
 ];
 
 /* ---------- animation helpers ---------- */
-<div style={{ height: `${projects.length * 100}vh` }} />
 const cardVariants = {
   hidden: (direction) => ({
     opacity: 0,
