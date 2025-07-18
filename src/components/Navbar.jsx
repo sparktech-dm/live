@@ -3,8 +3,6 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { scroller, animateScroll as scroll } from 'react-scroll';
 import Logo from '../assets/Logo.png';
-import { Link } from 'react-router-dom';
-
 
 export const Navbar = () => {
   const [active, setActive] = useState('home');
@@ -12,10 +10,36 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isProjectsPage = location.pathname.toLowerCase().startsWith('/projects');
+  useEffect(() => {
+    setMenuOpen(false); // Close mobile menu on route change
+  }, [location.pathname]);
 
   useEffect(() => {
-    setMenuOpen(false); // Close mobile menu when route changes
+    const path = location.pathname;
+
+    if (path === '/') {
+      const handleScroll = () => {
+        const sections = ['home', 'services', 'contact'];
+        const scrollPosition = window.scrollY + 100;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const element = document.getElementById(sections[i]);
+          if (element && scrollPosition >= element.offsetTop) {
+            setActive(sections[i]);
+            break;
+          }
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Set initial
+
+      return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+      if (path === '/about') setActive('about');
+      else if (path.startsWith('/projects')) setActive('projects');
+      else if (path.startsWith('/blogs')) setActive('blogs');
+    }
   }, [location.pathname]);
 
   const baseMenuItems = [
@@ -26,8 +50,7 @@ export const Navbar = () => {
     { name: 'blogs', type: 'route', path: '/blogs' },
   ];
 
-const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'contact' }];
-
+  const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'contact' }];
 
   const handleScroll = (id) => {
     if (location.pathname !== '/') {
@@ -71,10 +94,10 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
   };
 
   return (
-    <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter] '>
+    <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter]'>
       {/* Desktop Capsule Navbar */}
       <div className='hidden md:flex justify-center'>
-        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl  flex items-center mt-5  backdrop-blur bg-white/10'>
+        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl flex items-center mt-5 backdrop-blur bg-white/10'>
           <ul className='flex justify-evenly items-center w-full'>
             {menuItems.map((item) => (
               <li key={item.name} onClick={() => handleItemClick(item)}>
@@ -83,7 +106,7 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
                     to={item.path}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? ' bg-white/10 text-[#BE6A26]'
+                        ? 'bg-white/10 text-[#BE6A26]'
                         : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
                     }`}
                   >
@@ -108,12 +131,11 @@ const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'con
 
       {/* Mobile Navbar Header */}
       <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-white/10'>
-        <Link to="/">
-      <div className="w-[50px] h-[50px] cursor-pointer">
-        <img src={Logo} alt="Logo" className="w-full h-full object-contain" />
-      </div>
-    </Link>
-
+        <RouterLink to='/'>
+          <div className='w-[50px] h-[50px] cursor-pointer'>
+            <img src={Logo} alt='Logo' className='w-full h-full object-contain' />
+          </div>
+        </RouterLink>
         <button
           className='text-white text-2xl'
           onClick={() => setMenuOpen(!menuOpen)}
