@@ -25,7 +25,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="w-full min-h-screen bg-[#1a1a1a] py-8 md:py-16 overflow-hidden">
+    <section className="w-full min-h-screen  py-8 md:py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left space-y-6">

@@ -130,7 +130,7 @@ const Services = () => {
         title="Services | Spark Tech Digital"
         description="Explore our digital marketing, branding, and web development services."
       />
-      <section className="bg-[#1a1a1a] text-white py-16 px-6">
+      <section className=" text-white py-16 px-6">
         {/* heading */}
         <div className="text-center mb-12">
           <span className="text-[#F58327] text-xs font-black uppercase tracking-wide inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">

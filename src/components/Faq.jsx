@@ -47,7 +47,7 @@ export const Faq = () => {
   };
 
   return (
-    <section className="bg-[#1a1a1a] py-16 px-6 sm:px-10 md:px-20 lg:px-40 xl:px-60">
+    <section className=" py-16 px-6 sm:px-10 md:px-20 lg:px-40 xl:px-60">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16">

@@ -39,7 +39,7 @@ const Hero = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col justify-center items-center h-screen bg-[#1a1a1a] relative overflow-hidden px-4"
+      className="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4"
     >
       <motion.img
         src={rocketLogo}
