@@ -60,7 +60,7 @@ const ProjectsSection = () => {
       />
     <div
   ref={containerRef}
-  className="h-screen w-screen overflow-y-scroll overflow-x-hidden bg-black text-white font-[Inter] relative pt-28"
+  className="h-screen w-screen overflow-y-scroll overflow-x-hidden  text-white font-[Inter] relative pt-28"
 >
 
       {/* Fake scroll area */}

@@ -51,7 +51,7 @@ const App = () => {
           minHeight: 200,
           minWidth: 200,
           scale: 1.0,
-          scaleMobile: 1.2,
+          scaleMobile: 1.7,
 
           // ✅ Softer, less messy Vanta lines:
           points: 7.0, // fewer dots
