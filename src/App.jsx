@@ -17,11 +17,21 @@ import ChatBot from "./components/Chat";
 
 const Home = () => (
   <>
-    <div id="home"><Hero /></div>
-    <div id="services"><Services /></div>
-    <div id="faq"><Faq /></div>
-    <div id="contact"><ContactForm /></div>
-    <div id="footer"><Footer /></div>
+    <section id="home" className="min-h-screen scroll-mt-24 px-4 py-10">
+      <Hero />
+    </section>
+    <section id="services" className="min-h-screen scroll-mt-24 px-4 py-10">
+      <Services />
+    </section>
+    <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
+      <Faq />
+    </section>
+    <section id="contact" className="min-h-screen scroll-mt-24 px-4 py-10">
+      <ContactForm />
+    </section>
+    <section id="footer" className="px-4 py-10">
+      <Footer />
+    </section>
   </>
 );
 
@@ -31,46 +41,51 @@ const App = () => {
 
   useEffect(() => {
     if (!vantaEffect) {
-      setVantaEffect(NET({
-        el: vantaRef.current,
-        THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200,
-        minWidth: 200,
-        scale: 1.0,
-        scaleMobile: 1.2, // slightly zoom for smaller screens
-        points: window.innerWidth < 768 ? 8.0 : 14.0,
-        spacing: window.innerWidth < 768 ? 18.0 : 14.0,
-        color: 0xffffff,
-        backgroundColor: 0x0d0d0d,
-      }));
+      setVantaEffect(
+        NET({
+          el: vantaRef.current,
+          THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200,
+          minWidth: 200,
+          scale: 1.0,
+          scaleMobile: 1.2,
+
+          // ✅ Softer, less messy Vanta lines:
+          points: 7.0, // fewer dots
+          maxDistance: 18.0, // further spaced lines
+          spacing: 20.0, // clean separation
+          color: 0xaaaaaa, // soft gray lines
+          backgroundColor: 0x0d0d0d, // clean black background
+        })
+      );
     }
-    return () => vantaEffect && vantaEffect.destroy();
+
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
   }, [vantaEffect]);
 
   return (
-    <div
-      ref={vantaRef}
-      className="min-h-screen w-full text-white overflow-x-hidden"
-      style={{
-        padding: "0",
-        margin: "0",
-        position: "relative",
-        zIndex: 0,
-      }}
-    >
-      <Navbar />
-      <ChatBot />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<ProjectsSection />} />
-        <Route path="/blogs" element={<BlogsPage />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
-      </Routes>
-    </div>
+    <>
+      {/* Background */}
+      <div ref={vantaRef} className="fixed top-0 left-0 w-full h-full -z-10" />
+
+      {/* Main Content */}
+      <div className="relative z-10 text-white overflow-x-hidden">
+        <Navbar />
+        <ChatBot />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<ProjectsSection />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+        </Routes>
+      </div>
+    </>
   );
 };
 

@@ -66,10 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-html, body, #root {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: #0d0d0d;
   overflow-x: hidden;
 }
+

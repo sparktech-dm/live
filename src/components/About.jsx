@@ -16,7 +16,7 @@ const About = () => {
         description="Explore our recent digital marketing, branding, and web development projects delivered to satisfied clients."
       />
     
-    <div className="bg-black min-h-screen p-2">
+    <div className=" min-h-screen p-2">
       {/* Banner Section */}
       <div className="relative rounded-3xl overflow-hidden w-full h-[300px] max-w-[1400px] mx-auto my-10 shadow-xl bg-[#111]">
         <img
@@ -76,7 +76,7 @@ const About = () => {
                     <span className="text-xl font-medium text-gray-200 group-hover:text-orange-400 transform transition-transform duration-300 group-hover:translate-x-2">
       <span className="text-gray-400 font-mono mr-2">01.</span> Our Mission
     </span>
-    <div className="w-10 h-10 rounded-full bg-[#333] flex items-center justify-center text-2xl text-gray-400 group-hover:text-orange-400 transition">
+    <div className="w-10 h-10 rounded-full  flex items-center justify-center text-2xl text-gray-400 group-hover:text-orange-400 transition">
       {isMissionOpen ? "-" : "+"}
     </div>
   </div>
@@ -116,7 +116,7 @@ const About = () => {
       </div>
 
       {/* Our Leader Section */}
-<div className="bg-black px-6 py-20 ">
+<div className="px-6 py-20 ">
   <div className="max-w-6xl mx-auto md:px-5">
     {/* Top Heading Row */}
     <div className="flex items-center gap-4 mb-6">
@@ -165,7 +165,7 @@ const About = () => {
 
       {/* Our Team Section */}
       {/* Our Team Section */}
-<div className="bg-black py-20 px-4">
+<div className=" py-20 px-4">
   <div className="max-w-6xl mx-auto text-center">
     <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
@@ -206,7 +206,7 @@ const About = () => {
         return (
           <div
             key={i}
-            className="relative group bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-xl transition-all duration-300"
+            className="relative group  rounded-2xl overflow-hidden shadow-xl transition-all duration-300"
           >
             {/* Orange semi-circle animation */}
             <div

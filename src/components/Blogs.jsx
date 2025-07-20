@@ -124,7 +124,7 @@ const Blogs = () => {
   };
 
   return (
-    <section className="w-full bg-[#0A0A0A] relative overflow-hidden">
+    <section className="w-full  relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute left-0 top-0 w-full h-[678px]">
         <div className="absolute left-0 top-0 w-[130px] h-[216px]">
