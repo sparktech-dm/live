@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import * as THREE from "three";
 import NET from "vanta/dist/vanta.net.min";
-
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -39,28 +38,29 @@ const App = () => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
 
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200,
-          minWidth: 200,
-          scale: 1.0,
-          scaleMobile: 1.7,
+  useLayoutEffect(() => {
+    if (!vantaEffect && vantaRef.current) {
+      const effect = NET({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1.0,
+        scaleMobile: 1,
+        points: 7.0,
+        maxDistance: 18.0,
+        spacing: 20.0,
+        color:  0xaaaaaa, // Rocket orange-red       0xaaaaaa 0x0d0d0d
+        backgroundColor: "#777b7e", // Gear navy blue     
+      });
 
-          // ✅ Softer, less messy Vanta lines:
-          points: 7.0, // fewer dots
-          maxDistance: 18.0, // further spaced lines
-          spacing: 20.0, // clean separation
-          color: 0xaaaaaa, // soft gray lines
-          backgroundColor: 0x0d0d0d, // clean black background
-        })
-      );
+      setVantaEffect(effect);
+
+      // ✅ Trigger resize to force canvas correction
+      window.dispatchEvent(new Event("resize"));
     }
 
     return () => {
@@ -70,8 +70,12 @@ const App = () => {
 
   return (
     <>
-      {/* Background */}
-      <div ref={vantaRef} className="fixed top-0 left-0 w-full h-full -z-10" />
+      {/* Vanta Background */}
+      <div
+  ref={vantaRef}
+  className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
+/>
+
 
       {/* Main Content */}
       <div className="relative z-10 text-white overflow-x-hidden">

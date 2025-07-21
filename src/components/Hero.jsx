@@ -55,15 +55,15 @@ const Hero = () => {
         className="text-center z-10"
       >
         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
-          The Best <span className="inline-block bg-orange-300 text-black px-2 rotate-[-2deg]">Digital</span>
+          The Best <span className="inline-block bg-orange-400 text-black px-2 rotate-[-2deg]">Digital</span>
         </h1>
         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mt-2">
-          Marketing <span className="text-orange-300">Agency.</span>
+          Marketing <span className="text-orange-400">Agency.</span>
         </h1>
         <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
           We believe in combining innovative design, sustainable practices, and exceptional craftsmanship to bring your vision to life.
         </p>
-        <button className="group bg-orange-300 hover:bg-orange-500 text-black font-semibold mt-10 px-6 py-3 rounded-full transition-all duration-300 inline-flex items-center">
+        <button className="group bg-orange-400 hover:bg-orange-300 text-black font-semibold mt-10 px-6 py-3 rounded-full transition-all duration-300 inline-flex items-center">
           CONTACT US
           <span className="ml-2 transform transition-all duration-500 ease-in-out group-hover:translate-x-2 group-hover:scale-125">
             →

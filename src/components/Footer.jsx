@@ -71,15 +71,15 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="px-6 sm:px-10 py-20">
+    <footer className="px-6 sm:px-10 ">
       <div className="mx-auto max-w-[1652px]">
         <div className="mb-16">
-          <div className="bg-white/5 rounded-[30px] p-6 sm:p-8">
+          <div className="bg-white/20 rounded-[30px] p-6 sm:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* Contact Info */}
               <div className="space-y-6">
                 {/* Email */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
+                <div className="bg-white/33 rounded-[30px] p-5 flex items-center space-x-4">
                   <div className="w-8 h-8 flex items-center justify-center">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
@@ -89,17 +89,17 @@ export const Footer = () => {
                     </svg>
                   </div>
                   <span
-                    className="text-white text-base font-normal"
+                    className="text-black text-base font-normal"
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    sparktech@email.com
+                    sparktechbizsol@email.com
                   </span>
                 </div>
 
                 {/* Phone */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
+                <div className="bg-white/33 rounded-[30px] p-5 flex items-center space-x-4">
                   <div className="w-8 h-8 flex items-center justify-center">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
@@ -109,7 +109,7 @@ export const Footer = () => {
                     </svg>
                   </div>
                   <span
-                    className="text-white text-base font-normal"
+                    className="text-black text-base font-normal"
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
@@ -119,7 +119,7 @@ export const Footer = () => {
                 </div>
 
                 {/* Address */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
+                <div className="bg-white/33  rounded-[30px] p-5 flex items-center space-x-4">
                   <div className="w-8 h-8 flex items-center justify-center">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
@@ -129,7 +129,7 @@ export const Footer = () => {
                     </svg>
                   </div>
                   <span
-                    className="text-white text-base font-normal"
+                    className="text-black text-base font-normal"
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}

@@ -13,7 +13,6 @@ import {
   FaSearch,
 } from "react-icons/fa";
 
-/* ---------- data ---------- */
 const services = [
   {
     title: "Social Media Marketing",
@@ -71,7 +70,7 @@ const services = [
   },
 ];
 
-/* ---------- card animation variants ---------- */
+
 const cardVariants = {
   hidden: (direction) => ({
     opacity: 0,
@@ -92,7 +91,6 @@ const cardVariants = {
   },
 };
 
-/* ---------- Card Component with InView ---------- */
 const AnimatedCard = ({ svc, direction }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-10% 0px" });
@@ -102,7 +100,7 @@ const AnimatedCard = ({ svc, direction }) => {
       ref={ref}
       className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] hover:scale-[1.07] transition duration-300"
       style={{
-        backgroundColor: "rgba(20,25,29,4)",
+        backgroundColor: "rgba()",
         cursor: `url('/mouse/${svc.cursor}.svg') 4 4, auto`,
       }}
       custom={direction}
@@ -122,7 +120,6 @@ const AnimatedCard = ({ svc, direction }) => {
   );
 };
 
-/* ---------- Main Services Component ---------- */
 const Services = () => {
   return (
     <>
