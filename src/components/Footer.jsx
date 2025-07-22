@@ -258,13 +258,10 @@ export const Footer = () => {
                   </ul>
                 </div>
               </div>
+             
             </div>
-          </div>
-        </div>
-
-        {/* Socials */}
-        <div className="bg-white/5 rounded-[30px] px-4 py-6 sm:p-8 mb-8">
-          <div className="text-center">
+           
+          <div className="text-center mt-10">
             <h3
               className="text-[#F58327] text-sm font-medium mb-4"
               style={{ fontFamily: "Unbounded" }}
@@ -286,6 +283,12 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+          </div>
+          
+        </div>
+
+        {/* Socials */}
+        
 
         {/* Footer Note */}
         <div className="border-t border-white/15 pt-4 text-center">
@@ -296,7 +299,7 @@ export const Footer = () => {
             © 2025 Spark Tech
           </p>
         </div>
-      </div>
+     
     </footer>
   );
 };

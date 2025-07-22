@@ -3,6 +3,7 @@ import { useState } from "react";
 import bannerImg from "../assets/banner.jpg"; // your banner image
 import { Helmet } from 'react-helmet';
 import Seo from "./Seo";
+import Footer from "./Footer";
 
 const About = () => {
   const [isMissionOpen, setIsMissionOpen] = useState(false);
@@ -164,10 +165,9 @@ const About = () => {
 </div>
 
       {/* Our Team Section */}
-      {/* Our Team Section */}
 <div className=" py-20 px-4">
-  <div className="max-w-6xl mx-auto text-center">
-    <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
+  <div className=" max-w-6xl mx-auto text-center">
+    <div className=" inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
               className="text-[#F58327] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
@@ -177,7 +177,7 @@ const About = () => {
           </div>
     <h2 className="text-4xl font-bold text-white mb-12">Say Hello to Our Team</h2>
     
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
       {[
         {
           name: "Aishwarya Rai",
@@ -185,6 +185,7 @@ const About = () => {
           image: "/member1.png",
           instagram: "https://instagram.com/your_profile_1",
     linkedin: "https://linkedin.com/in/your_profile_1",
+  
         },
         {
           name: "Arjun Kapoor",
@@ -271,6 +272,9 @@ const About = () => {
 
 
           </div>
+              <section id="footer" className="px-4 py-10">
+                <Footer />
+              </section>
           </>
         
   );

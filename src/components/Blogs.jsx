@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Blogs = () => {
   const blogPosts = [
@@ -113,6 +114,9 @@ const Blogs = () => {
         </div>
 
       </section>
+          <section id="footer" className="px-4 py-10">
+            <Footer />
+          </section>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Seo from './Seo';
+import Footer from "./Footer";
 const ProjectsSection = () => {
   const containerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
@@ -118,7 +119,8 @@ const ProjectsSection = () => {
         </div>
       </div>
     </div>
-    </>
+
+  </>
   );
 };
 

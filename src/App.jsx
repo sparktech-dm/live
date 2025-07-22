@@ -28,7 +28,7 @@ const Home = () => (
     <section id="contact" className="min-h-screen scroll-mt-24 px-4 py-10">
       <ContactForm />
     </section>
-    <section id="footer" className="px-4 py-10">
+    <section id="footer" className="px-4 py-10 ">
       <Footer />
     </section>
   </>
@@ -54,7 +54,7 @@ const App = () => {
         maxDistance: 18.0,
         spacing: 20.0,
         color:  0xaaaaaa, // Rocket orange-red       0xaaaaaa 0x0d0d0d
-        backgroundColor: "#777b7e", // Gear navy blue     
+        backgroundColor: "#000000ff", // Gear navy blue     
       });
 
       setVantaEffect(effect);
