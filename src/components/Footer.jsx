@@ -134,7 +134,7 @@ export const Footer = () => {
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    office address, chennai-22.
+                    C1, Honey tone Apartments, shankarapuram 1st Street, Choolaimedu, Chennai 600094
                   </span>
                 </div>
               </div>
@@ -220,16 +220,16 @@ export const Footer = () => {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      <Link
+                      {/* <Link
                         to="/blogs"
                         className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
                         }}
-                      >
+                      > */}
                         Review
-                      </Link>
+                      {/* </Link> */}
                     </li>
                     <li>
                       <Link

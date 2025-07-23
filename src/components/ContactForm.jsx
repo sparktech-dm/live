@@ -42,7 +42,7 @@ export const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <label
-                  className="text-xs font-medium text-black"
+                  className="text-xs font-medium text-white"
                   style={{
                     fontFamily: 'Inter, "Inter Placeholder", sans-serif',
                   }}
@@ -63,7 +63,7 @@ export const ContactForm = () => {
 
               <div className="space-y-2">
                 <label
-                  className="text-xs font-medium text-black"
+                  className="text-xs font-medium text-white"
                   style={{
                     fontFamily: 'Inter, "Inter Placeholder", sans-serif',
                   }}
@@ -84,7 +84,7 @@ export const ContactForm = () => {
 
               <div className="space-y-2">
                 <label
-                  className="text-xs font-medium text-black"
+                  className="text-xs font-medium text-white"
                   style={{
                     fontFamily: 'Inter, "Inter Placeholder", sans-serif',
                   }}
