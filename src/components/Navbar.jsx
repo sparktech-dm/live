@@ -19,7 +19,7 @@ export const Navbar = () => {
 
     if (path === '/') {
       const handleScroll = () => {
-        const sections = ['home', 'services', 'contact'];
+        const sections = ['home', 'services'];
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {

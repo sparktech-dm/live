@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import { Faq } from "./components/Faq";
 import ChatBot from "./components/Chat";
+import Top from "./components/Top";
 
 const Home = () => (
   <>
@@ -81,6 +82,7 @@ const App = () => {
       <div className="relative z-10 text-white overflow-x-hidden">
         <Navbar />
         <ChatBot />
+        <Top/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

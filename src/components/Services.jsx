@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import Seo from "./Seo";
+
 import {
   FaInstagram,
   FaPenNib,
@@ -13,6 +15,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 
+// Service data
 const services = [
   {
     title: "Social Media Marketing",
@@ -70,7 +73,7 @@ const services = [
   },
 ];
 
-
+// Desktop animation
 const cardVariants = {
   hidden: (direction) => ({
     opacity: 0,
@@ -84,29 +87,46 @@ const cardVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+
       stiffness: 120,
       damping: 15,
     },
   },
 };
 
+// Mobile fade only
+const fadeVariants = {
+  hidden: { opacity: 0.6 },
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+};
+
 const AnimatedCard = ({ svc, direction }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-10% 0px" });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+  const inViewRaw = useInView(ref, {
+    amount: isMobile ? 0.7 : 0.3,
+    once: true,
+  });
+
+  // Prevent repeat animation/flicker:
+  const [played, setPlayed] = useState(false);
+  useEffect(() => {
+    if (inViewRaw && !played) setPlayed(true);
+  }, [inViewRaw, played]);
+  const isVisible = played;
 
   return (
     <motion.div
       ref={ref}
-      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] hover:scale-[1.07] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
+      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
       style={{
-        backgroundColor: "rgba()",
         cursor: `url('/mouse/${svc.cursor}.svg') 4 4, auto`,
       }}
       custom={direction}
-      variants={cardVariants}
+      variants={isMobile ? fadeVariants : cardVariants}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isVisible ? "visible" : "hidden"}
+      whileHover={!isMobile ? { scale: 1.07 } : {}}
     >
       <div>
         <div className="text-2xl mb-4 text-orange-400">{svc.icon}</div>
@@ -120,39 +140,32 @@ const AnimatedCard = ({ svc, direction }) => {
   );
 };
 
-const Services = () => {
-  return (
-    <>
-      <Seo
-        title="Services | Spark Tech Digital"
-        description="Explore our digital marketing, branding, and web development services."
-      />
-      <section className=" text-white py-16 px-6">
-        {/* heading */}
-        <div className="text-center mb-12">
-          <span className="text-[#F58327] text-xs font-black uppercase tracking-wide inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
-            Services
-          </span>
-          <h2
-            className="text-4xl sm:text-6xl font-bold"
-            style={{ fontFamily: "Unbounded Placeholder, sans-serif" }}
-          >
-            What we are Offering
-          </h2>
-        </div>
-
-        {/* grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((svc, i) => {
-            const direction = i % 2 === 0 ? "left" : "right";
-            return (
-              <AnimatedCard key={svc.title} svc={svc} direction={direction} />
-            );
-          })}
-        </div>
-      </section>
-    </>
-  );
-};
+const Services = () => (
+  <>
+    <Seo
+      title="Services | Spark Tech Digital"
+      description="Explore our digital marketing, branding, and web development services."
+    />
+    <section className="text-white py-16 px-6">
+      <div className="text-center mb-12">
+        <span className="text-[#F58327] text-xs font-black uppercase tracking-wide inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
+          Services
+        </span>
+        <h2
+          className="text-4xl sm:text-6xl font-bold"
+          style={{ fontFamily: "Unbounded Placeholder, sans-serif" }}
+        >
+          What we are Offering
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {services.map((svc, i) => {
+          const direction = i % 2 === 0 ? "left" : "right";
+          return <AnimatedCard key={svc.title} svc={svc} direction={direction} />;
+        })}
+      </div>
+    </section>
+  </>
+);
 
 export default Services;
