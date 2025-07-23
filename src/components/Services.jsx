@@ -98,7 +98,7 @@ const AnimatedCard = ({ svc, direction }) => {
   return (
     <motion.div
       ref={ref}
-      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] hover:scale-[1.07] transition duration-300"
+      className="rounded-2xl p-6 shadow-lg flex flex-col justify-between bg-[#5a5656] hover:scale-[1.07] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
       style={{
         backgroundColor: "rgba()",
         cursor: `url('/mouse/${svc.cursor}.svg') 4 4, auto`,

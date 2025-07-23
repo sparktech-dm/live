@@ -91,7 +91,7 @@ const ProjectsSection = () => {
             return (
               <div
                 key={index}
-                className="absolute w-full h-full bg-[#1e1e1e] rounded-3xl shadow-2xl p-5 flex flex-col justify-between rotate-3 transition-transform duration-300 ease-out"
+                className="absolute w-full h-full bg-[#5a5656]  rounded-3xl shadow-2xl p-5 flex flex-col justify-between rotate-3 transition-transform duration-300 ease-out hover:scale-[1.07] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
                 style={{
                   transform: `translateY(${offset}px)`,
                   zIndex: index,

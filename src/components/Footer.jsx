@@ -74,7 +74,7 @@ export const Footer = () => {
     <footer className="px-6 sm:px-10 ">
       <div className="mx-auto max-w-[1652px]">
         <div className="mb-16">
-          <div className="bg-white/20 rounded-[30px] p-6 sm:p-8">
+          <div className="bg-[#1A1A1A] rounded-[30px] p-6 sm:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* Contact Info */}
               <div className="space-y-6">
@@ -94,7 +94,8 @@ export const Footer = () => {
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    sparktechbizsol@email.com
+                    sparktechdm
+                    @gmail.com
                   </span>
                 </div>
 
@@ -134,7 +135,7 @@ export const Footer = () => {
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    office address, chennai-22.
+                    C1, Honey tone Apartments, shankarapuram 1st Street, Choolaimedu, Chennai 600094
                   </span>
                 </div>
               </div>

@@ -63,7 +63,7 @@ const Hero = () => {
         <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
           We believe in combining innovative design, sustainable practices, and exceptional craftsmanship to bring your vision to life.
         </p>
-        <button className="group bg-orange-400 hover:bg-orange-300 text-black font-semibold mt-10 px-6 py-3 rounded-full transition-all duration-300 inline-flex items-center">
+        <button className="group bg-orange-400 hover:bg-orange-300 text-black font-semibold mt-10 px-6 py-3 rounded-full transition-all duration-300 inline-flex items-center" href="./ContactForm.jsx">
           CONTACT US
           <span className="ml-2 transform transition-all duration-500 ease-in-out group-hover:translate-x-2 group-hover:scale-125">
             →

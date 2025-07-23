@@ -97,7 +97,7 @@ export const Navbar = () => {
     <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter]'>
       {/* Desktop Capsule Navbar */}
       <div className='hidden md:flex justify-center'>
-        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl flex items-center mt-5 backdrop-blur bg-white/10'>
+        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl flex items-center mt-5 backdrop-blur bg-gray-500/50'>
           <ul className='flex justify-evenly items-center w-full'>
             {menuItems.map((item) => (
               <li key={item.name} onClick={() => handleItemClick(item)}>
@@ -130,7 +130,7 @@ export const Navbar = () => {
       </div>
 
       {/* Mobile Navbar Header */}
-      <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-white/10'>
+      <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-gray-600/40'>
         <RouterLink to='/'>
           <div className='w-[50px] h-[50px] cursor-pointer'>
             <img src={Logo} alt='Logo' className='w-full h-full object-contain' />
