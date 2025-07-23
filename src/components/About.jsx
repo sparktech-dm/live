@@ -145,14 +145,14 @@ const About = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-orange-500 rounded-t-full z-0" />
         {/* Leader image */}
         <img
-          src="/member3.png"
+          src=""
           alt="Leader"
           className="absolute top-[-83.5px]   rounded-t-full grayscale  border-orange-500"
         />
         {/* Name overlay */}
         <div className="absolute bottom-[-30px] left-0 w-full text-center z-20">
-          <h3 className="text-2xl font-bold text-orange-400">JAMES</h3>
-          <h3 className="text-2xl font-bold text-white -mt-1">ANDRWEWS</h3>
+          <h3 className="text-2xl font-bold text-orange-400">Name</h3>
+          <h3 className="text-2xl font-bold text-white -mt-1">Here</h3>
         </div>
       </div>
 
@@ -180,24 +180,24 @@ const About = () => {
     <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
       {[
         {
-          name: "Aishwarya Rai",
-          role: "UI/UX Designer",
-          image: "/member1.png",
+          name: "Name",
+          role: "Role",
+          image: "",
           instagram: "https://instagram.com/your_profile_1",
     linkedin: "https://linkedin.com/in/your_profile_1",
   
         },
         {
-          name: "Arjun Kapoor",
-          role: "Frontend Developer",
-          image: "/member3.png",
+          name: "Name",
+          role: "Role",
+          image: "",
           instagram: "https://instagram.com/your_profile_1",
           linkedin: "https://linkedin.com/in/your_profile_1",
         },
         {
-          name: "Priya Singh",
-          role: "Project Manager",
-          image: "/member1.png",
+          name: "Name",
+          role: "Role",
+          image: "",
           instagram: "https://instagram.com/your_profile_1",
           linkedin: "https://linkedin.com/in/your_profile_1",
         },
