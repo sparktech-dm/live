@@ -43,7 +43,6 @@ export const Navbar = () => {
   }, [location.pathname]);
 
   const baseMenuItems = [
-    { name: 'home', type: 'scrolltop' },
     { name: 'services', type: 'scroll', id: 'services' },
     { name: 'projects', type: 'route', path: '/projects' },
     { name: 'about', type: 'route', path: '/about' },

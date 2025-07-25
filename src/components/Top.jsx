@@ -36,7 +36,7 @@ const ScrollToTop = () => {
           cursor: 'pointer',
         }}
       >
-        ? Top
+         Top
       </button>
     )
   );

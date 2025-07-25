@@ -29,7 +29,7 @@ const Home = () => (
     <section id="contact" className="min-h-screen scroll-mt-24 px-4 py-10">
       <ContactForm />
     </section>
-    <section id="footer" className="px-4 py-10 ">
+    <section id="footer" className="px-4 py-10">
       <Footer />
     </section>
   </>
@@ -37,11 +37,12 @@ const Home = () => (
 
 const App = () => {
   const vantaRef = useRef(null);
+  const effectRef = useRef(null); // Prevent double mounting
   const [vantaEffect, setVantaEffect] = useState(null);
 
   useLayoutEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      const effect = NET({
+    if (!effectRef.current && vantaRef.current) {
+      effectRef.current = NET({
         el: vantaRef.current,
         THREE,
         mouseControls: true,
@@ -54,35 +55,35 @@ const App = () => {
         points: 7.0,
         maxDistance: 18.0,
         spacing: 20.0,
-        color:  0xaaaaaa, // Rocket orange-red       0xaaaaaa 0x0d0d0d
-        backgroundColor: "#000000ff", // Gear navy blue     
+        color: 0x333333,
+        backgroundColor: "#000000",
       });
 
-      setVantaEffect(effect);
-
-      // ✅ Trigger resize to force canvas correction
+      setVantaEffect(effectRef.current);
       window.dispatchEvent(new Event("resize"));
     }
 
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      if (effectRef.current) {
+        effectRef.current.destroy();
+        effectRef.current = null;
+      }
     };
-  }, [vantaEffect]);
+  }, []);
 
   return (
     <>
       {/* Vanta Background */}
       <div
-  ref={vantaRef}
-  className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
-/>
-
+        ref={vantaRef}
+        className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden pointer-events-none"
+      />
 
       {/* Main Content */}
       <div className="relative z-10 text-white overflow-x-hidden">
         <Navbar />
         <ChatBot />
-        <Top/>
+        <Top />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
