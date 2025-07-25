@@ -71,15 +71,15 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="px-6 sm:px-10 ">
+    <footer className="px-6 sm:px-10 py-20">
       <div className="mx-auto max-w-[1652px]">
         <div className="mb-16">
-          <div className="bg-[#1A1A1A] rounded-[30px] p-6 sm:p-8">
+          <div className="bg-white/5 rounded-[30px] p-6 sm:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* Contact Info */}
               <div className="space-y-6">
                 {/* Email */}
-                <div className="bg-white/33 rounded-[30px] p-5 flex items-center space-x-4">
+                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
                   <div className="w-8 h-8 flex items-center justify-center">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
@@ -89,19 +89,18 @@ export const Footer = () => {
                     </svg>
                   </div>
                   <span
-                    className="text-black text-base font-normal"
+                    className="text-white text-base font-normal"
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    sparktechdm
-                    @gmail.com
+                    sparktech@email.com
                   </span>
                 </div>
 
                 {/* Phone */}
-                <div className="bg-white/33 rounded-[30px] p-5 flex items-center space-x-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
+                <div className="bg-white/5 rounded-[30px] p-5 flex items-center gap-4 flex-nowrap">
+                  <div className="w-8 h-8 flex items-center justify-center shrink-0">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
                         d="M26.059 19.0893L20.5383 16.6155L20.5231 16.6085C20.2365 16.4859 19.9238 16.4367 19.6134 16.4653C19.303 16.494 19.0047 16.5996 18.7453 16.7725C18.7148 16.7927 18.6854 16.8146 18.6574 16.8381L15.8051 19.2698C13.9981 18.392 12.1324 16.5405 11.2547 14.7569L13.6899 11.8612C13.7133 11.8319 13.7356 11.8026 13.7567 11.771C13.9259 11.5123 14.0286 11.2159 14.0556 10.908C14.0826 10.6 14.033 10.2902 13.9113 10.0061V9.99205L11.4305 4.46197C11.2696 4.0908 10.993 3.7816 10.642 3.58053C10.291 3.37946 9.88437 3.29731 9.48282 3.34634C7.8949 3.5553 6.43733 4.33514 5.38235 5.54021C4.32738 6.74528 3.74714 8.29317 3.75001 9.89478C3.75001 19.1995 11.3203 26.7698 20.625 26.7698C22.2266 26.7727 23.7745 26.1924 24.9796 25.1374C26.1847 24.0825 26.9645 22.6249 27.1734 21.037C27.2226 20.6356 27.1406 20.229 26.9397 19.878C26.7389 19.527 26.43 19.2504 26.059 19.0893ZM20.625 24.8948C16.6481 24.8904 12.8353 23.3087 10.0232 20.4966C7.2111 17.6845 5.62935 13.8717 5.62501 9.89478C5.6206 8.75043 6.03288 7.64361 6.78486 6.781C7.53683 5.9184 8.57708 5.359 9.71134 5.20728C9.71088 5.21196 9.71088 5.21667 9.71134 5.22134L12.1723 10.7292L9.75001 13.6284C9.72542 13.6567 9.70309 13.6868 9.68321 13.7186C9.50686 13.9892 9.40341 14.3008 9.38288 14.6231C9.36235 14.9455 9.42543 15.2677 9.56603 15.5585C10.6277 17.7299 12.8156 19.9014 15.0106 20.962C15.3035 21.1012 15.6275 21.1622 15.951 21.1387C16.2745 21.1153 16.5864 21.0084 16.8563 20.8284C16.8863 20.8081 16.9153 20.7862 16.943 20.7628L19.7918 18.3323L25.2996 20.7991C25.2996 20.7991 25.309 20.7991 25.3125 20.7991C25.1626 21.9349 24.6041 22.9773 23.7413 23.7311C22.8786 24.485 21.7707 24.8986 20.625 24.8948Z"
@@ -109,18 +108,17 @@ export const Footer = () => {
                       />
                     </svg>
                   </div>
-                  <span
-                    className="text-black text-base font-normal"
-                    style={{
-                      fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
-                    }}
-                  >
-                    +91 9876543210
-                  </span>
-                </div>
-
+                <span
+                  className="text-white text-base font-normal whitespace-nowrap"
+                  style={{
+                    fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
+                  }}
+                >
+                 +91 9876543210
+                </span>
+              </div>
                 {/* Address */}
-                <div className="bg-white/33  rounded-[30px] p-5 flex items-center space-x-4">
+                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
                   <div className="w-8 h-8 flex items-center justify-center">
                     <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
                       <path
@@ -130,12 +128,12 @@ export const Footer = () => {
                     </svg>
                   </div>
                   <span
-                    className="text-black text-base font-normal"
+                    className="text-white text-base font-normal"
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                     }}
                   >
-                    C1, Honey tone Apartments, shankarapuram 1st Street, Choolaimedu, Chennai 600094
+                    office address, chennai-22.
                   </span>
                 </div>
               </div>
@@ -221,16 +219,16 @@ export const Footer = () => {
                   </h3>
                   <ul className="space-y-3">
                     <li>
-                      {/* <Link
+                      <Link
                         to="/blogs"
                         className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
                         }}
-                      > */}
+                      >
                         Review
-                      {/* </Link> */}
+                      </Link>
                     </li>
                     <li>
                       <Link
@@ -259,17 +257,20 @@ export const Footer = () => {
                   </ul>
                 </div>
               </div>
-             
             </div>
-           
-          <div className="text-center mt-10">
+          </div>
+        </div>
+
+        {/* Socials */}
+        <div className="bg-white/5 rounded-[30px] px-4 py-6 sm:p-8 mb-8">
+          <div className="text-center">
             <h3
               className="text-[#F58327] text-sm font-medium mb-4"
               style={{ fontFamily: "Unbounded" }}
             >
               Follow us:
             </h3>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
+            <div className="flex flex-nowrap justify-center gap-4 overflow-x-auto sm:flex-wrap">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -284,12 +285,6 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-          </div>
-          
-        </div>
-
-        {/* Socials */}
-        
 
         {/* Footer Note */}
         <div className="border-t border-white/15 pt-4 text-center">
@@ -300,7 +295,7 @@ export const Footer = () => {
             © 2025 Spark Tech
           </p>
         </div>
-     
+      </div>
     </footer>
   );
 };
