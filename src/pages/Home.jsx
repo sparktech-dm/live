@@ -1,19 +1,27 @@
-// src/components/Home.jsx
-import Hero from './Hero';
-import Faq from './Faq';
-import ContactForm from './ContactForm';
+import React, { useState } from 'react';
+import Hero from '../components/Hero.jsx';
+import Faq from '../components/Faq.jsx';
+import ContactForm from '../components/ContactForm.jsx';
+import RocketLaunch from '../helper/RocketLaunch.jsx';
 
 function Home() {
+  const [showMainContent, setShowMainContent] = useState(false);
+
   return (
     <div className="overflow-hidden">
-      <Hero />
-      <Faq />
-      <div id="contact">
-        <ContactForm />
-      </div>
+      {!showMainContent ? (
+        <RocketLaunch onLaunchEnd={() => setShowMainContent(true)} />
+      ) : (
+        <>
+          <Hero />
+          <Faq />
+          <div id="contact">
+            <ContactForm />
+          </div>
+        </>
+      )}
     </div>
   );
 }
-
 
 export default Home;

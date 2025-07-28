@@ -62,7 +62,7 @@ const Hero = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight mt-2">
           Marketing <span className="text-[#f0c417]">Agency.</span>
         </h1>
-        <p className="mt-6 text-lg text-gray-700 max-w-2xl mx-auto pb-5">
+        <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto pb-5">
           We believe in combining innovative design, sustainable practices, and exceptional craftsmanship to bring your vision to life.
         </p>
         <button

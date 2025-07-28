@@ -77,9 +77,9 @@ class Pixel {
 
 const VARIANTS = {
   default: {
-    gap: 5,
-    speed: 35,
-    colors: "#FF7074",
+    gap: 10,
+    speed: 10,
+    colors: "#f0c417",
   },
 };
 

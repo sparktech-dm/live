@@ -150,4 +150,24 @@ html, body {
   animation: shine 3s linear infinite;
 }
 
+@keyframes fire {
+  0% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1.2) scaleX(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+}
+
+.fire-effect {
+  animation: fire 0.3s infinite ease-in-out;
+  transform-origin: top center;
+}
+
 

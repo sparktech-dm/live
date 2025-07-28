@@ -14,12 +14,13 @@ export const Navbar = () => {
     setMenuOpen(false); // Close mobile menu on route change
   }, [location.pathname]);
 
+  // Set active section based on scroll or pathname
   useEffect(() => {
     const path = location.pathname;
 
     if (path === '/') {
       const handleScroll = () => {
-        const sections = ['home','contact'];
+        const sections = ['home', 'contact'];
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -32,7 +33,7 @@ export const Navbar = () => {
       };
 
       window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Set initial
+      handleScroll();
 
       return () => window.removeEventListener('scroll', handleScroll);
     } else {
@@ -42,6 +43,22 @@ export const Navbar = () => {
       else if (path.startsWith('/services')) setActive('services');
     }
   }, [location.pathname]);
+
+  // Handle delayed scroll after redirect from other pages
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      scroller.scrollTo(location.state.scrollTo, {
+        duration: 800,
+        smooth: 'easeInOutQuart',
+      });
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+
+    if (location.pathname === '/' && location.state?.scrollToTop) {
+      scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
 
   const baseMenuItems = [
     { name: 'logo', type: 'scrolltop', image: Logo },
@@ -55,7 +72,7 @@ export const Navbar = () => {
 
   const handleScroll = (id) => {
     if (location.pathname !== '/') {
-      window.location.replace('/');
+      navigate('/', { state: { scrollTo: id } });
     } else {
       scroller.scrollTo(id, {
         duration: 800,
@@ -66,7 +83,7 @@ export const Navbar = () => {
 
   const handleScrollTop = () => {
     if (location.pathname !== '/') {
-      window.location.replace('/');
+      navigate('/', { state: { scrollToTop: true } });
     } else {
       scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
     }
@@ -76,7 +93,7 @@ export const Navbar = () => {
     setActive(item.name);
 
     if (item.type === 'route') {
-      window.location.replace(item.path);
+      navigate(item.path);
     } else if (item.type === 'scroll') {
       handleScroll(item.id);
     } else if (item.type === 'scrolltop') {
