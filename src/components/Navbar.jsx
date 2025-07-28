@@ -19,7 +19,7 @@ export const Navbar = () => {
 
     if (path === '/') {
       const handleScroll = () => {
-        const sections = ['home', 'services'];
+        const sections = ['home','contact'];
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -39,11 +39,13 @@ export const Navbar = () => {
       if (path === '/about') setActive('about');
       else if (path.startsWith('/projects')) setActive('projects');
       else if (path.startsWith('/blogs')) setActive('blogs');
+      else if (path.startsWith('/services')) setActive('services');
     }
   }, [location.pathname]);
 
   const baseMenuItems = [
-    { name: 'services', type: 'scroll', id: 'services' },
+    { name: 'logo', type: 'scrolltop', image: Logo },
+    { name: 'services', type: 'route', path: '/services' },
     { name: 'projects', type: 'route', path: '/projects' },
     { name: 'about', type: 'route', path: '/about' },
     { name: 'blogs', type: 'route', path: '/blogs' },
@@ -53,14 +55,7 @@ export const Navbar = () => {
 
   const handleScroll = (id) => {
     if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        scroller.scrollTo(id, {
-          duration: 800,
-          delay: 100,
-          smooth: 'easeInOutQuart',
-        });
-      }, 200);
+      window.location.replace('/');
     } else {
       scroller.scrollTo(id, {
         duration: 800,
@@ -71,10 +66,7 @@ export const Navbar = () => {
 
   const handleScrollTop = () => {
     if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
-      }, 200);
+      window.location.replace('/');
     } else {
       scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
     }
@@ -84,7 +76,7 @@ export const Navbar = () => {
     setActive(item.name);
 
     if (item.type === 'route') {
-      navigate(item.path);
+      window.location.replace(item.path);
     } else if (item.type === 'scroll') {
       handleScroll(item.id);
     } else if (item.type === 'scrolltop') {
@@ -100,7 +92,15 @@ export const Navbar = () => {
           <ul className='flex justify-evenly items-center w-full'>
             {menuItems.map((item) => (
               <li key={item.name} onClick={() => handleItemClick(item)}>
-                {item.type === 'route' ? (
+                {item.type === 'scrolltop' && item.image ? (
+                  <div className='w-[40px] h-[40px] cursor-pointer'>
+                    <img
+                      src={item.image}
+                      alt='Logo'
+                      className='w-full h-full object-contain'
+                    />
+                  </div>
+                ) : item.type === 'route' ? (
                   <RouterLink
                     to={item.path}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
@@ -130,7 +130,7 @@ export const Navbar = () => {
 
       {/* Mobile Navbar Header */}
       <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-gray-600/40'>
-        <RouterLink to='/'>
+        <RouterLink to='/' onClick={handleScrollTop}>
           <div className='w-[50px] h-[50px] cursor-pointer'>
             <img src={Logo} alt='Logo' className='w-full h-full object-contain' />
           </div>
@@ -160,6 +160,14 @@ export const Navbar = () => {
                   >
                     {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                   </RouterLink>
+                ) : item.type === 'scrolltop' && item.image ? (
+                  <div className='w-[40px] h-[40px] cursor-pointer'>
+                    <img
+                      src={item.image}
+                      alt='Logo'
+                      className='w-full h-full object-contain'
+                    />
+                  </div>
                 ) : (
                   <span
                     className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${

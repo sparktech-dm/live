@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import rocketLogo from "../assets/Logo.png";
+import ShinyText from './ShinyText.jsx';
+import { scroller } from 'react-scroll';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -54,21 +56,24 @@ const Hero = () => {
         initial={{ opacity: 0, y: 50 }}
         className="text-center z-10"
       >
-        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
-          The Best <span className="inline-block bg-orange-400 text-black px-2 rotate-[-2deg]">Digital</span>
+        <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight tracking-tight">
+          The Best <span className="inline-block bg-[#f0c417] text-black px-2 rotate-[-2deg]">Digital</span>
         </h1>
-        <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mt-2">
-          Marketing <span className="text-orange-400">Agency.</span>
+        <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight mt-2">
+          Marketing <span className="text-[#f0c417]">Agency.</span>
         </h1>
-        <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+        <p className="mt-6 text-lg text-gray-700 max-w-2xl mx-auto pb-5">
           We believe in combining innovative design, sustainable practices, and exceptional craftsmanship to bring your vision to life.
         </p>
-        <button className="group bg-orange-400 hover:bg-orange-300 text-black font-semibold mt-10 px-6 py-3 rounded-full transition-all duration-300 inline-flex items-center" href="./ContactForm.jsx">
-          CONTACT US
-          <span className="ml-2 transform transition-all duration-500 ease-in-out group-hover:translate-x-2 group-hover:scale-125">
-            →
-          </span>
-        </button>
+        <button
+  onClick={() => scroller.scrollTo('contact', {
+    duration: 600,
+    smooth: 'easeInOutQuart',
+  })}
+  className="px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md animate-bounce"
+>
+  Explore
+</button>
       </motion.div>
     </div>
   );
