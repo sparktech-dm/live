@@ -53,7 +53,7 @@ export const Faq = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
-              className="text-[#F58327] text-xs font-black uppercase tracking-wide"
+              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
             >
               Frequently Asked Questions
@@ -97,7 +97,7 @@ export const Faq = () => {
                 >
                   {faq.question}
                 </h3>
-                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#F58327] flex items-center justify-center">
+                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#f0c417] flex items-center justify-center">
                   <svg
                     className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${activeIndex === index ? "rotate-180" : ""}`}
                     fill="none"
@@ -117,9 +117,9 @@ export const Faq = () => {
                     style={{
                       fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
                       fontSize: "16px",
-                      fontWeight: 400,
+                      fontWeight: 500,
                       lineHeight: "24px",
-                      color: "rgb(156, 149, 149)",
+                      color: "black",//rgb(209, 213, 219)
                     }}
                   >
                     {faq.answer}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Blogs = () => {
   const blogPosts = [
@@ -67,15 +68,18 @@ const Blogs = () => {
         .animate-fade-up {
           animation: fadeUp 0.6s ease-out forwards;
         }
-      `}
-      </style>
+      `}</style>
 
       <section className="w-full  relative overflow-hidden min-h-[300vh]">
         <div className="relative z-10 flex flex-col justify-center items-center px-4 py-24 md:py-32">
-          <h1 className="text-[#f0c417] text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-          style={{
-            fontSize: 40 
-          }}>
+          <h1 className="text-white text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+            style={{
+              fontFamily: 'Unbounded, "Unbounded Placeholder", sans-serif',
+              fontSize: "50px",
+              fontWeight: 400,
+              lineHeight: "38px",
+              color: "rgb(255, 255, 255)",
+            }}>
             Exclusive Blogs
           </h1>
         </div>
@@ -90,15 +94,29 @@ const Blogs = () => {
               <div className="bg-white rounded-2xl shadow-[0px_5px_24px_rgba(0,0,0,0.1),0px_24px_47px_rgba(0,0,0,0.1)] overflow-hidden w-full">
                 <div className="flex flex-col lg:flex-row h-full">
                   <div className="lg:w-1/2 p-6 md:p-10 flex flex-col justify-center">
-                    <h2 className="text-[#0A0507] text-2xl md:text-4xl lg:text-[54px] font-light mb-4">
+                    <h2 className="text-[#0A0507] text-2xl md:text-4xl lg:text-[54px] font-light mb-4"
+                    style={{
+              fontFamily: 'Unbounded, "Unbounded Placeholder", sans-serif',
+              fontSize: "32px",
+              fontWeight: 400,
+              lineHeight: "38px",
+              color: "#0A0507",
+            }}>
                       {post.title}
                     </h2>
-                    <p className="text-[#0A0507] text-base md:text-lg lg:text-[22px] font-light mb-6 leading-snug lg:leading-[151.359%]">
+                    <p className="text-[#0A0507] text-base md:text-lg lg:text-[22px] font-light mb-6 leading-snug lg:leading-[151.359%]"
+                    style={{
+                      fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
+                      fontSize: "16px",
+                      fontWeight: 400,
+                      lineHeight: "24px",
+                      color: "#0A0507",
+                    }}>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                     <Link
                       to={`/blog/${post.id}`}
-                      className="bg-[#BC5724] text-white text-base md:text-lg lg:text-[22px] font-light rounded-md px-4 py-3 w-fit"
+                      className="bg-[#f0c417] text-white text-base md:text-lg lg:text-[22px] font-light rounded-md px-4 py-3 w-fit"
                     >
                       Read more
                     </Link>
@@ -117,6 +135,9 @@ const Blogs = () => {
         </div>
 
       </section>
+          <section id="footer" className="px-4 py-10">
+            <Footer />
+          </section>
     </>
   );
 };
