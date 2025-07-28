@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import rocketLogo from "../assets/Logo.png";
-import ShinyText from './ShinyText.jsx';
+// import ShinyText from './ShinyText.jsx';
 import { scroller } from 'react-scroll';
 
 const Hero = () => {
