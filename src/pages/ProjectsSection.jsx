@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Seo from './Seo';
-import Footer from "./Footer";
+import Seo from '../components/Seo';
+import Footer from "../components/Footer";
 const ProjectsSection = () => {
   const containerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
@@ -61,7 +61,7 @@ const ProjectsSection = () => {
       />
     <div
   ref={containerRef}
-  className="h-screen w-screen overflow-y-scroll overflow-x-hidden  text-white font-[Inter] relative pt-28"
+  className="h-screen w-screen overflow-y-scroll overflow-x-hidden  text-[#f0c417] font-[Inter] relative pt-28"
 >
 
       {/* Fake scroll area */}
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">
             Check Our Works<br />With Real Results
           </h1>
-          <p className="text-gray-400 text-sm sm:text-base max-w-md mx-auto md:mx-0">
+          <p className="text-gray-300 text-sm sm:text-base max-w-md mx-auto md:mx-0">
             Each project we deliver is proof of our ability to bring real outcomes. Scroll through our success stories, one card at a time.
           </p>
         </div>
@@ -91,7 +91,7 @@ const ProjectsSection = () => {
             return (
               <div
                 key={index}
-                className="absolute w-full h-full bg-[#5a5656]  rounded-3xl shadow-2xl p-5 flex flex-col justify-between rotate-3 transition-transform duration-300 ease-out hover:scale-[1.07] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
+                className="absolute w-full h-full bg-[#5a5656]  rounded-3xl shadow-2xl p-5 flex flex-col justify-between rotate-3  ease-out hover:scale-[1.07] transition duration-300 hover:bg-[#1A1A1A] hover:shadow-[0_4px_10px_orange]"
                 style={{
                   transform: `translateY(${offset}px)`,
                   zIndex: index,
@@ -106,12 +106,12 @@ const ProjectsSection = () => {
                 />
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold mt-4">{project.title}</h3>
-                  <p className="text-gray-400 text-sm mt-2">{project.description}</p>
+                  <p className="text-gray-300 text-sm mt-2">{project.description}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-orange-400 font-semibold mt-2">{project.rating}</p>
-                  <p className="text-xs text-gray-500">Traffic Boost: {project.traffic}</p>
-                  <p className="text-xs text-gray-500">Client: {project.client}</p>
+                  <p className="text-sm text-[#f0c417] font-semibold mt-2">{project.rating}</p>
+                  <p className="text-xs text-gray-300">Traffic Boost: {project.traffic}</p>
+                  <p className="text-xs text-gray-300">Client: {project.client}</p>
                 </div>
               </div>
             );

@@ -1,6 +1,6 @@
 import React from "react";
-import Blogs from "./Blogs";
-import Seo from "./Seo";
+import Blogs from "../components/Blogs";
+import Seo from "../components/Seo";
 
 const BlogsPage = () => {
   return (

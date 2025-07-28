@@ -105,7 +105,7 @@ export const Navbar = () => {
                     to={item.path}
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? 'bg-white/10 text-[#BE6A26]'
+                        ? 'bg-white/10 text-[#f0c417]'
                         : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
                     }`}
                   >
@@ -115,7 +115,7 @@ export const Navbar = () => {
                   <span
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? 'bg-[#262424] text-[#BE6A26]'
+                        ? 'bg-white/10 text-[#f0c417]'
                         : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
                     }`}
                   >
@@ -154,7 +154,7 @@ export const Navbar = () => {
                     to={item.path}
                     className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? 'bg-[#262424] text-[#BE6A26]'
+                        ? 'bg-[#262424] text-[#f0c417]'
                         : 'text-white hover:bg-[#4f4e4e]'
                     }`}
                   >
@@ -172,7 +172,7 @@ export const Navbar = () => {
                   <span
                     className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
                       active === item.name
-                        ? 'bg-[#262424] text-[#BE6A26]'
+                        ? 'bg-[#262424] text-[#f0c417]'
                         : 'text-white hover:bg-[#4f4e4e]'
                     }`}
                   >

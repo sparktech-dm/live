@@ -72,7 +72,7 @@ const Blogs = () => {
 
       <section className="w-full  relative overflow-hidden min-h-[300vh]">
         <div className="relative z-10 flex flex-col justify-center items-center px-4 py-24 md:py-32">
-          <h1 className="text-white text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+          <h1 className="text-[#f0c417] text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           style={{
             fontSize: 40 
           }}>

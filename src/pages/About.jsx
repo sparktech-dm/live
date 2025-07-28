@@ -2,8 +2,8 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { useState } from "react";
 import bannerImg from "../assets/banner.jpg"; // your banner image
 import { Helmet } from 'react-helmet';
-import Seo from "./Seo";
-import Footer from "./Footer";
+import Seo from "../components/Seo";
+import Footer from "../components/Footer";
 
 const About = () => {
   const [isMissionOpen, setIsMissionOpen] = useState(false);
@@ -38,7 +38,7 @@ const About = () => {
         >
           <h1 className="text-white text-4xl font-bold text-center leading-tight m-0">
             Hey There! Welcome<br />
-            to <span className="text-orange-400">Spark Tech!</span>
+            to <span className="text-[#f0c417]">Spark Tech!</span>
           </h1>
         </div>
       </div>
@@ -46,7 +46,7 @@ const About = () => {
       {/* About Section */}
       <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
-              className="text-[#F58327] text-xs font-black uppercase tracking-wide"
+              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
             >
               Who Are We
@@ -74,10 +74,10 @@ const About = () => {
                   className={`group cursor-pointer bg-[#232323] hover:bg-[#1f1f1f] transition-all duration-300 ease-in-out rounded-2xl px-8 py-6 shadow-inner border border-[#333]`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xl font-medium text-gray-200 group-hover:text-orange-400 transform transition-transform duration-300 group-hover:translate-x-2">
+                    <span className="text-xl font-medium text-gray-200 group-hover:text-[#f0c417] transform transition-transform duration-300 group-hover:translate-x-2">
       <span className="text-gray-400 font-mono mr-2">01.</span> Our Mission
     </span>
-    <div className="w-10 h-10 rounded-full  flex items-center justify-center text-2xl text-gray-400 group-hover:text-orange-400 transition">
+    <div className="w-10 h-10 rounded-full  flex items-center justify-center text-2xl text-gray-400 group-hover:text-[#f0c417] transition">
       {isMissionOpen ? "-" : "+"}
     </div>
   </div>
@@ -97,10 +97,10 @@ const About = () => {
   className={`group cursor-pointer bg-[#232323] hover:bg-[#1f1f1f] transition-all duration-300 ease-in-out rounded-2xl px-8 py-6 shadow-inner border border-[#333]`}
 >
   <div className="flex items-center justify-between">
-    <span className="text-xl font-medium text-gray-200 group-hover:text-orange-400 transform transition-transform duration-300 group-hover:translate-x-2">
+    <span className="text-xl font-medium text-gray-200 group-hover:text-[#f0c417] transform transition-transform duration-300 group-hover:translate-x-2">
       <span className="text-gray-400 font-mono mr-2">02.</span> Our Vision
     </span>
-    <div className="w-10 h-10 rounded-full bg-[#333] flex items-center justify-center text-2xl text-gray-400 group-hover:text-orange-400 transition">
+    <div className="w-10 h-10  flex items-center justify-center text-2xl text-gray-400 group-hover:text-[#f0c417] transition">
       {isVisionOpen ? "-" : "+"}
     </div>
   </div>
@@ -123,7 +123,7 @@ const About = () => {
     <div className="flex items-center gap-4 mb-6">
       <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
-              className="text-[#F58327] text-xs font-black uppercase tracking-wide"
+              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
             >
               ABOUT FOUNDER
@@ -133,7 +133,7 @@ const About = () => {
     </div>
 
     {/* Paragraph intro */}
-    <p className="text-gray-400 mb-30 text-2xl ">
+    <p className="text-gray-300 mb-30 text-2xl ">
       At Spark Tech, our leadership is driven by a passion for innovation and a deep understanding of digital transformation. Our founder leads by example, constantly pushing the boundaries to help clients thrive in a fast-evolving tech landscape.
     </p>
 
@@ -142,22 +142,22 @@ const About = () => {
       {/* Left: Image Block */}
       <div className="relative w-[300px] h-[350px]">
         {/* Orange background circle */}
-        <div className="absolute top-0 left-0 w-full h-full bg-orange-500 rounded-t-full z-0" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[#f0c417] rounded-t-full z-0" />
         {/* Leader image */}
         <img
           src=""
           alt="Leader"
-          className="absolute top-[-83.5px]   rounded-t-full grayscale  border-orange-500"
+          className="absolute top-[-83.5px]   rounded-t-full grayscale  border-[#f0c417] " 
         />
         {/* Name overlay */}
         <div className="absolute bottom-[-30px] left-0 w-full text-center z-20">
-          <h3 className="text-2xl font-bold text-orange-400">Name</h3>
+          <h3 className="text-2xl font-bold text-[#f0c417]">Name</h3>
           <h3 className="text-2xl font-bold text-white -mt-1">Here</h3>
         </div>
       </div>
 
       {/* Right: Paragraph about leader */}
-      <div className="text-gray-400 max-w-xl text-2xl leading-relaxed">
+      <div className="text-gray-300 max-w-xl text-2xl leading-relaxed">
         James Andrews is a visionary entrepreneur and the driving force behind Spark Tech. With a background in full-stack development and a knack for turning complex challenges into simple solutions, he has led the company to new heights. His leadership is built on innovation, integrity, and relentless focus on quality.
       </div>
     </div>
@@ -169,7 +169,7 @@ const About = () => {
   <div className=" max-w-6xl mx-auto text-center">
     <div className=" inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
-              className="text-[#F58327] text-xs font-black uppercase tracking-wide"
+              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
             >
               TEAM MEMBERS
@@ -211,7 +211,7 @@ const About = () => {
           >
             {/* Orange semi-circle animation */}
             <div
-              className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-150 h-150 bg-orange-500 rounded-full z-0 transition-all duration-700 ${
+              className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-150 h-150 bg-[#f0c417] rounded-full z-0 transition-all duration-700 ${
                 clickedIndex === i ? "-translate-y-16" : "translate-y-full"
               }`}
             />
@@ -226,7 +226,7 @@ const About = () => {
             {/* Name & Role */}
             <div className="relative z-10 transition-all duration-300 group-hover:-translate-y-1 text-white text-center mt-4 mb-2">
               <h4 className="text-xl font-semibold">{member.name}</h4>
-              <p className="text-orange-400">{member.role}</p>
+              <p className="text-[#f0c417]">{member.role}</p>
             </div>
 
              {/* Social Buttons */}

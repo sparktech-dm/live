@@ -1,5 +1,5 @@
 import React from "react";
-import PixelCard from "./PixelCard";
+import PixelCard from "../components/PixelCard";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import { PiPencilCircleBold } from "react-icons/pi";
 import { MdEmail, MdOutlineVideoLibrary, MdOutlineWeb } from "react-icons/md";
@@ -75,7 +75,7 @@ const services = [
 const Services = () => {
   return (
     <section className="py-16 px-6 text-white " id="services">
-      <h2 className="text-4xl font-bold text-orange-400 text-center mb-12">
+      <h2 className="text-4xl font-bold text-[#f0c417] text-center mb-12">
         Our Services
       </h2>
       <div className=" max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
@@ -86,7 +86,7 @@ const Services = () => {
     style={{ cursor: `url('/mouse/${svc.cursor}.svg') 4 4, auto` }}
   >
     <div>
-      <div className="mb-4 text-orange-400">{svc.icon}</div>
+      <div className="mb-4 text-[#f0c417]">{svc.icon}</div>
       <h3 className="text-xl font-semibold mb-2">{svc.title}</h3>
       <p className="text-sm text-gray-300">{svc.desc}</p>
     </div>
