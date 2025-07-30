@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const ScrollToTop = () => {
+const Top = () => {
   const [visible, setVisible] = useState(false);
 
   // Show button when page is scrolled down
@@ -42,4 +42,4 @@ const ScrollToTop = () => {
   );
 };
 
-export default ScrollToTop;
+export default Top;

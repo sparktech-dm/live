@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import rocketLogo from "../assets/Logo.png";
-// import ShinyText from './ShinyText.jsx';
 import { scroller } from 'react-scroll';
+import FallingCards from "../helper/FallingCards";
 
 const Hero = () => {
   const controls = useAnimation();
@@ -37,12 +37,20 @@ const Hero = () => {
       textControls.set({ opacity: 0, y: 50 });
     }
   }, [inView, controls, textControls, hasAnimated]);
+  const cards = [
+  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Web Dev</div>,
+  <div className="bg-white shadow-xl p-6 rounded-xl text-black">SEO</div>,
+  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Branding</div>,
+  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Video Editing</div>,
+];
+
 
   return (
     <div
       ref={ref}
       className="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4"
     >
+      {/* Rocket Animation */}
       <motion.img
         src={rocketLogo}
         alt="Rocket Logo"
@@ -51,6 +59,7 @@ const Hero = () => {
         className="w-40 md:w-56 lg:w-72 drop-shadow-2xl absolute z-0"
       />
 
+      {/* Animated Text + Button */}
       <motion.div
         animate={textControls}
         initial={{ opacity: 0, y: 50 }}
@@ -62,18 +71,22 @@ const Hero = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight mt-2">
           Marketing <span className="text-[#f0c417]">Agency.</span>
         </h1>
-        <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto pb-5">
-          We believe in combining innovative design, sustainable practices, and exceptional craftsmanship to bring your vision to life.
-        </p>
-        <button
-  onClick={() => scroller.scrollTo('contact', {
-    duration: 600,
-    smooth: 'easeInOutQuart',
-  })}
-  className="px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md animate-bounce"
->
-  Explore
-</button>
+         <button
+          onClick={() =>
+            scroller.scrollTo("contact", {
+              duration: 600,
+              smooth: "easeInOutQuart",
+            })
+          }
+          className="mt-8 px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md animate-bounce"
+        >
+          Explore
+        </button>
+        
+       
+
+        {/* Button */}
+       
       </motion.div>
     </div>
   );

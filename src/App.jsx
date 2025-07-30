@@ -1,8 +1,8 @@
 import React, { useRef, useState, useLayoutEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./pages/Services";
+import Services from "./pages/Services"; // make sure this page has nested <Routes>
 import About from "./pages/About";
 import BlogsPage from "./pages/BlogsPage";
 import BlogDetail from "./components/BlogDetail";
@@ -14,7 +14,7 @@ import ChatBot from "./components/Chat";
 import Top from "./components/Top";
 import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
-
+import ScrollToTop from "./components/ScrollToTop";
 
 
 const Home = () => (
@@ -22,7 +22,6 @@ const Home = () => (
     <section id="home" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Hero />
     </section>
-   
     <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Faq />
     </section>
@@ -54,41 +53,39 @@ const App = () => {
         points: 6.0,
         maxDistance: 18.0,
         spacing: 20.0,
-        color:   0xe1e0e0
-, // Rocket orange-red       0xaaaaaa 0x0d0d0d
-        backgroundColor: 	0x666666, // Gear navy blue     
+        color: 0xe1e0e0,
+        backgroundColor: 0x666666,
       });
 
       setVantaEffect(effect);
-
-      // ✅ Trigger resize to force canvas correction
-      window.dispatchEvent(new Event("resize"));
+      window.dispatchEvent(new Event("resize")); // fix initial canvas sizing
     }
 
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect]);
+  }, [vantaEffect]);
+
   return (
     <>
-    <div
-  ref={vantaRef}
-  className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
-/>
-      
+   
+      <div
+        ref={vantaRef}
+        className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
+      />
 
-      {/* 🔵 Main Foreground Content */}
       <div className="relative z-10 text-white overflow-x-hidden">
         <Navbar />
         <ChatBot />
         <Top />
+         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsSection />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/services" element={<Services/>} />
+          <Route path="/services/*" element={<Services />} />
         </Routes>
       </div>
     </>

@@ -4,6 +4,7 @@ import Faq from '../components/Faq.jsx';
 import ContactForm from '../components/ContactForm.jsx';
 import RocketLaunch from '../helper/RocketLaunch.jsx';
 
+
 function Home() {
   const [showMainContent, setShowMainContent] = useState(false);
 
@@ -18,6 +19,7 @@ function Home() {
           <div id="contact">
             <ContactForm />
           </div>
+          
         </>
       )}
     </div>
