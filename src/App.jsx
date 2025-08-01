@@ -15,12 +15,16 @@ import Top from "./components/Top";
 import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
 import ScrollToTop from "./components/ScrollToTop";
+import HomeServices from "./pages/HomeServices";
 
 
 const Home = () => (
   <>
     <section id="home" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Hero />
+    </section>
+    <section id="services" className="min-h-screen scroll-mt-24 px-4 py-10">
+      <HomeServices />
     </section>
     <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Faq />
