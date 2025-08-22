@@ -20,7 +20,7 @@ export const Navbar = () => {
 
     if (path === '/') {
       const handleScroll = () => {
-        const sections = ['home', 'contact'];
+        const sections = ['home','services', 'contact',];
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -104,46 +104,53 @@ export const Navbar = () => {
   return (
     <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter]'>
       {/* Desktop Capsule Navbar */}
-      <div className='hidden md:flex justify-center'>
-        <div className='h-[60px] w-[650px] border border-[#c8c8c8] rounded-4xl flex items-center mt-5 backdrop-blur bg-gray-500/50'>
-          <ul className='flex justify-evenly items-center w-full'>
-            {menuItems.map((item) => (
-              <li key={item.name} onClick={() => handleItemClick(item)}>
-                {item.type === 'scrolltop' && item.image ? (
-                  <div className='w-[40px] h-[40px] cursor-pointer'>
-                    <img
-                      src={item.image}
-                      alt='Logo'
-                      className='w-full h-full object-contain'
-                    />
-                  </div>
-                ) : item.type === 'route' ? (
-                  <RouterLink
-                    to={item.path}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                      active === item.name
-                        ? 'bg-white/10 text-[#f0c417]'
-                        : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
-                    }`}
-                  >
-                    {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                  </RouterLink>
-                ) : (
-                  <span
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                      active === item.name
-                        ? 'bg-white/10 text-[#f0c417]'
-                        : 'text-white hover:text-[13px] hover:bg-[#4f4e4e]'
-                    }`}
-                  >
-                    {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      {/* Desktop Capsule Navbar */}
+<div className="hidden md:flex justify-center">
+  <div className="h-[80px] w-[100%] max-w-[1700px] mx-auto px-6 flex items-center justify-between backdrop-blur-md bg-[#7A85C1]/20 shadow-md">
+
+    {/* Left: Logo */}
+    <div onClick={() => handleItemClick(menuItems[0])} className="cursor-pointer ml-60">
+      <img
+        src={menuItems[0].image}
+        alt="Logo"
+        className="h-[60px] w-auto object-contain"
+      />
+    </div>
+
+    {/* Center: Links */}
+    <ul className="flex gap-10 items-center">
+      {menuItems.slice(1, -1).map((item) => (
+        <li key={item.name} onClick={() => handleItemClick(item)}>
+          {item.type === 'route' ? (
+            <RouterLink
+              to={item.path}
+              className={`text-white text-sm font-medium transition duration-200 hover:text-[#00ffae] ${
+                active === item.name ? 'text-[#00ffae]' : ''
+              }`}
+            >
+              {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+            </RouterLink>
+          ) : (
+            <span
+              className={`text-white text-xl md:font-medium transition duration-200 hover:text-[#00ffae] ${
+                active === item.name ? 'text-[#00ffae]' : ''
+              }`}
+            >
+              {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    {/* Right: CTA Button */}
+    <button
+      onClick={() => navigate("/contact")}
+      className="text-white text-sm font-semibold px-6 py-2 rounded-full border border-green-400 hover:bg-green-400/10 transition duration-200 mr-50">
+      Get in touch
+    </button>
+  </div>
+</div>
 
       {/* Mobile Navbar Header */}
       <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-gray-600/40'>

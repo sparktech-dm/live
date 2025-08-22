@@ -44,7 +44,7 @@ const About = () => {
       </div>
 
       {/* About Section */}
-      <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
+      <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#2B2B2B] mb-4">
             <span
               className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
@@ -52,20 +52,20 @@ const About = () => {
               Who Are We
             </span>
           </div>
-          <h1 className="text-white text-5xl md:text-6xl font-bold mb-8 tracking-tight ml-6">
+          <h1 className="text-[#f0c417] text-5xl md:text-6xl font-bold mb-8 tracking-tight ml-6">
             About our Company
           </h1>
 
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className=" md:flex-row gap-8">
             {/* Description */}
-            <div className="flex-1">
-              <p className="text-gray-300 text-2xl md:text-3xl leading-snug mb-0 pl-[20] ml-8">
+            <div className="flex-1 bg-[#2B2B2B] p-5 rounded-[30px] w-[80vw] ml-8 md:ml-30">
+              <p className="text-gray-300 text-xl  md:text-3xl leading-snug mb-0 pl-[20] ml-8">
                 <span className="font-bold text-white">At SPARKTECH,</span> At SPARKTECH, we specialize in crafting innovative strategies that help brands connect with their audience and achieve measurable growth. Our expert team is dedicated to transforming ideas into results, turning clicks into loyal customers. Let us help you create a lasting digital presence and unlock your brand's full potential.
               </p>
             </div>
 
             {/* Mission and Vision */}
-            <div className="flex-1 flex flex-col gap-6">
+            <div className=" mt-10 rounded-[24px] w-[70vw] ml-10 sm:rounded-[30px] md:w-[70vw] md:ml-50 ">
               {/* Mission */}
               
 
@@ -89,7 +89,7 @@ const About = () => {
   )}
 </div>
 
-              
+        <div className="mt-5"></div>      
 
               {/* Vision */}
               <div
@@ -121,19 +121,19 @@ const About = () => {
   <div className="max-w-6xl mx-auto md:px-5">
     {/* Top Heading Row */}
     <div className="flex items-center gap-4 mb-6">
-      <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
+      <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#2B2B2B]">
             <span
-              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
+              className="text-[#f0c417] text-xs font-black uppercase tracking-wide "
               style={{ fontFamily: "Inter" }}
             >
               ABOUT FOUNDER
             </span>
           </div>
-      <h2 className="text-white text-2xl md:text-5xl font-bold">Meet the Founder</h2>
+      <h2 className="text-[#f0c417] text-3xl md:text-5xl font-bold">Meet the Founder</h2>
     </div>
 
     {/* Paragraph intro */}
-    <p className="text-gray-300 mb-30 text-2xl ">
+    <p className="text-gray-300 mb-30 text-2xl bg-[#2B2B2B] rounded-[30px] p-5 ">
       At Spark Tech, our leadership is driven by a passion for innovation and a deep understanding of digital transformation. Our founder leads by example, constantly pushing the boundaries to help clients thrive in a fast-evolving tech landscape.
     </p>
 
@@ -157,7 +157,7 @@ const About = () => {
       </div>
 
       {/* Right: Paragraph about leader */}
-      <div className="text-gray-300 max-w-xl text-2xl leading-relaxed">
+      <div className="text-gray-300  text-2xl leading-relaxed bg-[#2B2B2B] rounded-[30px] p-5  ">
         James Andrews is a visionary entrepreneur and the driving force behind Spark Tech. With a background in full-stack development and a knack for turning complex challenges into simple solutions, he has led the company to new heights. His leadership is built on innovation, integrity, and relentless focus on quality.
       </div>
     </div>
@@ -167,7 +167,7 @@ const About = () => {
       {/* Our Team Section */}
 <div className=" py-20 px-4">
   <div className=" max-w-6xl mx-auto text-center">
-    <div className=" inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
+    <div className=" inline-flex items-center px-3 py-1 rounded-full bg-[#2B2B2B] mb-4">
             <span
               className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}

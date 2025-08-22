@@ -2,7 +2,7 @@ import TextFalling from '../helper/TextFalling';
 
 const HomeServices = () => {
   return (
-    <div className="bg-white/20 backdrop-blur-md rounded-[30px] w-full py-45 flex items-center justify-center px-8 relative">
+    <div className="bg-[#2B2B2B] backdrop-blur-md rounded-[30px]  pb-55 flex items-center justify-center px-8 relative md:p-35 md:w-[80vw] md:ml-35 ">
       {/* Centered Title */}
       <h1
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[250%] z-[2] pointer-events-none"
@@ -25,7 +25,7 @@ const HomeServices = () => {
           trigger="scroll"
           backgroundColor="transparent"
           wireframes={false}
-          gravity={0.8}
+          gravity={1}
           fontSize="1.8rem"
           mouseConstraintStiffness={0.7}
         />

@@ -1,93 +1,75 @@
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import rocketLogo from "../assets/Logo.png";
+import React, { useRef } from "react";
 import { scroller } from 'react-scroll';
-import FallingCards from "../helper/FallingCards";
 
 const Hero = () => {
-  const controls = useAnimation();
-  const textControls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.3 });
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const buttonRef = useRef(null);
 
-  useEffect(() => {
-    if (inView && !hasAnimated) {
-      controls
-        .start({
-          y: [400, 0, -100],
-          scale: [0.3, 1, 1.1],
-          opacity: [0, 1, 0.2],
-          transition: {
-            duration: 2,
-            ease: "easeInOut",
-          },
-        })
-        .then(() => {
-          setHasAnimated(true);
-          textControls.start({
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1, ease: "easeOut" },
-          });
-        });
-    } else if (!inView) {
-      setHasAnimated(false);
-      controls.set({ y: 400, scale: 0.3, opacity: 0 });
-      textControls.set({ opacity: 0, y: 50 });
-    }
-  }, [inView, controls, textControls, hasAnimated]);
-  const cards = [
-  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Web Dev</div>,
-  <div className="bg-white shadow-xl p-6 rounded-xl text-black">SEO</div>,
-  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Branding</div>,
-  <div className="bg-white shadow-xl p-6 rounded-xl text-black">Video Editing</div>,
-];
+  const handleExploreClick = () => {
+    // Bounce animation logic
+    const btn = buttonRef.current;
+    btn.classList.remove('bounce-once');      // Reset if already animating
+    void btn.offsetWidth;                     // Force reflow to reset animation
+    btn.classList.add('bounce-once');         // Add bounce animation
 
+    scroller.scrollTo("contact", {
+      duration: 600,
+      smooth: "easeInOutQuart",
+    });
+  };
 
   return (
-    <div
-      ref={ref}
-      className="flex flex-col justify-center items-center h-screen relative overflow-hidden px-4"
-    >
-      {/* Rocket Animation */}
-      <motion.img
-        src={rocketLogo}
-        alt="Rocket Logo"
-        animate={controls}
-        initial={{ y: 400, scale: 0.3, opacity: 0 }}
-        className="w-40 md:w-56 lg:w-72 drop-shadow-2xl absolute z-0"
-      />
-
-      {/* Animated Text + Button */}
-      <motion.div
-        animate={textControls}
-        initial={{ opacity: 0, y: 50 }}
-        className="text-center z-10"
+    <div className="relative w-screen  h-screen overflow-hidden bg-black flex items-center justify-center">
+      {/* Background Video for Desktop */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="hidden sm:block absolute top-0 left-0 w-full h-full object-cover object-center z-0 "
       >
-        <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight tracking-tight">
-          The Best <span className="inline-block bg-[#f0c417] text-black px-2 rotate-[-2deg]">Digital</span>
+        <source src="/Intor.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Background Video for Mobile (optional) */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="block sm:hidden absolute top-0 left-0 w-full h-full object-cover object-center z-0"
+      >
+        <source src="/Intor2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Optional: Dark overlay for readability */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10" />
+
+      {/* Content */}
+      <div className="text-center z-20 text-white/50 px-4">
+        <h1 className="text-5xl text-white/50 md:text-7xl font-bold leading-tight tracking-tight">
+          We are the{" "}
+          <span className="inline-block bg-[#EA7300] text-black px-2 rotate-[-2deg]">
+            digital
+          </span>
         </h1>
-        <h1 className="text-5xl md:text-7xl font-bold text-black leading-tight mt-2">
-          Marketing <span className="text-[#f0c417]">Agency.</span>
+        <h1 className="text-5xl md:text-7xl text-white/50 font-bold leading-tight mt-2">
+          Marketing <span className="text-[#EA7300]">Agency</span> in Chennai
         </h1>
-         <button
-          onClick={() =>
-            scroller.scrollTo("contact", {
-              duration: 600,
-              smooth: "easeInOutQuart",
-            })
-          }
-          className="mt-8 px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md animate-bounce"
+        {/* <p className="block text-2xl mt-2 text-white/50 md:text-4xl leading-tight md:leading-snug">
+          with more than just digital noise<br />
+          But DIGITAL GROWTH
+        </p> */}
+
+        <button
+          ref={buttonRef}
+          onClick={handleExploreClick}
+          className=" mb-40  mt-4 md:mt-10 px-6 py-3 bg-[#EA7300]  text-white font-bold rounded-lg shadow-md"
         >
           Explore
         </button>
-        
-       
-
-        {/* Button */}
-       
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -19,7 +19,7 @@ const BlogDetail = () => {
   const blog = blogData[id] || blogData[1]; // Default to first blog
 
   return (
-    <div className="w-full min-h-screen bg-[#0A0A0A] text-white">
+    <div className="w-full min-h-screen text-white">
       {/* Hero Section - Fixed margins to prevent overflow */}
       <div className="px-4 lg:px-10 pt-20">
         <section className="relative w-full h-[500px] md:h-[700px] lg:h-[823px] max-w-[1440px] mx-auto rounded-[40px] overflow-hidden">
@@ -83,7 +83,7 @@ const BlogDetail = () => {
           </div>
 
           {/* Main Content */}
-          <div className="max-w-[800px] mx-auto space-y-8 md:space-y-12 lg:space-y-16">
+          <div className="max-w-[1400px] p-10 bg-[#2B2B2B] rounded-[20px] mx-auto space-y-8 md:space-y-12 rounded-[30px] lg:space-y-16">
             {/* Introduction */}
             <div className="opacity-70">
               <p className="text-white font-['Inter'] text-sm md:text-[15px] leading-5 md:leading-6">

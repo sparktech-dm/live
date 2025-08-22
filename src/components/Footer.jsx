@@ -1,218 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Lightbulb, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
-export const Footer = () => {
-  const scrollToSection = (sectionId) => {
-    if (sectionId === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
+const Footer = () => {
+  const quickLinks = ['Review', 'About', 'Internship',];
+  const socialLinks = [
+    { icon: Facebook, href: '#', color: 'hover:text-[#f0c417]' },
+    { icon: Twitter, href: '#', color: 'hover:text-[#f0c417]' },
+    { icon: Instagram, href: '#', color: 'hover:text-[#f0c417]' },
+    { icon: Linkedin, href: '#', color: 'hover:text-[#f0c417]' }
+  ];
 
-    if (sectionId === "projects") {
-      // For sections that don't exist yet, scroll to services as fallback
-      const element = document.getElementById("services");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-      return;
-    }
-
-    const element = document.getElementById(sectionId);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id.toLowerCase());
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      icon: (
-        <path
-          d="M20.25 3.13965H3.75C3.35218 3.13965 2.97064 3.29768 2.68934 3.57899C2.40804 3.86029 2.25 4.24182 2.25 4.63965V21.1396C2.25 21.5375 2.40804 21.919 2.68934 22.2003C2.97064 22.4816 3.35218 22.6396 3.75 22.6396H20.25C20.6478 22.6396 21.0294 22.4816 21.3107 22.2003C21.592 21.919 21.75 21.5375 21.75 21.1396V4.63965C21.75 4.24182 21.592 3.86029 21.3107 3.57899C21.0294 3.29768 20.6478 3.13965 20.25 3.13965ZM9 17.3896C9 17.5886 8.92098 17.7793 8.78033 17.92C8.63968 18.0606 8.44891 18.1396 8.25 18.1396C8.05109 18.1396 7.86032 18.0606 7.71967 17.92C7.57902 17.7793 7.5 17.5886 7.5 17.3896V11.3896C7.5 11.1907 7.57902 11 7.71967 10.8593C7.86032 10.7187 8.05109 10.6396 8.25 10.6396C8.44891 10.6396 8.63968 10.7187 8.78033 10.8593C8.92098 11 9 11.1907 9 11.3896V17.3896ZM8.25 9.88965C8.0275 9.88965 7.80999 9.82367 7.62498 9.70005C7.43998 9.57644 7.29578 9.40073 7.21064 9.19517C7.12549 8.9896 7.10321 8.7634 7.14662 8.54517C7.19002 8.32694 7.29717 8.12649 7.4545 7.96915C7.61184 7.81182 7.81229 7.70467 8.03052 7.66126C8.24875 7.61786 8.47495 7.64014 8.68052 7.72528C8.88609 7.81043 9.06179 7.95463 9.1854 8.13963C9.30902 8.32464 9.375 8.54214 9.375 8.76465C9.375 9.06302 9.25647 9.34917 9.0455 9.56014C8.83452 9.77112 8.54837 9.88965 8.25 9.88965ZM17.25 17.3896C17.25 17.5886 17.171 17.7793 17.0303 17.92C16.8897 18.0606 16.6989 18.1396 16.5 18.1396C16.3011 18.1396 16.1103 18.0606 15.9697 17.92C15.829 17.7793 15.75 17.5886 15.75 17.3896V14.0146C15.75 13.5174 15.5525 13.0405 15.2008 12.6888C14.8492 12.3372 14.3723 12.1396 13.875 12.1396C13.3777 12.1396 12.9008 12.3372 12.5492 12.6888C12.1975 13.0405 12 13.5174 12 14.0146V17.3896C12 17.5886 11.921 17.7793 11.7803 17.92C11.6397 18.0606 11.4489 18.1396 11.25 18.1396C11.0511 18.1396 10.8603 18.0606 10.7197 17.92C10.579 17.7793 10.5 17.5886 10.5 17.3896V11.3896C10.5009 11.2059 10.5693 11.029 10.692 10.8923C10.8148 10.7556 10.9834 10.6687 11.166 10.6482C11.3485 10.6276 11.5323 10.6747 11.6824 10.7806C11.8325 10.8866 11.9385 11.0439 11.9803 11.2228C12.4877 10.8786 13.0792 10.6791 13.6914 10.6458C14.3036 10.6124 14.9133 10.7464 15.455 11.0335C15.9968 11.3205 16.4501 11.7496 16.7664 12.2749C17.0826 12.8001 17.2498 13.4016 17.25 14.0146V17.3896Z"
-          fill="white"
-          fillOpacity="0.8"
-        />
-      ),
-      url: "https://www.linkedin.com/company/sparktech-digital-marketing/",
-    },
-    {
-      name: "Instagram",
-      icon: (
-        <path
-          d="M16.5 3.13965H7.5C6.10807 3.14114 4.77358 3.69474 3.78933 4.67898C2.80509 5.66323 2.25149 6.99772 2.25 8.38965V17.3896C2.25149 18.7816 2.80509 20.1161 3.78933 21.1003C4.77358 22.0846 6.10807 22.6382 7.5 22.6396H16.5C17.8919 22.6382 19.2264 22.0846 20.2107 21.1003C21.1949 20.1161 21.7485 18.7816 21.75 17.3896V8.38965C21.7485 6.99772 21.1949 5.66323 20.2107 4.67898C19.2264 3.69474 17.8919 3.14114 16.5 3.13965ZM12 17.3896C11.11 17.3896 10.24 17.1257 9.49993 16.6313C8.75991 16.1368 8.18314 15.434 7.84254 14.6117C7.50195 13.7895 7.41283 12.8847 7.58647 12.0117C7.7601 11.1388 8.18868 10.337 8.81802 9.70767C9.44736 9.07833 10.2492 8.64975 11.1221 8.47611C11.995 8.30248 12.8998 8.3916 13.7221 8.73219C14.5443 9.07279 15.2471 9.64956 15.7416 10.3896C16.2361 11.1296 16.5 11.9996 16.5 12.8896C16.4988 14.0827 16.0243 15.2266 15.1806 16.0703C14.337 16.9139 13.1931 17.3884 12 17.3896ZM17.625 8.38965C17.4025 8.38965 17.185 8.32367 17 8.20005C16.815 8.07644 16.6708 7.90073 16.5856 7.69517C16.5005 7.4896 16.4782 7.2634 16.5216 7.04517C16.565 6.82694 16.6722 6.62649 16.8295 6.46915C16.9868 6.31182 17.1873 6.20467 17.4055 6.16126C17.6238 6.11786 17.85 6.14014 18.0555 6.22528C18.2611 6.31043 18.4368 6.45463 18.5604 6.63963C18.684 6.82464 18.75 7.04214 18.75 7.26465C18.75 7.56302 18.6315 7.84917 18.4205 8.06014C18.2095 8.27112 17.9234 8.38965 17.625 8.38965ZM15 12.8896C15 13.483 14.8241 14.063 14.4944 14.5564C14.1648 15.0497 13.6962 15.4342 13.148 15.6613C12.5999 15.8884 11.9967 15.9478 11.4147 15.832C10.8328 15.7162 10.2982 15.4305 9.87868 15.011C9.45912 14.5914 9.1734 14.0569 9.05764 13.4749C8.94189 12.893 9.0013 12.2898 9.22836 11.7416C9.45542 11.1934 9.83994 10.7249 10.3333 10.3952C10.8266 10.0656 11.4067 9.88965 12 9.88965C12.7956 9.88965 13.5587 10.2057 14.1213 10.7683C14.6839 11.3309 15 12.094 15 12.8896Z"
-          fill="white"
-          fillOpacity="0.8"
-        />
-      ),
-      url: "https://www.instagram.com/sparktech.dm?igsh=enVuczBnMGZtbThx",
-    },
-    {
-      name: "Twitter",
-      icon: (
-        <path
-          d="M23.0308 8.17021L20.2277 10.9733C19.6614 17.5377 14.1255 22.6396 7.50017 22.6396C6.13892 22.6396 5.01673 22.424 4.16454 21.9983C3.47736 21.6543 3.19611 21.2858 3.12579 21.1808C3.0631 21.0868 3.02246 20.9798 3.00692 20.8679C2.99138 20.756 3.00133 20.642 3.03604 20.5344C3.07075 20.4269 3.12931 20.3285 3.20735 20.2468C3.2854 20.1651 3.3809 20.102 3.48673 20.0624C3.51111 20.053 5.75923 19.1896 7.18704 17.5461C6.39522 16.8951 5.70399 16.1306 5.13579 15.2774C3.97329 13.5515 2.67204 10.5533 3.07329 6.07302C3.08601 5.93066 3.13915 5.79489 3.22644 5.68172C3.31373 5.56854 3.43154 5.48266 3.566 5.43419C3.70047 5.38573 3.84598 5.37669 3.9854 5.40815C4.12483 5.43961 4.25236 5.51026 4.35298 5.61177C4.38579 5.64458 7.47298 8.7149 11.2474 9.71052V9.13958C11.2459 8.54089 11.3643 7.94796 11.5955 7.39571C11.8267 6.84346 12.1661 6.34306 12.5936 5.92396C13.0088 5.50933 13.5029 5.18206 14.0466 4.96147C14.5904 4.74088 15.1728 4.63143 15.7595 4.63958C16.5466 4.64735 17.3183 4.85863 17.9996 5.2529C18.6808 5.64717 19.2485 6.211 19.6474 6.88958H22.5002C22.6486 6.88947 22.7937 6.93339 22.9172 7.01579C23.0406 7.0982 23.1368 7.21537 23.1936 7.35249C23.2504 7.48961 23.2653 7.6405 23.2363 7.78606C23.2073 7.93163 23.1358 8.06532 23.0308 8.17021Z"
-          fill="white"
-          fillOpacity="0.8"
-        />
-      ),
-      url: "https://www.instagram.com/sparktech.dm?igsh=enVuczBnMGZtbThx",
-    },
-    {
-      name: "Facebook",
-      icon: (
-        <path
-          d="M21.75 12.8895C21.7469 15.2725 20.8726 17.572 19.2917 19.3551C17.7109 21.1382 15.5326 22.2816 13.1671 22.5701C13.1145 22.5761 13.0611 22.5708 13.0107 22.5547C12.9602 22.5385 12.9137 22.5118 12.8743 22.4764C12.8348 22.441 12.8034 22.3976 12.782 22.3491C12.7605 22.3006 12.7496 22.2481 12.75 22.1951V15.1395H15C15.1028 15.1397 15.2045 15.1188 15.2989 15.0781C15.3933 15.0373 15.4783 14.9776 15.5487 14.9026C15.619 14.8276 15.6732 14.7389 15.7078 14.6421C15.7424 14.5453 15.7568 14.4424 15.75 14.3398C15.7334 14.147 15.6444 13.9675 15.5009 13.8376C15.3574 13.7077 15.1701 13.6369 14.9765 13.6395H12.75V11.3895C12.75 10.9917 12.908 10.6101 13.1893 10.3288C13.4706 10.0475 13.8521 9.8895 14.25 9.8895H15.75C15.8528 9.88973 15.9545 9.86881 16.0489 9.82805C16.1433 9.78729 16.2283 9.72756 16.2987 9.65257C16.369 9.57757 16.4232 9.48892 16.4578 9.39211C16.4924 9.2953 16.5068 9.19241 16.5 9.08982C16.4834 8.89663 16.3941 8.71692 16.2502 8.58695C16.1063 8.45698 15.9185 8.38642 15.7246 8.3895H14.25C13.4543 8.3895 12.6912 8.70557 12.1286 9.26818C11.566 9.83079 11.25 10.5939 11.25 11.3895V13.6395H8.99996C8.89714 13.6393 8.79538 13.6602 8.70099 13.701C8.60659 13.7417 8.52159 13.8014 8.45126 13.8764C8.38092 13.9514 8.32676 14.0401 8.29213 14.1369C8.2575 14.2337 8.24315 14.3366 8.24996 14.4392C8.26655 14.6324 8.35579 14.8121 8.49968 14.9421C8.64357 15.072 8.8314 15.1426 9.02527 15.1395H11.25V22.197C11.2503 22.2499 11.2394 22.3023 11.218 22.3507C11.1967 22.3991 11.1653 22.4425 11.126 22.4779C11.0866 22.5133 11.0403 22.54 10.9899 22.5562C10.9395 22.5724 10.8863 22.5778 10.8337 22.572C8.40498 22.2762 6.1758 21.0794 4.5874 19.2184C2.99901 17.3575 2.16716 14.968 2.25652 12.5229C2.44402 7.46044 6.54464 3.34482 11.6109 3.14794C12.9225 3.09713 14.231 3.31139 15.4579 3.77791C16.6848 4.24442 17.8051 4.9536 18.7516 5.86303C19.6981 6.77246 20.4515 7.86346 20.9667 9.07076C21.4819 10.2781 21.7483 11.5769 21.75 12.8895Z"
-          fill="white"
-          fillOpacity="0.8"
-        />
-      ),
-      url: "https://www.instagram.com/sparktech.dm?igsh=enVuczBnMGZtbThx",
-    },
-  ];
-
   return (
-    <footer className="px-6 sm:px-10 py-20">
-      <div className="mx-auto max-w-[1652px]">
-        <div className="mb-16">
-          <div className="bg-white/5 rounded-[30px] p-6 sm:p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {/* Contact Info */}
-              <div className="space-y-6">
-                {/* Email */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
-                      <path
-                        d="M26.25 6.14502H3.75C3.50136 6.14502 3.2629 6.24379 3.08709 6.41961C2.91127 6.59542 2.8125 6.83388 2.8125 7.08252V23.02C2.8125 23.5173 3.01004 23.9942 3.36167 24.3458C3.71331 24.6975 4.19022 24.895 4.6875 24.895H25.3125C25.8098 24.895 26.2867 24.6975 26.6383 24.3458C26.99 23.9942 27.1875 23.5173 27.1875 23.02V7.08252C27.1875 6.83388 27.0887 6.59542 26.9129 6.41961C26.7371 6.24379 26.4986 6.14502 26.25 6.14502ZM15 16.1235L6.16055 8.02002H23.8395L15 16.1235ZM11.5676 15.52L4.6875 21.8259V9.21416L11.5676 15.52ZM12.9551 16.7915L14.3613 18.0864C14.5343 18.2452 14.7605 18.3333 14.9953 18.3333C15.2301 18.3333 15.4563 18.2452 15.6293 18.0864L17.0355 16.7915L23.8324 23.02H6.16055L12.9551 16.7915ZM18.4324 15.52L25.3125 9.21299V21.8271L18.4324 15.52Z"
-                        fill="#f0c417"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    className="text-white text-base font-normal"
-                    style={{
-                      fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
-                    }}
-                  >
-                    sparktech@email.com
-                  </span>
-                </div>
-
-                {/* Phone */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center gap-4 flex-nowrap">
-                  <div className="w-8 h-8 flex items-center justify-center shrink-0">
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
-                      <path
-                        d="M26.059 19.0893L20.5383 16.6155L20.5231 16.6085C20.2365 16.4859 19.9238 16.4367 19.6134 16.4653C19.303 16.494 19.0047 16.5996 18.7453 16.7725C18.7148 16.7927 18.6854 16.8146 18.6574 16.8381L15.8051 19.2698C13.9981 18.392 12.1324 16.5405 11.2547 14.7569L13.6899 11.8612C13.7133 11.8319 13.7356 11.8026 13.7567 11.771C13.9259 11.5123 14.0286 11.2159 14.0556 10.908C14.0826 10.6 14.033 10.2902 13.9113 10.0061V9.99205L11.4305 4.46197C11.2696 4.0908 10.993 3.7816 10.642 3.58053C10.291 3.37946 9.88437 3.29731 9.48282 3.34634C7.8949 3.5553 6.43733 4.33514 5.38235 5.54021C4.32738 6.74528 3.74714 8.29317 3.75001 9.89478C3.75001 19.1995 11.3203 26.7698 20.625 26.7698C22.2266 26.7727 23.7745 26.1924 24.9796 25.1374C26.1847 24.0825 26.9645 22.6249 27.1734 21.037C27.2226 20.6356 27.1406 20.229 26.9397 19.878C26.7389 19.527 26.43 19.2504 26.059 19.0893ZM20.625 24.8948C16.6481 24.8904 12.8353 23.3087 10.0232 20.4966C7.2111 17.6845 5.62935 13.8717 5.62501 9.89478C5.6206 8.75043 6.03288 7.64361 6.78486 6.781C7.53683 5.9184 8.57708 5.359 9.71134 5.20728C9.71088 5.21196 9.71088 5.21667 9.71134 5.22134L12.1723 10.7292L9.75001 13.6284C9.72542 13.6567 9.70309 13.6868 9.68321 13.7186C9.50686 13.9892 9.40341 14.3008 9.38288 14.6231C9.36235 14.9455 9.42543 15.2677 9.56603 15.5585C10.6277 17.7299 12.8156 19.9014 15.0106 20.962C15.3035 21.1012 15.6275 21.1622 15.951 21.1387C16.2745 21.1153 16.5864 21.0084 16.8563 20.8284C16.8863 20.8081 16.9153 20.7862 16.943 20.7628L19.7918 18.3323L25.2996 20.7991C25.2996 20.7991 25.309 20.7991 25.3125 20.7991C25.1626 21.9349 24.6041 22.9773 23.7413 23.7311C22.8786 24.485 21.7707 24.8986 20.625 24.8948Z"
-                        fill="#f0c417"
-                      />
-                    </svg>
-                  </div>
-                <span
-                  className="text-white text-base font-normal whitespace-nowrap"
-                  style={{
-                    fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
-                  }}
+    <footer className="bg-[#2B2B2B] text-white rounded-[30px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-2 mb-6">
+              <img src="src/assets/Logo.png" alt="Sparktech Logo" className="h-8 w-8 text-white" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent">
+                Sparktech
+              </span>
+            </div>
+            <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
+              Empowering students to innovate, create, and transform ideas into reality. Join our community of passionate innovators and shape the future together.
+            </p>
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`p-3 bg-black rounded-lg ${social.color} transition-all duration-300 transform hover:scale-110`}
                 >
-                 +91 9876543210
-                </span>
-              </div>
-                {/* Address */}
-                <div className="bg-white/5 rounded-[30px] p-5 flex items-center space-x-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none">
-                      <path
-                        d="M15 8.02002C14.0729 8.02002 13.1666 8.29494 12.3958 8.81001C11.6249 9.32508 11.0241 10.0572 10.6693 10.9137C10.3145 11.7702 10.2217 12.7127 10.4026 13.622C10.5834 14.5313 11.0299 15.3665 11.6854 16.0221C12.341 16.6776 13.1762 17.1241 14.0855 17.305C14.9948 17.4858 15.9373 17.393 16.7938 17.0382C17.6504 16.6834 18.3824 16.0826 18.8975 15.3118C19.4126 14.5409 19.6875 13.6346 19.6875 12.7075C19.6875 11.4643 19.1936 10.272 18.3146 9.39296C17.4355 8.51388 16.2432 8.02002 15 8.02002ZM15 15.52C14.4437 15.52 13.9 15.3551 13.4375 15.046C12.9749 14.737 12.6145 14.2977 12.4016 13.7838C12.1887 13.2699 12.133 12.7044 12.2415 12.1588C12.3501 11.6133 12.6179 11.1121 13.0113 10.7188C13.4046 10.3254 13.9057 10.0576 14.4513 9.94906C14.9969 9.84054 15.5624 9.89624 16.0763 10.1091C16.5902 10.322 17.0295 10.6825 17.3385 11.145C17.6476 11.6075 17.8125 12.1513 17.8125 12.7075C17.8125 13.4534 17.5162 14.1688 16.9887 14.6963C16.4613 15.2237 15.7459 15.52 15 15.52ZM15 2.39502C12.2659 2.39812 9.64468 3.48561 7.71139 5.41891C5.77809 7.3522 4.6906 9.97343 4.6875 12.7075C4.6875 16.3872 6.38789 20.2872 9.60938 23.9868C11.0569 25.6586 12.6861 27.1639 14.4668 28.4751C14.6244 28.5855 14.8122 28.6448 15.0047 28.6448C15.1971 28.6448 15.3849 28.5855 15.5426 28.4751C17.32 27.1634 18.946 25.658 20.3906 23.9868C23.6074 20.2872 25.3125 16.3872 25.3125 12.7075C25.3094 9.97343 24.2219 7.3522 22.2886 5.41891C20.3553 3.48561 17.7341 2.39812 15 2.39502ZM15 26.5356C13.0629 25.0122 6.5625 19.4165 6.5625 12.7075C6.5625 10.4698 7.45145 8.32364 9.03379 6.74131C10.6161 5.15897 12.7622 4.27002 15 4.27002C17.2378 4.27002 19.3839 5.15897 20.9662 6.74131C22.5486 8.32364 23.4375 10.4698 23.4375 12.7075C23.4375 19.4142 16.9371 25.0122 15 26.5356Z"
-                        fill="#f0c417"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    className="text-white text-base font-normal"
-                    style={{
-                      fontFamily: 'Satoshi, "Satoshi Placeholder", sans-serif',
-                    }}
-                  >
-                    office address, chennai-22.
-                  </span>
-                </div>
-              </div>
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-              {/* Navigation */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-16">
-                {/* Menu */}
-                <div className="space-y-4">
+          {/* Other Pages */}
+          <div>
+            <div className="space-y-3 mt-1">
                   <h3
-                    className="text-[#f0c417] text-sm font-medium"
-                    style={{ fontFamily: "Unbounded" }}
-                  >
-                    Menu
-                  </h3>
-                  <ul className="space-y-3">
-                    {["Home", "Services", "Contact"].map((item, i) => (
-                      <li key={i}>
-                        <button
-                          onClick={() => scrollToSection(item.toLowerCase())}
-                          className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors text-left"
-                          style={{
-                            fontFamily:
-                              'Satoshi, "Satoshi Placeholder", sans-serif',
-                          }}
-                        >
-                          {item}
-                        </button>
-                      </li>
-                    ))}
-                    <li>
-                      <Link
-                        to="/projects"
-                        className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
-                        style={{
-                          fontFamily:
-                            'Satoshi, "Satoshi Placeholder", sans-serif',
-                        }}
-                      >
-                        Projects
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Services */}
-                <div className="space-y-4">
-                  <h3
-                    className="text-[#f0c417] text-sm font-medium"
-                    style={{ fontFamily: "Unbounded" }}
-                  >
-                    Services
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "SEO",
-                      "Content Marketing",
-                      "Website Design",
-                      "Social Media Marketing",
-                    ].map((item, i) => (
-                      <li key={i}>
-                        <button
-                          onClick={() => scrollToSection("services")}
-                          className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors text-left"
-                          style={{
-                            fontFamily:
-                              'Satoshi, "Satoshi Placeholder", sans-serif',
-                          }}
-                        >
-                          {item}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Other Pages */}
-                <div className="space-y-4">
-                  <h3
-                    className="text-[#f0c417] text-sm font-medium"
+                    className="text-[#f0c417] text-lg font-medium mb-6"
                     style={{ fontFamily: "Unbounded" }}
                   >
                     Other Pages
@@ -221,7 +59,7 @@ export const Footer = () => {
                     <li>
                       <Link
                         to="/blogs"
-                        className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
+                        className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
@@ -233,7 +71,7 @@ export const Footer = () => {
                     <li>
                       <Link
                         to="/about"
-                        className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
+                        className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
@@ -243,57 +81,73 @@ export const Footer = () => {
                       </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        className="text-white/80 text-base font-normal hover:text-[#F58327] transition-colors"
+                      <Link
+                        to="/about"
+                        className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
                         }}
                       >
                         Internship
-                      </a>
+                      </Link>
                     </li>
                   </ul>
+                </div>
+              
+            
+
+          </div>
+
+          {/* Contact Info */}
+          <div className='mt-1'>
+            <h3
+                    className="text-[#f0c417] text-lg font-medium mb-6"
+                    style={{ fontFamily: "Unbounded" }}
+                  >
+                    Contact Info
+                  </h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <Mail className="h-5 w-5 text-[#f0c417] mt-1" />
+                <div>
+                  <p className="text-gray-300">sparktechdm@gmail.com</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <Phone className="h-5 w-5 text-[#f0c417] mt-1" />
+                <div>
+                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-[#f0c417] mt-1 text-xl" />
+                <div>
+                  <p className="text-gray-300">C1, <br/>Honey tone Apartments,<br /> shankarapuram 1st Street,<br /> Choolaimedu, Chennai 600094</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Socials */}
-        <div className="bg-white/5 rounded-[30px] px-4 py-6 sm:p-8 mb-8">
-          <div className="text-center">
-            <h3
-              className="text-[#f0c417] text-sm font-medium mb-4"
-              style={{ fontFamily: "Unbounded" }}
-            >
-              Follow us:
-            </h3>
-            <div className="flex flex-nowrap justify-center gap-4 overflow-x-auto sm:flex-wrap">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  className="w-11 h-11 rounded-2xl border border-gray-500/30 flex items-center justify-center hover:border-[#f0c417] transition-colors"
-                >
-                  <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
-                    {social.icon}
-                  </svg>
-                </a>
-              ))}
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              © 2024 Sparktech. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
+                Cookie Policy
+              </a>
             </div>
           </div>
-        </div>
-
-        {/* Footer Note */}
-        <div className="border-t border-white/15 pt-4 text-center">
-          <p
-            className="text-[#FAF5EA] text-xs font-light tracking-tight"
-            style={{ fontFamily: "Inter" }}
-          >
-            © 2025 Spark Tech
-          </p>
         </div>
       </div>
     </footer>

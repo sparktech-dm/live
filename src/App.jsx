@@ -16,16 +16,25 @@ import NET from "vanta/dist/vanta.net.min";
 import * as THREE from "three";
 import ScrollToTop from "./components/ScrollToTop";
 import HomeServices from "./pages/HomeServices";
+import Wuc from "./pages/Wuc";
+import CurvedScrollCards from "./components/CurvedScrollCards";
+import ContactForm1 from "./components/ContactForm1";
+
+
+
 
 
 const Home = () => (
   <>
-    <section id="home" className="min-h-screen scroll-mt-24 px-4 py-10">
+    <section id="home" className="min-h-screen scroll-mt-24">
       <Hero />
     </section>
-    <section id="services" className="min-h-screen scroll-mt-24 px-4 py-10">
+    {/* <section id="services" className="min-h-screen scroll-mt-24 px-4 py-10">
       <HomeServices />
-    </section>
+    </section> */}
+   <section id="services" className="min-h-screen scroll-mt-24">
+      <CurvedScrollCards />
+    </section> 
     <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Faq />
     </section>
@@ -73,16 +82,19 @@ const App = () => {
   return (
     <>
    
-      <div
+      {/* <div
         ref={vantaRef}
         className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
-      />
+      /> */}
 
-      <div className="relative z-10 text-white overflow-x-hidden">
+      <div className="relative z-10  text-white overflow-x-hidden min-h-screen bg-cover bg-center bg-fixed" style={{backgroundImage:"url('/BgImg.jpg')"}}>
         <Navbar />
         <ChatBot />
         <Top />
          <ScrollToTop />
+         
+         
+         {/* <Wuc/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -90,6 +102,7 @@ const App = () => {
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/services/*" element={<Services />} />
+           <Route path="/contact" element={<ContactForm1/>} />
         </Routes>
       </div>
     </>

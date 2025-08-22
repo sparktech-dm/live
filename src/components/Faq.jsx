@@ -53,7 +53,7 @@ export const Faq = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 mb-4">
             <span
-              className="text-[#f0c417] text-xs font-black uppercase tracking-wide"
+              className="text-[#fff] text-xs font-black uppercase tracking-wide"
               style={{ fontFamily: "Inter" }}
             >
               Frequently Asked Questions
@@ -79,7 +79,7 @@ export const Faq = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-[24px] sm:rounded-[30px] bg-white/5 backdrop-blur-sm border border-black/10"
+              className="rounded-[24px] sm:rounded-[30px] bg-[#273242]  backdrop-blur-sm border border-black/10"
             >
               <button
                 className="w-full px-4 sm:px-6 py-5 flex items-center justify-between text-left"
@@ -97,7 +97,7 @@ export const Faq = () => {
                 >
                   {faq.question}
                 </h3>
-                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#f0c417] flex items-center justify-center">
+                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#324a70] flex items-center justify-center">
                   <svg
                     className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${activeIndex === index ? "rotate-180" : ""}`}
                     fill="none"
