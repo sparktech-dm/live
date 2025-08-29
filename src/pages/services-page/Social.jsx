@@ -2,7 +2,7 @@ import React from "react";
 
 const Social = () => {
   return (
-    <section className="px-6 py-50 max-w-5xl mx-auto text-black">
+    <section className="px-6 py-50 max-w-5xl mx-auto text-white">
       <h1 className="text-4xl font-bold mb-4 text-[#f0c417]">Social Media Marketing</h1>
       <p className="mb-6 text-lg">
         Social media marketing involves using platforms like Instagram, Facebook, and LinkedIn to connect with your audience to build your brand, increase sales, and drive website traffic. This includes publishing great content, listening to and engaging your followers, analyzing your results, and running social media advertisements.

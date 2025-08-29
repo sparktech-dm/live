@@ -28,7 +28,7 @@ const ChatBot = () => {
     <div className="fixed bottom-6 right-6 z-50 ">
       {isOpen ? (
         <div className="w-[90vw] sm:w-80 max-h-[80vh] bg-white rounded-xl shadow-xl border border-gray-500 flex flex-col">
-          <div className="flex justify-between items-center bg-purple-700 text-white p-3 rounded-t-xl">
+          <div className="flex justify-between items-center bg-[#f0c417] text-white p-3 rounded-t-xl">
             <h4 className="text-sm font-semibold">🤖 Sparky</h4>
             <button onClick={() => setIsOpen(false)}><X size={18} /></button>
           </div>

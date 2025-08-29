@@ -37,8 +37,8 @@ export const Navbar = () => {
 
       return () => window.removeEventListener('scroll', handleScroll);
     } else {
-      if (path === '/about') setActive('about');
-      else if (path.startsWith('/projects')) setActive('projects');
+      
+       if (path.startsWith('/projects')) setActive('projects');
       else if (path.startsWith('/blogs')) setActive('blogs');
       else if (path.startsWith('/services')) setActive('services');
     }
@@ -64,7 +64,7 @@ export const Navbar = () => {
     { name: 'logo', type: 'scrolltop', image: Logo },
     { name: 'services', type: 'route', path: '/services' },
     { name: 'projects', type: 'route', path: '/projects' },
-    { name: 'about', type: 'route', path: '/about' },
+    // { name: 'about', type: 'route', path: '/about' },
     { name: 'blogs', type: 'route', path: '/blogs' },
   ];
 

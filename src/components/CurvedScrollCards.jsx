@@ -11,37 +11,50 @@ const CurvedScrollCards = () => {
       id: 1,
       title: "SEO",
       description: "Strategic SEO that aligns with how your audience thinks, searches, and acts.",
-      icon: "🔍"
+      icon: "🔍",
+      frontColor: "#1b222b",
+      backColor: "#16213E",
     },
     {
       id: 2,
       title: "Performance Marketing",
       description: "Data-led campaigns that convert curiosity into consistent revenue.",
-      icon: "📈"
+      icon: "📈",
+       frontColor: "#1b222b",
+      backColor: "#16213E",
+    
     },
     {
       id: 3,
       title: "Social Media Marketing",
       description: "We balance story and strategy to build engagement and community.",
-      icon: "📱"
+      icon: "📱",
+      frontColor: "#1b222b",
+      backColor: "#16213E",
     },
     {
       id: 4,
       title: "Content Marketing",
       description: "Intentional storytelling that earns trust and drives growth.",
-      icon: "✍️"
+      icon: "✍️",
+       frontColor: "#1b222b",
+      backColor: "#16213E",
     },
     {
       id: 5,
       title: "Branding",
       description: "We shape identities that are consistent, credible, and unmistakably you.",
-      icon: "🎨"
+      icon: "🎨",
+       frontColor: "#1b222b",
+      backColor: "#16213E",
     },
     {
       id: 6,
       title: "Website Development",
       description: "Digital foundations that support your story, scale, and success.",
-      icon: "💻"
+      icon: "💻",
+       frontColor: "#1b222b",
+      backColor: "#16213E",
     }
   ];
 
@@ -104,22 +117,28 @@ const CurvedScrollCards = () => {
           }}
         >
           {allCards.map((card, i) => (
-            <div
-              key={i}
-              className={`card w-60 h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
-                i === activeIndex ? "scale-105 brightness-110 shadow-xl z-10" : "scale-95 opacity-80"
-              }`}
-            >
+  <div
+    key={i}
+    className={`card w-60 h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
+      i === activeIndex
+        ? "scale-105 brightness-110 shadow-xl z-10"
+        : "scale-95 opacity-80"
+    }`}
+  >
               <div className="card-inner">
                 {/* FRONT */}
-                <div className="card-front flex items-center justify-center bg-black text-white rounded-2xl">
+                <div className="card-front flex items-center justify-center bg-green-300 text-white rounded-2xl"
+                style={{ backgroundColor: card.frontColor }}
+                >
                   <h2 className="text-xl font-bold text-center px-4">{card.title}</h2>
                 </div>
 
                 {/* BACK */}
-                <div className="card-back flex flex-col items-center justify-center p-4 bg-black text-white rounded-2xl">
+                <div className="card-back flex flex-col items-center justify-center p-4 bg-white   text-white rounded-2xl"
+                style={{ backgroundColor: card.backColor, color: "#fff" }}
+                >
                   <p className="text-sm mb-4 text-center">{card.description}</p>
-                  <button className="bg-white text-black px-4 py-2 rounded-lg text-sm">Learn More</button>
+                  <button className="bg-[#f0c417] text-black px-4 py-2 rounded-lg text-sm">Learn More</button>
                 </div>
               </div>
             </div>

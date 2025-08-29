@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero.jsx';
 import Faq from '../components/Faq.jsx';
 import ContactForm from '../components/ContactForm.jsx';
-import RocketLaunch from '../helper/RocketLaunch.jsx';
 import Wuc from './Wuc.jsx';
 
 
@@ -11,9 +10,7 @@ function Home() {
 
   return (
     <div className="overflow-hidden">
-      {!showMainContent ? (
-        <RocketLaunch onLaunchEnd={() => setShowMainContent(true)} />
-      ) : (
+      
         <>
         <div className='overflow-hidden'>
           <Hero />
@@ -25,7 +22,6 @@ function Home() {
           </div>
           
         </>
-      )}
     </div>
   );
 }

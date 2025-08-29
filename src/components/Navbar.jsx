@@ -4,14 +4,15 @@ import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { scroller, animateScroll as scroll } from 'react-scroll';
 import Logo from '../assets/Logo.png';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [active, setActive] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Close mobile menu on route change
   useEffect(() => {
-    setMenuOpen(false); // Close mobile menu on route change
+    setMenuOpen(false);
   }, [location.pathname]);
 
   // Set active section based on scroll or pathname
@@ -20,7 +21,7 @@ export const Navbar = () => {
 
     if (path === '/') {
       const handleScroll = () => {
-        const sections = ['home','services', 'contact',];
+        const sections = ['home', 'services', 'contact'];
         const scrollPosition = window.scrollY + 100;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -37,8 +38,7 @@ export const Navbar = () => {
 
       return () => window.removeEventListener('scroll', handleScroll);
     } else {
-      if (path === '/about') setActive('about');
-      else if (path.startsWith('/projects')) setActive('projects');
+      if (path.startsWith('/projects')) setActive('projects');
       else if (path.startsWith('/blogs')) setActive('blogs');
       else if (path.startsWith('/services')) setActive('services');
     }
@@ -63,7 +63,6 @@ export const Navbar = () => {
   const baseMenuItems = [
     { name: 'logo', type: 'scrolltop', image: Logo },
     { name: 'services', type: 'route', path: '/services' },
-    { name: 'projects', type: 'route', path: '/projects' },
     { name: 'about', type: 'route', path: '/about' },
     { name: 'blogs', type: 'route', path: '/blogs' },
   ];
@@ -102,57 +101,51 @@ export const Navbar = () => {
   };
 
   return (
-    <div className='w-full h-[50px] fixed top-0 z-50 font-[Inter]'>
-      {/* Desktop Capsule Navbar */}
-      {/* Desktop Capsule Navbar */}
-<div className="hidden md:flex justify-center">
-  <div className="h-[80px] w-[100%] max-w-[1700px] mx-auto px-6 flex items-center justify-between backdrop-blur-md bg-[#7A85C1]/20 shadow-md">
+    <div className='w-full fixed top-0 z-50 font-[Inter] backdrop-blur-md bg-[#7A85C1]/20 shadow-md'>
+      {/* Desktop / Large Screen Navbar */}
+      <div className="hidden md:flex w-full h-[80px] items-center justify-between px-10 lg:px-20 xl:px-40 2xl:px-60">
+        
+        {/* Left: Logo */}
+        <div onClick={() => handleItemClick(menuItems[0])} className="cursor-pointer flex-shrink-0">
+          <img src={menuItems[0].image} alt="Logo" className="h-[60px] w-auto object-contain" />
+        </div>
 
-    {/* Left: Logo */}
-    <div onClick={() => handleItemClick(menuItems[0])} className="cursor-pointer ml-60">
-      <img
-        src={menuItems[0].image}
-        alt="Logo"
-        className="h-[60px] w-auto object-contain"
-      />
-    </div>
+        {/* Center: Links */}
+        <ul className="flex gap-12 items-center flex-1 justify-center">
+          {menuItems.slice(1, -1).map((item) => (
+            <li key={item.name} onClick={() => handleItemClick(item)}>
+              {item.type === 'route' ? (
+                <RouterLink
+                  to={item.path}
+                  className={`text-white text-sm font-medium transition duration-300 hover:text-[#00ffae] ${
+                    active === item.name ? 'text-[#00ffae] border-b-2 border-[#00ffae] pb-1' : ''
+                  }`}
+                >
+                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                </RouterLink>
+              ) : (
+                <span
+                  className={`text-white text-sm font-medium transition duration-300 hover:text-[#00ffae] ${
+                    active === item.name ? 'text-[#00ffae]' : ''
+                  }`}
+                >
+                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
 
-    {/* Center: Links */}
-    <ul className="flex gap-10 items-center">
-      {menuItems.slice(1, -1).map((item) => (
-        <li key={item.name} onClick={() => handleItemClick(item)}>
-          {item.type === 'route' ? (
-            <RouterLink
-              to={item.path}
-              className={`text-white text-sm font-medium transition duration-200 hover:text-[#00ffae] ${
-                active === item.name ? 'text-[#00ffae]' : ''
-              }`}
-            >
-              {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-            </RouterLink>
-          ) : (
-            <span
-              className={`text-white text-xl md:font-medium transition duration-200 hover:text-[#00ffae] ${
-                active === item.name ? 'text-[#00ffae]' : ''
-              }`}
-            >
-              {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-            </span>
-          )}
-        </li>
-      ))}
-    </ul>
+        {/* Right: CTA Button */}
+        <button
+          onClick={() => navigate("/contact")}
+          className="text-white text-sm font-semibold px-6 py-2 rounded-full border border-green-400 hover:bg-green-400/20 transition duration-300"
+        >
+          Get in touch
+        </button>
+      </div>
 
-    {/* Right: CTA Button */}
-    <button
-      onClick={() => navigate("/contact")}
-      className="text-white text-sm font-semibold px-6 py-2 rounded-full border border-green-400 hover:bg-green-400/10 transition duration-200 mr-50">
-      Get in touch
-    </button>
-  </div>
-</div>
-
-      {/* Mobile Navbar Header */}
+      {/* Mobile Navbar */}
       <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-gray-600/40'>
         <RouterLink to='/' onClick={handleScrollTop}>
           <div className='w-[50px] h-[50px] cursor-pointer'>
@@ -167,7 +160,7 @@ export const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Dropdown */}
       {menuOpen && (
         <div className='md:hidden absolute top-[80px] left-0 w-full bg-black border-t border-[#444]'>
           <ul className='flex flex-col items-center gap-4 py-4'>
@@ -186,11 +179,7 @@ export const Navbar = () => {
                   </RouterLink>
                 ) : item.type === 'scrolltop' && item.image ? (
                   <div className='w-[40px] h-[40px] cursor-pointer'>
-                    <img
-                      src={item.image}
-                      alt='Logo'
-                      className='w-full h-full object-contain'
-                    />
+                    <img src={item.image} alt='Logo' className='w-full h-full object-contain' />
                   </div>
                 ) : (
                   <span

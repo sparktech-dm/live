@@ -11,14 +11,13 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import { Faq } from "./components/Faq";
 import ChatBot from "./components/Chat";
-import Top from "./components/Top";
-import NET from "vanta/dist/vanta.net.min";
+import Top from "./components/Top"; 
 import * as THREE from "three";
 import ScrollToTop from "./components/ScrollToTop";
-import HomeServices from "./pages/HomeServices";
-import Wuc from "./pages/Wuc";
+// import Wuc from "./pages/Wuc";
 import CurvedScrollCards from "./components/CurvedScrollCards";
 import ContactForm1 from "./components/ContactForm1";
+import GlassCursor from "./components/GlassCursor";
 
 
 
@@ -32,7 +31,7 @@ const Home = () => (
     {/* <section id="services" className="min-h-screen scroll-mt-24 px-4 py-10">
       <HomeServices />
     </section> */}
-   <section id="services" className="min-h-screen scroll-mt-24">
+   <section id="services" className="py-20 px-4 scroll-mt-24">
       <CurvedScrollCards />
     </section> 
     <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
@@ -79,6 +78,15 @@ const App = () => {
     };
   }, [vantaEffect]);
 
+  function NotFound() {
+  return (
+    <div className="flex flex-col items-center justify-center h-screen text-center">
+      <h1 className="text-4xl font-bold mb-4">404</h1>
+      <p className="text-lg">Page Not Found</p>
+    </div>
+  );
+}
+
   return (
     <>
    
@@ -87,7 +95,8 @@ const App = () => {
         className="fixed inset-0 w-screen h-screen -z-10 overflow-hidden"
       /> */}
 
-      <div className="relative z-10  text-white overflow-x-hidden min-h-screen bg-cover bg-center bg-fixed" style={{backgroundImage:"url('/BgImg.jpg')"}}>
+      <div className="relative z-10  text-white overflow-x-hidden min-h-screen bg-cover bg-center bg-fixed  bg-[#1d4065]">
+        <GlassCursor/>
         <Navbar />
         <ChatBot />
         <Top />
@@ -97,12 +106,13 @@ const App = () => {
          {/* <Wuc/> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<ProjectsSection />} />
+          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<ProjectsSection />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/services/*" element={<Services />} />
            <Route path="/contact" element={<ContactForm1/>} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
