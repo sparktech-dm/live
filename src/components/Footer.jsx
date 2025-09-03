@@ -31,8 +31,8 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Empowering students to innovate, create, and transform ideas into reality. Join our community of passionate innovators and shape the future together.
-            </p>
+              At Spark Tech, we blend insight with imagination to create digital stories that matter. From SEO to branding, our work is rooted in clarity, action, and measurable growth. Your trusted digital  marketing agency in Chennai.
+              </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <a

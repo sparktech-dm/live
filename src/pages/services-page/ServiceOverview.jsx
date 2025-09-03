@@ -78,7 +78,7 @@ export default function Services() {
               className="relative group bg-white/5 backdrop-blur-lg rounded-3xl p-8 overflow-hidden border border-white/10 shadow-2xl"
             >
               {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-pink-400/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-pink-400/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-100"></div>
 
               {/* Floating number watermark */}
               <span className="absolute -top-6 -right-4 text-8xl font-extrabold text-white/10 group-hover:text-yellow-400/20 transition">
