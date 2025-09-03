@@ -18,6 +18,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import CurvedScrollCards from "./components/CurvedScrollCards";
 import ContactForm1 from "./components/ContactForm1";
 import GlassCursor from "./components/GlassCursor";
+import WhyChooseUs from "./components/WhyChooseUs";
 
 
 

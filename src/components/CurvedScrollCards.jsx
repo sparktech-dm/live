@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../flip-cards.css";
+import WhyChooseUs from "./WhyChooseUs";
 
 const CurvedScrollCards = () => {
   const [position, setPosition] = useState(0);
@@ -144,6 +145,9 @@ const CurvedScrollCards = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="mt-25 overflow-hidden">
+        <WhyChooseUs/>
       </div>
     </div>
   );

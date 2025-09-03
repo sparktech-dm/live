@@ -3,6 +3,7 @@ import Hero from '../components/Hero.jsx';
 import Faq from '../components/Faq.jsx';
 import ContactForm from '../components/ContactForm.jsx';
 import Wuc from './Wuc.jsx';
+import WhyChooseUs from '../components/WhyChooseUs.jsx';
 
 
 function Home() {
@@ -16,7 +17,6 @@ function Home() {
           <Hero />
           </div>
           <Faq />
-          <Wuc/>
           <div id="contact">
             <ContactForm />
           </div>
