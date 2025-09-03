@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { scroller } from 'react-scroll';
+import AboutUs from "./AboutUs";
 
 const Hero = () => {
   const buttonRef = useRef(null);
@@ -47,14 +48,14 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10" />
 
       {/* Content */}
-      <div className="text-center z-20 text-white/50 px-4">
-        <h1 className="text-5xl text-white/50 md:text-7xl font-bold leading-tight tracking-tight">
+      <div className="text-center z-20 text-white/80 px-4">
+        <h1 className="text-5xl text-white/80 md:text-7xl font-bold leading-tight tracking-tight">
           We are the{" "}
           <span className="inline-block bg-[#f0c417] text-black px-2 rotate-[-2deg]">
             digital
           </span>
         </h1>
-        <h1 className="text-5xl md:text-7xl text-white/50 font-bold leading-tight mt-2">
+        <h1 className="text-5xl md:text-7xl text-white/80 font-bold leading-tight mt-2">
           Marketing <span className="text-[#f0c417]">Agency</span> in Chennai
         </h1>
         {/* <p className="block text-2xl mt-2 text-white/50 md:text-4xl leading-tight md:leading-snug">

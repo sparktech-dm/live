@@ -103,9 +103,8 @@ const Navbar = () => {
 
   return (
     <div className='w-full fixed top-0 z-50 font-[Inter] backdrop-blur-md bg-[#7A85C1]/20 shadow-md'>
-      {/* Desktop / Large Screen Navbar */}
+      {/* Desktop Navbar (unchanged) */}
       <div className="hidden md:flex w-full h-[80px] items-center justify-between px-10 lg:px-20 xl:px-40 2xl:px-60">
-        
         {/* Left: Logo */}
         <div onClick={() => handleItemClick(menuItems[0])} className="cursor-pointer flex-shrink-0">
           <img src={menuItems[0].image} alt="Logo" className="h-[60px] w-auto object-contain" />
@@ -137,52 +136,32 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right: CTA Button */}
-       <div className="relative flex justify-center items-center">
-  {/* Glowing Aura */}
-  <div className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-[#f0c417]/40 via-[#f0c417]/20 to-transparent 
-                  blur-3xl animate-ping-slow"></div>
-
-  {/* Button */}
-  <button
-    onClick={() => navigate("/contact")}
-    className="relative z-10 text-white text-lg font-semibold px-8 py-3 rounded-full 
-               border-2 border-[#f0c417] bg-gradient-to-r from-[#f0c417]/30 to-transparent
-               shadow-[0_0_25px_rgba(240,196,23,0.7)] 
-               transition duration-300 hover:scale-110 hover:shadow-[0_0_50px_rgba(240,196,23,1)] 
-               animate-heartbeat"
-  >
-    Get in touch
-  </button>
-
-  <style jsx>{`
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
-    .animate-heartbeat {
-      animation: heartbeat 2s infinite;
-    }
-    @keyframes ping-slow {
-      0% { transform: scale(0.9); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 0.4; }
-      100% { transform: scale(0.9); opacity: 0.8; }
-    }
-    .animate-ping-slow {
-      animation: ping-slow 3s infinite;
-    }
-  `}</style>
-</div>
-
+        {/* Right: CTA Button (desktop only) */}
+        <div className="relative flex justify-center items-center">
+          <div className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-[#f0c417]/40 via-[#f0c417]/20 to-transparent blur-3xl animate-ping-slow"></div>
+          <button
+            onClick={() => navigate("/contact")}
+            className="relative z-10 text-white text-lg font-semibold px-8 py-3 rounded-full 
+                       border-2 border-[#f0c417] bg-gradient-to-r from-[#f0c417]/30 to-transparent
+                       shadow-[0_0_25px_rgba(240,196,23,0.7)] 
+                       transition duration-300 hover:scale-110 hover:shadow-[0_0_50px_rgba(240,196,23,1)] 
+                       animate-heartbeat"
+          >
+            Get in touch
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navbar */}
-      <div className='md:hidden flex justify-between items-center px-5 h-full backdrop-blur bg-gray-600/40'>
+      <div className='md:hidden flex justify-between items-center px-5 h-[70px] backdrop-blur bg-gray-800/40 relative'>
+        {/* Logo */}
         <RouterLink to='/' onClick={handleScrollTop}>
           <div className='w-[50px] h-[50px] cursor-pointer'>
             <img src={Logo} alt='Logo' className='w-full h-full object-contain' />
           </div>
         </RouterLink>
+
+        {/* Hamburger */}
         <button
           className='text-white text-2xl'
           onClick={() => setMenuOpen(!menuOpen)}
@@ -193,7 +172,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className='md:hidden absolute top-[80px] left-0 w-full bg-black border-t border-[#444]'>
+        <div className='md:hidden absolute top-[70px] left-0 w-full bg-black border-t border-[#444]'>
           <ul className='flex flex-col items-center gap-4 py-4'>
             {menuItems.map((item) => (
               <li key={item.name} onClick={() => handleItemClick(item)}>
@@ -228,6 +207,35 @@ const Navbar = () => {
           </ul>
         </div>
       )}
+
+      {/* Mobile Fixed CTA */}
+      <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+        <button
+          onClick={() => navigate("/contact")}
+          className="px-6 py-1 rounded-full bg-[#f0c417] text-black font-bold shadow-[0_0_20px_rgba(240,196,23,0.8)] 
+                     animate-bounce hover:scale-110 transition"
+        >
+          Get in touch
+        </button>
+      </div>
+
+      <style jsx>{`
+        @keyframes heartbeat {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.08); }
+        }
+        .animate-heartbeat {
+          animation: heartbeat 2s infinite;
+        }
+        @keyframes ping-slow {
+          0% { transform: scale(0.9); opacity: 0.8; }
+          50% { transform: scale(1.2); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 0.8; }
+        }
+        .animate-ping-slow {
+          animation: ping-slow 3s infinite;
+        }
+      `}</style>
     </div>
   );
 };

@@ -8,6 +8,15 @@ const ProjectsSection = () => {
   const containerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
 
+  // ✅ Track mobile flip state
+  const [flippedCard, setFlippedCard] = useState(null);
+
+  const handleCardClick = (card) => {
+    if (window.innerWidth <= 768) {
+      setFlippedCard(flippedCard === card ? null : card);
+    }
+  };
+
   const projects = [
     {
       title: "SparkTech Marketing",
@@ -74,10 +83,13 @@ const ProjectsSection = () => {
             <p className="text-gray-300 text-sm sm:text-base max-w-md mx-auto md:mx-0">
               Spark Tech began with a simple idea — that good marketing isn’t
               just about algorithms or aesthetics. It’s about clarity,
-              intention, and the courage to do things differently.
-              As a digital marketing agency in Chennai, we’re a small team of creatives, strategists, and problem-solvers working with brands that want to grow with purpose, not pressure. We care about ideas that spark action. Content that connects. Campaigns that leave a mark.
-We’re not the loudest agency out there.
-But we’re honest, sharp, and all in — every single time.
+              intention, and the courage to do things differently. As a digital
+              marketing agency in Chennai, we’re a small team of creatives,
+              strategists, and problem-solvers working with brands that want to
+              grow with purpose, not pressure. We care about ideas that spark
+              action. Content that connects. Campaigns that leave a mark.
+              We’re not the loudest agency out there. But we’re honest, sharp,
+              and all in — every single time.
             </p>
           </div>
 
@@ -111,8 +123,7 @@ But we’re honest, sharp, and all in — every single time.
                       {project.description}
                     </p>
                   </div>
-                  <div>
-                  </div>
+                  <div></div>
                 </div>
               );
             })}
@@ -170,6 +181,96 @@ But we’re honest, sharp, and all in — every single time.
           </div>
         </div>
       </div>
+
+      {/* Vision & Mission Section */}
+      <div className="px-4 sm:px-6 py-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-16">
+            Vision & Mission
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Vision */}
+            <div
+              className={`group perspective animate-float`}
+              onClick={() => handleCardClick("vision")}
+            >
+              <div
+                className={`relative w-full h-120 md:h-80 transition-transform duration-700 preserve-3d group-hover:rotate-y-180 group-hover:scale-105
+                ${flippedCard === "vision" ? "rotate-y-180" : ""}`}
+              >
+                {/* Front */}
+                <div className="absolute inset-0 bg-[#222b36] rounded-2xl shadow-lg flex items-center justify-center p-6 backface-hidden transition-all duration-500 group-hover:shadow-[0_0_40px_15px_#ffd700] group-hover:brightness-150">
+                  <h3 className="text-[#f0c417] text-2xl font-bold">Our Vision</h3>
+                </div>
+                {/* Back */}
+                <div className="absolute inset-0 bg-[#1b1f29] rounded-2xl shadow-lg p-6 flex items-center justify-center backface-hidden rotate-y-180 transition-all duration-500 group-hover:shadow-[0_0_40px_15px_#ffd700] group-hover:brightness-150">
+                  <p className="text-gray-300 text-lg leading-relaxed text-center">
+                    To reshape digital marketing into a space where data meets depth — 
+                    and brands grow through clarity, not chaos.
+                    <br /><br />
+                    At Spark Tech, our vision is to fuse creativity with clarity, 
+                    building bold ideas on a bedrock of insight and intention.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mission */}
+            <div
+              className="group perspective animate-float delay-200"
+              onClick={() => handleCardClick("mission")}
+            >
+              <div
+                className={`relative w-full h-120 md:h-80 transition-transform duration-700 preserve-3d group-hover:rotate-y-180 group-hover:scale-105
+                ${flippedCard === "mission" ? "rotate-y-180" : ""}`}
+              >
+                {/* Front */}
+                <div className="absolute inset-0 bg-[#222b36] rounded-2xl shadow-lg flex items-center justify-center p-6 backface-hidden transition-all duration-500 group-hover:shadow-[0_0_40px_15px_#ffd700] group-hover:brightness-125">
+                  <h3 className="text-[#f0c417] text-2xl font-bold">Our Mission</h3>
+                </div>
+                {/* Back */}
+                <div className="absolute inset-0 bg-[#1b1f29] rounded-2xl shadow-lg p-6 flex items-center justify-center backface-hidden rotate-y-180 transition-all duration-500 group-hover:shadow-[0_0_40px_15px_#ffd700] group-hover:brightness-125">
+                  <p className="text-gray-300 text-lg leading-relaxed text-center">
+                    We dig deep before we move fast. Every strategy we craft is backed 
+                    by research, sharpened by data, and brought to life through storytelling 
+                    that connects.
+                    <br /><br />
+                    Helping brands grow with purpose is what drives Spark Tech — a digital 
+                    marketing agency in Chennai that believes in data-backed decisions and 
+                    content with conviction.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Extra CSS */}
+      <style>{`
+        .perspective {
+          perspective: 1000px;
+        }
+        .backface-hidden {
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-float {
+          animation: float 1.5s ease-in-out infinite;
+        }
+        .delay-200 {
+          animation-delay: 2s;
+        }
+      `}</style>
 
       {/* Team Section */}
       <div className="max-w-6xl mx-auto text-center mt-20 px-4">

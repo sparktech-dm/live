@@ -57,7 +57,7 @@ export default function Services() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <h1 className="text-5xl font-extrabold text-center mb-16">
-          ✨ Our <span className="text-yellow-300">Services</span>
+           Our <span className="text-yellow-300">Services</span>
         </h1>
 
         {/* Floating creative cards */}
