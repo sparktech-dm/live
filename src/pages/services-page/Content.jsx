@@ -1,25 +1,93 @@
 import React from "react";
 
-const Content = () => {
+const ContentMarketing = () => {
   return (
-    <section className="px-6 py-50 max-w-5xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-4 text-[#f0c417]">Content Creation</h1>
+    <section className="px-6 py-20 max-w-5xl mx-auto text-white">
+      {/* Title */}
+      <h1 className="text-4xl font-bold mb-4 text-[#f0c417]">
+        Content Marketing
+      </h1>
       <p className="mb-6 text-lg">
-        Content is the heart of digital marketing. Our content creation services focus on developing engaging, high-quality, and brand-aligned material that speaks directly to your audience. Whether it’s a blog post, video, or social media caption, we tailor each piece to maximize reach and impact.
+        Not all content is created equal. Some fill space. Ours fill minds.
       </p>
-      <h2 className="text-2xl font-semibold mb-2">What We Offer:</h2>
-      <ul className="list-disc list-inside mb-6">
-        <li>Custom visual and written content for all platforms</li>
-        <li>Brand storytelling and tone of voice development</li>
-        <li>Infographics, memes, reels, and carousel creation</li>
-        <li>Copywriting for websites, ads, and email</li>
-        <li>Interactive content like polls and quizzes</li>
+      <p className="mb-6 text-lg">
+        We don’t just churn words — we craft narratives that inform, inspire,
+        and move your audience to act.
+      </p>
+
+      {/* What We Do */}
+      <h2 className="text-2xl font-semibold mb-4">What We Do</h2>
+      <div className="mb-6 space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold mb-1">
+            SEO Blogging & Long-Form Articles
+          </h3>
+          <p className="text-lg">
+            We write to rank, but we also write to add value. Our blogs balance
+            keyword depth with clarity, keeping both Google and your readers
+            hooked.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-1">
+            Web Copy & Landing Pages
+          </h3>
+          <p className="text-lg">
+            Your website shouldn’t just exist — it should convert. We craft
+            copy that’s sharp, persuasive, and built to generate action.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-1">
+            Email Newsletters & Drip Sequences
+          </h3>
+          <p className="text-lg">
+            We help you earn attention (and retention) with emails that actually
+            get opened — and acted on.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-1">
+            Thought Leadership & LinkedIn Content
+          </h3>
+          <p className="text-lg">
+            Position your brand as a voice, not just a presence. We create
+            thought-provoking posts that build credibility and connections.
+          </p>
+        </div>
+      </div>
+
+      {/* Why Brands Trust */}
+      <h2 className="text-2xl font-semibold mb-4">
+        Why Brands Trust Spark Tech with Their Content
+      </h2>
+      <ul className="list-disc list-inside mb-6 space-y-2 text-lg">
+        <li>We focus on clarity, voice, and consistency across platforms.</li>
+        <li>Our content doesn’t just inform — it influences.</li>
+        <li>We merge creativity, SEO, and storytelling into one strategy.</li>
+        <li>We use AI to accelerate quality — never dilute it.</li>
+        <li>We know what to say — and when, where, and how to say it.</li>
       </ul>
-      <p className="text-lg">
-        Powerful content builds trust, increases conversions, and strengthens brand loyalty. Let us create for you.
+
+      <p className="text-lg mb-6">
+        Want content that doesn’t just exist — but performs, resonates, and
+        evolves with your brand?
       </p>
+
+      {/* CTA Buttons */}
+      <div className="flex gap-4">
+        <button className="bg-[#f0c417] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#e1b514] transition">
+          Let’s write & iterate
+        </button>
+        <button className="border border-[#f0c417] text-[#f0c417] px-6 py-3 rounded-lg font-semibold hover:bg-[#f0c417] hover:text-black transition">
+          Book a free consultation
+        </button>
+      </div>
     </section>
   );
 };
 
-export default Content;
+export default ContentMarketing;
