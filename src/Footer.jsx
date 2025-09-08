@@ -1,14 +1,15 @@
 import React from 'react';
 import { Lightbulb, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, href } from "react-router-dom";
+import { color } from 'framer-motion';
 
 const Footer = () => {
   const quickLinks = ['Review', 'About', 'Internship',];
+
   const socialLinks = [
-    { icon: Facebook, href: '#', color: 'hover:text-[#f0c417]' },
-    { icon: Twitter, href: '#', color: 'hover:text-[#f0c417]' },
     { icon: Instagram, href: '#', color: 'hover:text-[#f0c417]' },
-    { icon: Linkedin, href: '#', color: 'hover:text-[#f0c417]' }
+    { icon: Linkedin, href: '#', color: 'hover:text-[#f0c417]' },
+    { icon: MapPin, href:'#',color:'hover:text-[#f0c417]'},
   ];
 
   const scrollToSection = (id) => {
@@ -117,7 +118,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-[#f0c417] mt-1" />
                 <div>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-300"> +91 8939892219</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">

@@ -19,33 +19,24 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: "SparkTech Marketing",
-      description:
-        "A sleek digital presence for SparkTech using React + Tailwind.",
-      image:
-        "https://images.unsplash.com/photo-1604210740327-dfd2dc1b2dc8?auto=format&fit=crop&w=800&q=80",
-      traffic: "65%",
-      client: "Sanjay Kumar",
+      title: "Collaboration, not hierarchy",
+      description: "Ideas can come from anywhere. We listen, challenge, and build together.",
+      image: "https://images.unsplash.com/photo-1604210740327-dfd2dc1b2dc8?auto=format&fit=crop&w=800&q=80",
+      
     },
     {
-      title: "PECTeam2K25 Conference",
-      description:
-        "Official conference portal with registration and schedule.",
-      image:
-        "https://images.unsplash.com/photo-1522199873713-4f1117c1a9f8?auto=format&fit=crop&w=800&q=80",
-      traffic: "90%",
-      client: "Panimalar College",
+      title: "Courage to do it differently",
+      description: "We’re not afraid to say no, challenge the brief, or take a different path. Means we do the work better.",
+      image: "https://images.unsplash.com/photo-1522199873713-4f1117c1a9f8?auto=format&fit=crop&w=800&q=80",
+      
     },
     {
-      title: "Marcuss Kellii Website",
-      description: "A fashion e-commerce site built with React and Firebase.",
-      image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      traffic: "80%",
-      client: "Marcus",
-    },
+      title: "Creativity with purpose",
+      description: "For us, creativity isn’t just flair; it is zeal. Everything we create has a purpose to act upon",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    }
   ];
-
+  
   const cards = Array.from({ length: 6 }, (_, i) => ({
     id: i + 1,
     name: `Card ${i + 1}`,

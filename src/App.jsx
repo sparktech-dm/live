@@ -19,7 +19,7 @@ import CurvedScrollCards from "./components/CurvedScrollCards";
 import ContactForm1 from "./components/ContactForm1";
 import GlassCursor from "./components/GlassCursor";
 import AboutUs from "./components/AboutUs";
-
+import WhyChooseUs from "./components/WhyChooseUs";
 
 
 
@@ -38,6 +38,9 @@ const Home = () => (
    <section id="services" className="py-20 px-4 scroll-mt-24">
       <CurvedScrollCards />
     </section> 
+    <section id="whychooseus" className=" overflow-hidden">
+        <WhyChooseUs/>
+      </section>
     <section id="faq" className="min-h-screen scroll-mt-24 px-4 py-10">
       <Faq />
     </section>

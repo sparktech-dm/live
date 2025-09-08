@@ -4,6 +4,7 @@ import Faq from '../components/Faq.jsx';
 import ContactForm from '../components/ContactForm.jsx';
 import Wuc from './Wuc.jsx';
 import AboutUs from '../components/AboutUs.jsx';
+import WhyChooseUs from '../components/WhyChooseUs.jsx';
 
 
 function Home() {
@@ -17,7 +18,6 @@ function Home() {
           <Hero />
           </div>
           <Faq />
-          <Wuc/>
           <div id="contact">
             <ContactForm />
           </div>

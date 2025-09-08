@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Services() {
+  const navigate = useNavigate();
+
   const segments = [
     {
       number: "01",
@@ -13,34 +15,30 @@ export default function Services() {
     {
       number: "02",
       title: "Content Creation",
-      details:
-        "Creative and high-quality content tailored to your audience.",
+      details: "Creative and high-quality content tailored to your audience.",
       link: "/services/content-creation",
     },
     {
       number: "03",
       title: "Website Development",
-      details:
-        "Modern, responsive, and scalable websites for your business.",
+      details: "Modern, responsive, and scalable websites for your business.",
       link: "/services/website-development",
     },
     {
       number: "04",
       title: "Video Editing",
-      details:
-        "Professional video editing to tell your story effectively.",
+      details: "Professional video editing to tell your story effectively.",
       link: "/services/video-editing",
     },
     {
       number: "05",
       title: "Email Marketing",
-      details:
-        "Targeted campaigns that convert and nurture your audience.",
+      details: "Targeted campaigns that convert and nurture your audience.",
       link: "/services/email-marketing",
     },
     {
       number: "06",
-      title: "Graphics Designing & SEO",
+      title: " SEO",
       details:
         "Visual designs that enhance your brand identity + SEO strategies to rank higher.",
       link: "/services/seo",
@@ -48,16 +46,15 @@ export default function Services() {
   ];
 
   return (
-    <div className="relative min-h-screen  text-white py-20 px-6 overflow-hidden">
+    <div className="relative min-h-screen text-white py-20 px-6 overflow-hidden">
       {/* Animated glowing background */}
       <div className="absolute inset-0">
         <div className="absolute w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl top-20 left-10 animate-pulse"></div>
-        {/* <div className="absolute w-[400px] h-[400px] bg-yellow-500/20 rounded-full blur-3xl bottom-20 right-10 animate-ping"></div> */}
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <h1 className="text-5xl font-extrabold text-center mb-16">
-           Our <span className="text-yellow-300">Services</span>
+          Our <span className="text-yellow-300">Services</span>
         </h1>
 
         {/* Floating creative cards */}
@@ -75,7 +72,8 @@ export default function Services() {
                 rotateY: -8,
                 boxShadow: "0px 0px 40px rgba(255, 215, 0, 0.6)",
               }}
-              className="relative group bg-white/5 backdrop-blur-lg rounded-3xl p-8 overflow-hidden border border-white/10 shadow-2xl"
+              onClick={() => navigate(segment.link)} // ✅ Navigate on click
+              className="relative group bg-white/5 backdrop-blur-lg rounded-3xl p-8 overflow-hidden border border-white/10 shadow-2xl cursor-pointer"
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-pink-400/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-100"></div>
@@ -92,12 +90,9 @@ export default function Services() {
               <p className="text-white/70 mb-6 relative z-10">
                 {segment.details}
               </p>
-              <Link
-                to={segment.link}
-                className="inline-block px-5 py-2 rounded-full bg-yellow-300 text-black font-semibold shadow-md hover:shadow-yellow-300/50 hover:bg-white transition"
-              >
+              <span className="inline-block px-5 py-2 rounded-full bg-yellow-300 text-black font-semibold shadow-md group-hover:shadow-yellow-300/50 group-hover:bg-white transition">
                 Learn More →
-              </Link>
+              </span>
             </motion.div>
           ))}
         </div>

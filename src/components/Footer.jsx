@@ -5,10 +5,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const Footer = () => {
   const quickLinks = ['Review', 'About', 'Internship',];
   const socialLinks = [
-    { icon: Facebook, href: '#', color: 'hover:text-[#f0c417]' },
-    { icon: Twitter, href: '#', color: 'hover:text-[#f0c417]' },
-    { icon: Instagram, href: '#', color: 'hover:text-[#f0c417]' },
-    { icon: Linkedin, href: '#', color: 'hover:text-[#f0c417]' }
+     { icon: MapPin, href:'https://maps.app.goo.gl/4sYLYqWiS9KQRijP8',color:'hover:text-[#f0c417]'},
+    { icon: Instagram, href: 'https://www.instagram.com/sparktech.dm?igsh=MTA5dzFmNW9uYzVlMg== ', color: 'hover:text-[#f0c417]' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/sparktech-digital-marketing/', color: 'hover:text-[#f0c417]' }
   ];
 
   const scrollToSection = (id) => {
@@ -38,6 +37,8 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`p-3 bg-black rounded-lg ${social.color} transition-all duration-300 transform hover:scale-110`}
                 >
                   <social.icon className="h-5 w-5" />
@@ -82,7 +83,8 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/about"
+                        to="https://docs.google.com/forms/d/e/1FAIpQLSfC8pZrRGvqpbVxWmcEzglmzFZrLmauN5j6RelWF_iZgXWW6w/viewform?usp=sharing&ouid=110799130736699188044"
+                        target='_blank'
                         className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
                         style={{
                           fontFamily:
@@ -117,7 +119,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-[#f0c417] mt-1" />
                 <div>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-300">+91 8939892219</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
@@ -134,7 +136,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 Sparktech. All rights reserved.
+              © 2025 Sparktech. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
