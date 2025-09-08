@@ -1,71 +1,93 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../flip-cards.css";
-import WhyChooseUs from "./WhyChooseUs";
+import mar from "../assets/services/Marketing.jpg";
+import per from "../assets/services/Performance-Marketing.jpg";
+import seo from "../assets/services/SEO.jpg";
+import brand from "../assets/services/Branding.jpg";
+import soc from "../assets/services/Social Media Marketing.jpg";
+import web from "../assets/services/Website Development.jpg";
+import { Link } from "react-router-dom";
 
 const CurvedScrollCards = () => {
   const [position, setPosition] = useState(0);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const containerRef = useRef(null);
+  const intervalRef = useRef(null);
 
   const cardData = [
     {
       id: 1,
       title: "SEO",
-      description: "Strategic SEO that aligns with how your audience thinks, searches, and acts.",
+      description:
+        "Strategic SEO that aligns with how your audience thinks, searches, and acts.",
       icon: "🔍",
-      frontColor: "#1b222b",
+      frontImage: seo,
       backColor: "#16213E",
+      link: "/services/seo",
     },
     {
       id: 2,
       title: "Performance Marketing",
       description: "Data-led campaigns that convert curiosity into consistent revenue.",
       icon: "📈",
-       frontColor: "#1b222b",
+      frontImage: per,
       backColor: "#16213E",
-    
+      link: "/services/email-marketing",
     },
     {
       id: 3,
       title: "Social Media Marketing",
       description: "We balance story and strategy to build engagement and community.",
       icon: "📱",
-      frontColor: "#1b222b",
+      frontImage: soc,
       backColor: "#16213E",
+      link: "/services/social-media-marketing",
     },
     {
       id: 4,
       title: "Content Marketing",
       description: "Intentional storytelling that earns trust and drives growth.",
       icon: "✍️",
-       frontColor: "#1b222b",
+      frontImage: mar,
       backColor: "#16213E",
+      link: "/services/content-creation",
     },
     {
       id: 5,
       title: "Branding",
-      description: "We shape identities that are consistent, credible, and unmistakably you.",
+      description:
+        "We shape identities that are consistent, credible, and unmistakably you.",
       icon: "🎨",
-       frontColor: "#1b222b",
+      frontImage: brand,
       backColor: "#16213E",
+      link: "/services/video-editing",
     },
     {
       id: 6,
       title: "Website Development",
-      description: "Digital foundations that support your story, scale, and success.",
+      description:
+        "Digital foundations that support your story, scale, and success.",
       icon: "💻",
-       frontColor: "#1b222b",
+      frontImage: web,
       backColor: "#16213E",
-    }
+      link: "/services/website-development",
+    },
   ];
 
-  const allCards = [...cardData, ...cardData]; // Duplicate for seamless loop
-  const cardWidth = 240 + 16; // Card width + margin
+  const allCards = [...cardData, ...cardData, ...cardData, ...cardData, ...cardData];
+  const cardWidth = 240 + 16; // card width + margin
   const totalWidth = cardWidth * cardData.length;
 
-  // Auto-scroll logic
+  // Auto-scroll
   useEffect(() => {
-    const interval = setInterval(() => {
+    startScroll();
+    return () => stopScroll();
+  }, [totalWidth]);
+
+  const startScroll = () => {
+    if (intervalRef.current) return;
+    intervalRef.current = setInterval(() => {
       setPosition((prev) => {
         const newPos = prev - 1;
         if (Math.abs(newPos) >= totalWidth) {
@@ -73,9 +95,15 @@ const CurvedScrollCards = () => {
         }
         return newPos;
       });
-    }, 16); // ~60fps
-    return () => clearInterval(interval);
-  }, [totalWidth]);
+    }, 16);
+  };
+
+  const stopScroll = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
 
   // Detect center card
   useEffect(() => {
@@ -114,40 +142,63 @@ const CurvedScrollCards = () => {
           style={{
             transform: `translateX(${position}px)`,
             willChange: "transform",
-            transition: "transform 0.02s linear"
+            transition: "transform 0.02s linear",
           }}
         >
-          {allCards.map((card, i) => (
-  <div
-    key={i}
-    className={`card w-60 h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
-      i === activeIndex
-        ? "scale-105 brightness-110 shadow-xl z-10"
-        : "scale-95 opacity-80"
-    }`}
-  >
-              <div className="card-inner">
-                {/* FRONT */}
-                <div className="card-front flex items-center justify-center bg-green-300 text-white rounded-2xl"
-                style={{ backgroundColor: card.frontColor }}
-                >
-                  <h2 className="text-xl font-bold text-center px-4">{card.title}</h2>
-                </div>
+          {allCards.map((card, i) => {
+            const isActive = i === activeIndex;
+            const isHovered = i === hoveredIndex;
 
-                {/* BACK */}
-                <div className="card-back flex flex-col items-center justify-center p-4 bg-white   text-white rounded-2xl"
-                style={{ backgroundColor: card.backColor, color: "#fff" }}
-                >
-                  <p className="text-sm mb-4 text-center">{card.description}</p>
-                  <button className="bg-[#f0c417] text-black px-4 py-2 rounded-lg text-sm">Learn More</button>
+            return (
+              <div
+                key={i}
+                className={`card w-60 h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
+                  isActive ? "scale-105 z-10" : "scale-95 opacity-80"
+                }`}style={{
+  boxShadow:
+    isHovered || (!hoveredIndex && isActive)
+      ? "0px 0px 25px rgba(255, 230, 0, 0.9), 0px 0px 60px rgba(255, 230, 0, 0.8)"
+      : "none",
+}}
+
+                onMouseEnter={() => {
+                  stopScroll();
+                  setHoveredIndex(i);
+                }}
+                onMouseLeave={() => {
+                  setHoveredIndex(null);
+                  startScroll();
+                }}
+              >
+                <div className="card-inner">
+                  {/* FRONT */}
+                  <div
+                    className="card-front flex items-center justify-center text-white rounded-2xl bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${card.frontImage})` }}
+                  >
+                    <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
+                    <h2 className="relative z-10 text-xl font-bold text-center px-4">
+                      {card.title}
+                    </h2>
+                  </div>
+
+                  {/* BACK */}
+                  <div
+                    className="card-back flex flex-col items-center justify-center p-4 text-white rounded-2xl"
+                    style={{ backgroundColor: card.backColor }}
+                  >
+                    <p className="text-sm mb-4 text-center">{card.description}</p>
+                    <Link to={card.link}>
+                      <button className="bg-[#f0c417] text-black px-4 py-2 rounded-lg text-sm">
+                        Learn More
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </div>
-      <div className="mt-25 overflow-hidden">
-        <WhyChooseUs/>
       </div>
     </div>
   );
