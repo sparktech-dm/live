@@ -2,9 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 
 const GlassCursor = () => {
   const cursorRef = useRef(null);
-  const [angle, setAngle] = useState(0); // state for controlling angle
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Detect mobile/touch devices
+    const checkMobile = () => {
+      setIsMobile(/Mobi|Android|iPhone|iPad|iPod|Tablet/i.test(navigator.userAgent));
+    };
+    checkMobile();
+
     const cursor = cursorRef.current;
 
     const moveCursor = (e) => {
@@ -14,22 +20,29 @@ const GlassCursor = () => {
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    if (!isMobile) {
+      window.addEventListener("mousemove", moveCursor);
+    }
+
     return () => window.removeEventListener("mousemove", moveCursor);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null; // 🚫 Don’t render on mobile
 
   return (
     <>
       <style>
         {`
-          body {
-            cursor: none;
+          /* Hide system cursor everywhere */
+          body, a, button, input, textarea, select {
+            cursor: none !important;
           }
+
           .rocket-cursor {
             position: fixed;
             width: 70px;
             height: 70px;
-            pointer-events: none;
+            pointer-events: none; /* so clicks pass through */
             transform: translate(-50%, -50%);
             z-index: 9999;
           }
@@ -45,13 +58,15 @@ const GlassCursor = () => {
             position: absolute;
             bottom: 10px;
             left: 50%;
-            transform: translateX(-50%) ;
+            transform: translateX(-50%);
             width: 20px;
             height: 30px;
-            background: radial-gradient(ellipse at center,
-              rgba(255,255,150,0.9) 0%,
-              rgba(255,165,0,0.8) 50%,
-              rgba(255,0,0,0.7) 100%);
+            background: radial-gradient(
+              ellipse at center,
+              rgba(255, 255, 150, 0.9) 0%,
+              rgba(255, 165, 0, 0.8) 50%,
+              rgba(255, 0, 0, 0.7) 100%
+            );
             border-radius: 50%;
             filter: blur(3px);
             animation: flameFlicker 0.15s infinite alternate;
@@ -76,11 +91,9 @@ const GlassCursor = () => {
           src="/rockect.png"
           alt="rocket"
           className="rocket-img"
-          style={{ transform: `rotate(${1}deg)` }}
         />
         <div className="flame"></div>
       </div>
-
     </>
   );
 };

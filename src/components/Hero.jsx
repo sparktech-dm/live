@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { scroller } from 'react-scroll';
 import AboutUs from "./AboutUs";
+import CurvedLoop from '../helper/CurvedLoop.jsx';
+
 
 const Hero = () => {
   const buttonRef = useRef(null);
@@ -19,6 +21,7 @@ const Hero = () => {
   };
 
   return (
+    <>
     <div className="relative w-screen  h-screen overflow-hidden bg-black flex items-center justify-center">
       {/* Background Video for Desktop */}
       <video
@@ -72,6 +75,17 @@ const Hero = () => {
         </button>
       </div>
     </div>
+    <div className="h-40 overflow-hidden flex items-center justify-center bg-gradient-to-b from-[#000000] to-[#1D4065]">
+  <CurvedLoop
+    marqueeText="Be ✦ Spark Tech ✦ Digital ✦ Web ✦ Bits ✦"
+    speed={3}
+    curveAmount={0}
+    direction="left"
+    interactive={false}
+    className="custom-text-style"
+  />
+</div>
+</>
   );
 };
 

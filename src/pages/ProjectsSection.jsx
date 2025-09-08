@@ -148,12 +148,12 @@ const ProjectsSection = () => {
             {/* Founder Card */}
             <div className="w-[260px] sm:w-[300px]">
               <ProfileCard
-                name="Ram"
-                title="Bro"
+                name="Rajesh"
+                title="CEO"
                 handle="ram"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="/rambro.png"
+                avatarUrl="/CEO.png"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}

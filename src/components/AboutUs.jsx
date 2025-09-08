@@ -1,243 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
-import { scroller, animateScroll as scroll } from 'react-scroll';
-import Logo from '../assets/Logo.png';
+import { motion } from "framer-motion";
 
-const Navbar = () => {
-  const [active, setActive] = useState('home');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
-  // Set active section based on scroll or pathname
-  useEffect(() => {
-    const path = location.pathname;
-
-    if (path === '/') {
-      const handleScroll = () => {
-        const sections = ['home', 'services', 'contact'];
-        const scrollPosition = window.scrollY + 100;
-
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const element = document.getElementById(sections[i]);
-          if (element && scrollPosition >= element.offsetTop) {
-            setActive(sections[i]);
-            break;
-          }
-        }
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-
-      return () => window.removeEventListener('scroll', handleScroll);
-    } else {
-      if (path.startsWith('/projects')) setActive('projects');
-      else if (path.startsWith('/blogs')) setActive('blogs');
-      else if (path.startsWith('/services')) setActive('services');
-    }
-  }, [location.pathname]);
-
-  // Handle delayed scroll after redirect from other pages
-  useEffect(() => {
-    if (location.pathname === '/' && location.state?.scrollTo) {
-      scroller.scrollTo(location.state.scrollTo, {
-        duration: 800,
-        smooth: 'easeInOutQuart',
-      });
-      navigate(location.pathname, { replace: true, state: {} });
-    }
-
-    if (location.pathname === '/' && location.state?.scrollToTop) {
-      scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
-      navigate(location.pathname, { replace: true, state: {} });
-    }
-  }, [location, navigate]);
-
-  const baseMenuItems = [
-    { name: 'logo', type: 'scrolltop', image: Logo },
-    { name: 'Home', type: 'route', path: '/' },
-    { name: 'services', type: 'route', path: '/services' },
-    { name: 'about', type: 'route', path: '/about' },
-    { name: 'blogs', type: 'route', path: '/blogs' },
-  ];
-
-  const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'contact' }];
-
-  const handleScroll = (id) => {
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: id } });
-    } else {
-      scroller.scrollTo(id, {
-        duration: 800,
-        smooth: 'easeInOutQuart',
-      });
-    }
-  };
-
-  const handleScrollTop = () => {
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollToTop: true } });
-    } else {
-      scroll.scrollToTop({ duration: 800, smooth: 'easeInOutQuart' });
-    }
-  };
-
-  const handleItemClick = (item) => {
-    setActive(item.name);
-
-    if (item.type === 'route') {
-      navigate(item.path);
-    } else if (item.type === 'scroll') {
-      handleScroll(item.id);
-    } else if (item.type === 'scrolltop') {
-      handleScrollTop();
-    }
-  };
-
+export default function AboutUs() {
   return (
-    <div className='w-full fixed top-0 z-50 font-[Inter] backdrop-blur-md bg-[#7A85C1]/20 shadow-md'>
-      {/* Desktop Navbar (unchanged) */}
-      <div className="hidden md:flex w-full h-[80px] items-center justify-between px-10 lg:px-20 xl:px-40 2xl:px-60">
-        {/* Left: Logo */}
-        <div onClick={() => handleItemClick(menuItems[0])} className="cursor-pointer flex-shrink-0">
-          <img src={menuItems[0].image} alt="Logo" className="h-[60px] w-auto object-contain" />
-        </div>
+    <section className="py-16" id="about">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center relative"
+        >
+          {/* Gradient highlight line */}
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full" />
 
-        {/* Center: Links */}
-        <ul className="flex gap-15 items-center flex-1 justify-center">
-          {menuItems.slice(1, -1).map((item) => (
-            <li key={item.name} onClick={() => handleItemClick(item)}>
-              {item.type === 'route' ? (
-                <RouterLink
-                  to={item.path}
-                  className={`text-white text-sm font-medium transition duration-300 hover:text-[#00ffae] ${
-                    active === item.name ? 'text-[#00ffae] border-b-2 border-[#00ffae] pb-1' : ''
-                  }`}
-                >
-                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                </RouterLink>
-              ) : (
-                <span
-                  className={`text-white text-sm font-medium transition duration-300 hover:text-[#00ffae] ${
-                    active === item.name ? 'text-[#00ffae]' : ''
-                  }`}
-                >
-                  {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
+          <h2 className="text-3xl lg:text-4xl font-bold text-amber-300  mb-8">
+            About Us
+          </h2>
 
-        {/* Right: CTA Button (desktop only) */}
-        <div className="relative flex justify-center items-center">
-          <div className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-[#f0c417]/40 via-[#f0c417]/20 to-transparent blur-3xl animate-ping-slow"></div>
-          <button
-            onClick={() => navigate("/contact")}
-            className="relative z-10 text-white text-lg font-semibold px-8 py-3 rounded-full 
-                       border-2 border-[#f0c417] bg-gradient-to-r from-[#f0c417]/30 to-transparent
-                       shadow-[0_0_25px_rgba(240,196,23,0.7)] 
-                       transition duration-300 hover:scale-110 hover:shadow-[0_0_50px_rgba(240,196,23,1)] 
-                       animate-heartbeat"
-          >
-            Get in touch
-          </button>
-        </div>
-      </div>
+          <div className="bg-gradient-to-r from-gray-100 via-grey to-gray-50 border-l-7 border-indigo-500 shadow-lg rounded-2xl p-8">
+            <p className="text-lg text-gray-700 mb-4 font-medium">
+              If it doesn’t connect or convert, we don’t do it.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              We know there is no one-size-fits-all formula. That is why we
+              believe in work done with a purpose and backed by data.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              <span className="font-semibold text-gray-900">Spark Tech</span> is
+              a digital marketing agency in Chennai helping brands rise above
+              the noise with strategies that are clear, creative, and
+              conversion-ready.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              We play with ideas that spark action and results that speak for
+              themselves.
+            </p>
+             <motion.a
+              href="/about"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300  mt-7"
+            >
+              Know More About us
+            </motion.a>
 
-      {/* Mobile Navbar */}
-      <div className='md:hidden flex justify-between items-center px-5 h-[70px] backdrop-blur bg-gray-800/40 relative'>
-        {/* Logo */}
-        <RouterLink to='/' onClick={handleScrollTop}>
-          <div className='w-[50px] h-[50px] cursor-pointer'>
-            <img src={Logo} alt='Logo' className='w-full h-full object-contain' />
           </div>
-        </RouterLink>
-
-        {/* Hamburger */}
-        <button
-          className='text-white text-2xl'
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        </motion.div>
+           
       </div>
-
-      {/* Mobile Dropdown */}
-      {menuOpen && (
-        <div className='md:hidden absolute top-[70px] left-0 w-full bg-black border-t border-[#444]'>
-          <ul className='flex flex-col items-center gap-4 py-4'>
-            {menuItems.map((item) => (
-              <li key={item.name} onClick={() => handleItemClick(item)}>
-                {item.type === 'route' ? (
-                  <RouterLink
-                    to={item.path}
-                    className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
-                      active === item.name
-                        ? 'bg-[#262424] text-[#f0c417]'
-                        : 'text-white hover:bg-[#4f4e4e]'
-                    }`}
-                  >
-                    {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                  </RouterLink>
-                ) : item.type === 'scrolltop' && item.image ? (
-                  <div className='w-[40px] h-[40px] cursor-pointer'>
-                    <img src={item.image} alt='Logo' className='w-full h-full object-contain' />
-                  </div>
-                ) : (
-                  <span
-                    className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
-                      active === item.name
-                        ? 'bg-[#262424] text-[#f0c417]'
-                        : 'text-white hover:bg-[#4f4e4e]'
-                    }`}
-                  >
-                    {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Mobile Fixed CTA */}
-      <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
-        <button
-          onClick={() => navigate("/contact")}
-          className="px-6 py-1 rounded-full bg-[#f0c417] text-black font-bold shadow-[0_0_20px_rgba(240,196,23,0.8)] 
-                     animate-bounce hover:scale-110 transition"
-        >
-          Get in touch
-        </button>
-      </div>
-
-      <style jsx>{`
-        @keyframes heartbeat {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.08); }
-        }
-        .animate-heartbeat {
-          animation: heartbeat 2s infinite;
-        }
-        @keyframes ping-slow {
-          0% { transform: scale(0.9); opacity: 0.8; }
-          50% { transform: scale(1.2); opacity: 0.4; }
-          100% { transform: scale(0.9); opacity: 0.8; }
-        }
-        .animate-ping-slow {
-          animation: ping-slow 3s infinite;
-        }
-      `}</style>
-    </div>
+    </section>
   );
-};
-
-export default Navbar;
+}

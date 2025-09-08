@@ -140,7 +140,7 @@
 
 .pc-card:hover .pc-shine,
 .pc-card.active .pc-shine {
-  filter: brightness(0.85) contrast(1.5) saturate(0.5);
+  /* filter: brightness(0.85) contrast(1.5) saturate(0.5); */
   animation: none;
 }
 
@@ -160,21 +160,21 @@
   mix-blend-mode: luminosity;
 }
 
-.pc-shine::after {
+/* .pc-shine::after {
   background-position: 0 var(--background-y), calc(var(--background-x) * 0.4) calc(var(--background-y) * 0.5), center;
   background-size: 200% 300%, 700% 700%, 100% 100%;
   mix-blend-mode: difference;
   filter: brightness(0.8) contrast(1.5);
-}
+} */
 
-.pc-glare {
+/* .pc-glare {
   transform: translate3d(0, 0, 1.1px);
   overflow: hidden;
   background-image: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(248, 25%, 80%) 12%, hsla(207, 40%, 30%, 0.8) 90%);
   mix-blend-mode: overlay;
   filter: brightness(0.8) contrast(1.2);
   z-index: 4;
-}
+} */
 
 .pc-avatar-content {
   mix-blend-mode: normal;

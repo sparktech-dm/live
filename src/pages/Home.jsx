@@ -17,6 +17,9 @@ function Home() {
         <div className='overflow-hidden'>
           <Hero />
           </div>
+          <div>
+            
+          </div>
           <Faq />
           <div id="contact">
             <ContactForm />
