@@ -1,40 +1,14 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 // SVG icons for small circles
 const icons = [
-  (
-    <svg width="22" height="22" fill="none">
-      <path d="M11 3L2 9l9 6 9-6-9-6zM2 9v6l9 6 9-6V9" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/>
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" fill="none">
-      <circle cx="11" cy="11" r="9" stroke="#fff" strokeWidth="2"/>
-      <path d="M11 5v6l3 2" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" fill="none">
-      <path d="M11 15V7m0 0l3 3m-3-3l-3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" fill="none">
-      <path d="M11 19.9l-1.4-1.2C4.9 14.2 2 11.3 2 7.5A5.5 5.5 0 0 1 11 2a5.5 5.5 0 0 1 9 5.5c0 3.8-2.9 6.7-7.6 11.2L11 19.9z" stroke="#fff" strokeWidth="2" fill="#fff"/>
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" fill="none">
-      <circle cx="11" cy="11" r="9" stroke="#fff" strokeWidth="2"/>
-      <path d="M11 7v4l2 2" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  (
-    <svg width="22" height="22" fill="none">
-      <rect x="5" y="9" width="12" height="8" rx="2" stroke="#fff" strokeWidth="2"/>
-      <path d="M11 9V5a2 2 0 1 1 4 0v4" stroke="#fff" strokeWidth="2"/>
-    </svg>
-  ),
+  <svg width="22" height="22" fill="none"><path d="M11 3L2 9l9 6 9-6-9-6zM2 9v6l9 6 9-6V9" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/></svg>,
+  <svg width="22" height="22" fill="none"><circle cx="11" cy="11" r="9" stroke="#fff" strokeWidth="2"/><path d="M11 5v6l3 2" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>,
+  <svg width="22" height="22" fill="none"><path d="M11 15V7m0 0l3 3m-3-3l-3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>,
+  <svg width="22" height="22" fill="none"><path d="M11 19.9l-1.4-1.2C4.9 14.2 2 11.3 2 7.5A5.5 5.5 0 0 1 11 2a5.5 5.5 0 0 1 9 5.5c0 3.8-2.9 6.7-7.6 11.2L11 19.9z" stroke="#fff" strokeWidth="2" fill="#fff"/></svg>,
+  <svg width="22" height="22" fill="none"><circle cx="11" cy="11" r="9" stroke="#fff" strokeWidth="2"/><path d="M11 7v4l2 2" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>,
+  <svg width="22" height="22" fill="none"><rect x="5" y="9" width="12" height="8" rx="2" stroke="#fff" strokeWidth="2"/><path d="M11 9V5a2 2 0 1 1 4 0v4" stroke="#fff" strokeWidth="2"/></svg>,
 ];
 
 const circleColors = [
@@ -55,13 +29,13 @@ const contentItems = [
   { title: "Creative but commercially aware", desc: "We love bold ideas, but never lose sight of performance and ROI." },
 ];
 
-const SIZE = 480;         // Increased diameter for big grey circle
-const SMALL_SIZE = 64;    // Diameter for small circles, unchanged
+// --- Desktop Component ---
+const SIZE = 480;
+const SMALL_SIZE = 64;
 const CX = SIZE / 2;
 const CY = SIZE / 2;
 const RADIUS = SIZE / 2 - SMALL_SIZE / 4 - 7;
 
-// Generate small circle positions on right half circumference with padding
 function semiCirclePositions(N, padding = 0.10) {
   const angle_start = -Math.PI / 2 + Math.PI * padding;
   const angle_end = Math.PI / 2 - Math.PI * padding;
@@ -75,78 +49,124 @@ function semiCirclePositions(N, padding = 0.10) {
   });
 }
 
-const WhyChooseUs = () => {
+const DesktopWhyChooseUs = () => {
+  const containerRef = useRef(null);
+  const iconControls = useAnimation();
+  const contentControls = useAnimation();
+  const isInView = useInView(containerRef, { once: false, margin: "-100px 0px -50px 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      iconControls.start("visible");
+    } else {
+      contentControls.start("hidden"); // hide content when scrolling down
+    }
+  }, [isInView, iconControls, contentControls]);
+
+  const iconVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.2 } }),
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.1 } },
+  };
+
   const smallCircles = semiCirclePositions(contentItems.length, 0.10);
 
   return (
-    <div className="flex items-center justify-center  min-h-screen py-16">
+    <div ref={containerRef} className="hidden md:flex items-center justify-center min-h-screen py-16">
       <div className="relative" style={{ width: SIZE + 390, height: SIZE }}>
-        {/* Big grey circle */}
-        <div
-          className="absolute rounded-full bg-gray-100 opacity-90 z-10"
-          style={{ width: SIZE, height: SIZE, left: 110, top: 0 }}
-        />
-        {/* Purple circle */}
+        <div className="absolute rounded-full bg-gray-100 opacity-90 z-10" style={{ width: SIZE, height: SIZE, left: 110, top: 0 }} />
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] h-[250px] rounded-full bg-gradient-to-br from-violet-500 to-purple-600 z-20 flex flex-col items-center justify-center shadow-xl text-white font-bold font-['Noto Sans']">
           <span className="text-3xl mb-1 ">WHY</span>
           <span className="text-xl mb-1 font-semibold">CHOOSE</span>
           <span className="text-3xl">US ?</span>
         </div>
-        {/* Descriptive text inside grey circle */}
-        <div className="absolute left-[250px] top-[170px] w-[220px] text-gray-500 text-[15px] z-30">
-          <div>
-            This is a sample text. Insert your desired text here. This is a sample text.
-            <br />
-            <br />
-            Insert your desired text here. This is a sample text.
-          </div>
-        </div>
-        {/* Small circles, connector lines, and content */}
+
         {smallCircles.map((pos, idx) => {
           let connectorTop = pos.y + SMALL_SIZE / 3 - 30;
-
-          if (idx === 0) {
-            connectorTop -= 15;
-          } else if (idx === contentItems.length - 1) {
-            connectorTop += 35;
-          }
+          if (idx === 0) connectorTop -= 15;
+          else if (idx === contentItems.length - 1) connectorTop += 35;
 
           return (
             <React.Fragment key={idx}>
-              {/* Small circle */}
-              <div
+              <motion.div
                 className={`absolute flex justify-center items-center rounded-full ${circleColors[idx % circleColors.length]} border-3 border-white shadow-lg`}
-                style={{
-                  width: SMALL_SIZE,
-                  height: SMALL_SIZE,
-                  left: pos.x + 130,
-                  top: pos.y,
-                  zIndex: 20,
-                }}
+                style={{ width: SMALL_SIZE, height: SMALL_SIZE, left: pos.x + 130, top: pos.y, zIndex: 20 }}
+                custom={idx}
+                initial="hidden"
+                animate={iconControls}
+                variants={iconVariants}
+                onAnimationComplete={() => contentControls.start("visible")}
               >
                 {icons[idx]}
-              </div>
-              {/* Connector line and content */}
-              <div
+              </motion.div>
+
+              <motion.div
                 className="absolute flex items-center"
-                style={{
-                  left: pos.x + 170 + SMALL_SIZE + 32,  // Increased space to 32 px
-                  top: connectorTop,
-                  width: 320,
-                  zIndex: 22,
-                }}
+                style={{ left: pos.x + 170 + SMALL_SIZE + 32, top: connectorTop, width: 320, zIndex: 22 }}
+                initial="hidden"
+                animate={contentControls}
+                variants={contentVariants}
               >
-                <div className="w-14 h-0.5 bg-gray-300 mr-4" />  {/* Wider connector line and margin */}
+                <div className="w-14 h-0.5 bg-gray-300 mr-4" />
                 <div>
                   <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent">{contentItems[idx].title}</div>
                   <div className="text-sm text-grey-500">{contentItems[idx].desc}</div>
                 </div>
-              </div>
+              </motion.div>
             </React.Fragment>
           );
         })}
       </div>
     </div>
+  );
+};
+
+// --- Mobile Component ---
+const MobileWhyChooseUs = () => {
+  const containerRef = useRef(null);
+  const iconControls = useAnimation();
+  const contentControls = useAnimation();
+  const isInView = useInView(containerRef, { once: false, margin: "-100px 0px -50px 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      iconControls.start("visible");
+      setTimeout(() => contentControls.start("visible"), 400);
+    }
+  }, [isInView, iconControls, contentControls]);
+
+  const iconVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.1 } } };
+  const contentVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.1 } } };
+
+  return (
+    <div ref={containerRef} className="flex flex-col items-center justify-center px-6 py-12 space-y-10 md:hidden">
+      <h2 className="text-3xl font-bold text-center text-purple-600">WHY CHOOSE US?</h2>
+      {contentItems.map((item, idx) => (
+        <div key={idx} className="flex flex-col items-center text-center space-y-3">
+          <motion.div className={`flex justify-center items-center w-16 h-16 rounded-full ${circleColors[idx % circleColors.length]} shadow-lg`} initial="hidden" animate={iconControls} variants={iconVariants}>
+            {icons[idx]}
+          </motion.div>
+          <motion.div className="flex flex-col items-center" initial="hidden" animate={contentControls} variants={contentVariants}>
+            <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent text-lg">{item.title}</div>
+            <div className="text-sm text-grey-500">{item.desc}</div>
+          </motion.div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// --- Main Wrapper ---
+const WhyChooseUs = () => {
+  return (
+    <>
+      <DesktopWhyChooseUs />
+      <MobileWhyChooseUs />
+    </>
   );
 };
 
