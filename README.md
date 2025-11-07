@@ -1,1 +1,1 @@
-Rebuilt the build folder again
+Rebuilt the dist folder again
