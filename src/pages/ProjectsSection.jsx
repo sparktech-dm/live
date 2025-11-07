@@ -3,6 +3,9 @@ import Seo from "../components/Seo";
 import Footer from "../components/Footer";
 import ProfileCard from "../helper/ProfileCard";
 import AnimatedCircularTeam from "../helper/AnimatedCircularTeam";
+import WebTeam from "../helper/WebTeam";
+import EditTeam from "../helper/EditTeam";
+import ManTeam from "../helper/ManTeam";
 
 const ProjectsSection = () => {
   const containerRef = useRef(null);
@@ -21,19 +24,19 @@ const ProjectsSection = () => {
     {
       title: "Collaboration, not hierarchy",
       description: "Ideas can come from anywhere. We listen, challenge, and build together.",
-      image: "https://images.unsplash.com/photo-1604210740327-dfd2dc1b2dc8?auto=format&fit=crop&w=800&q=80",
+      image: "/project1.webp",
       
     },
     {
       title: "Courage to do it differently",
       description: "We’re not afraid to say no, challenge the brief, or take a different path. Means we do the work better.",
-      image: "https://images.unsplash.com/photo-1522199873713-4f1117c1a9f8?auto=format&fit=crop&w=800&q=80",
+      image: "/project2.webp",
       
     },
     {
       title: "Creativity with purpose",
       description: "For us, creativity isn’t just flair; it is zeal. Everything we create has a purpose to act upon",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+      image: "/project3.webp",
     }
   ];
   
@@ -62,7 +65,7 @@ const ProjectsSection = () => {
       {/* Projects Card Section */}
       <div
         ref={containerRef}
-        className="h-screen w-screen overflow-y-scroll overflow-x-hidden text-[#f0c417] font-[Inter] relative pt-20"
+        className="h-screen w-screen overflow-y-scroll overflow-x-hidden text-[#f0c417] font-[Inter] relative pt-30"
       >
         <div className="sticky top-0 flex flex-col md:flex-row items-center justify-center gap-8 px-4 md:px-12 max-w-7xl mx-auto py-6">
           {/* Text Block */}
@@ -85,40 +88,37 @@ const ProjectsSection = () => {
           </div>
 
           {/* Card Stack */}
-          <div className="relative w-full sm:w-[250px] md:w-[400px] h-[420px] sm:h-[400px]">
-            {projects.map((project, index) => {
-              const progress = scrollY / (window.innerHeight * 0.7);
-              const visible = index <= progress;
-              const offset = visible ? (index - progress) * 14 : 120;
+          {/* Card Stack */}
+<div className="relative w-full sm:w-[300px] md:w-[480px] h-[480px] sm:h-[460px]">
+  {projects.map((project, index) => {
+    const progress = scrollY / (window.innerHeight * 0.7);
+    const visible = index <= progress;
+    const offset = visible ? (index - progress) * 14 : 120;
 
-              return (
-                <div
-                  key={index}
-                  className="absolute w-full h-full bg-[#1b222b] rounded-2xl shadow-2xl p-5 flex flex-col justify-between transition-all"
-                  style={{
-                    transform: `translateY(${offset}px)`,
-                    zIndex: index,
-                    opacity: visible ? 1 : 0,
-                  }}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="rounded-xl h-[160px] sm:h-[220px] w-full object-cover"
-                  />
-                  <div>
-                    <h3 className="text-lg sm:text-2xl font-bold mt-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm mt-2">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div></div>
-                </div>
-              );
-            })}
-          </div>
+    return (
+      <div
+        key={index}
+        className="absolute w-full h-full bg-[#1b222b] rounded-2xl shadow-2xl p-4 flex flex-col justify-between transition-all"
+        style={{
+          transform: `translateY(${offset}px)`,
+          zIndex: index,
+          opacity: visible ? 1 : 0,
+        }}
+      >
+        <img
+          src={project.image}
+          alt={project.title}
+          className="rounded-xl h-[260px] sm:h-[320px] md:h-[340px] w-[100%] mx-auto object-cover transition-transform duration-500 hover:scale-105"
+        />
+        <div>
+          <h3 className="text-lg sm:text-2xl font-bold mt-3">{project.title}</h3>
+          <p className="text-gray-300 text-sm mt-2">{project.description}</p>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
         </div>
         <div style={{ height: `${projects.length * 90}vh` }} />
       </div>
@@ -273,12 +273,15 @@ const ProjectsSection = () => {
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">
           Say Hello to Our Team
         </h2>
-        <div className="flex justify-center mb-40">
-          <AnimatedCircularTeam cards={cards} />
-        </div>
+        
+         <ManTeam/>
+          <WebTeam />
+          <EditTeam/>
+       
       </div>
 
       <Footer />
+
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Lightbulb, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import Logo from "/spark_tech_logo.webp";
+
 
 const Footer = () => {
   const quickLinks = ['Review', 'About', 'Internship',];
@@ -24,7 +26,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <img src="src/assets/Logo.png" alt="Sparktech Logo" className="h-8 w-8 text-white" />
+              <img src={Logo} alt="Sparktech Logo" className="h-8 w-8 text-white" />
               <span className="text-2xl font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent">
                 Sparktech
               </span>

@@ -148,10 +148,11 @@ const CurvedLoop = ({
             className={`fill-white leading-none ${className ?? ""}`}
           >
             <textPath
-              ref={textPathRef}
+              
               href={`#${pathId}`}
               startOffset={offset + "px"}
               xmlSpace="preserve"
+              ref={textPathRef}
             >
               {totalText}
             </textPath>
@@ -163,5 +164,3 @@ const CurvedLoop = ({
 };
 
 export default CurvedLoop;
-
-

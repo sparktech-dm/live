@@ -15,6 +15,8 @@ const CurvedScrollCards = () => {
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
 
+  const scrollSpeed = 2; 
+
   const cardData = [
     {
       id: 1,
@@ -29,7 +31,8 @@ const CurvedScrollCards = () => {
     {
       id: 2,
       title: "Performance Marketing",
-      description: "Data-led campaigns that convert curiosity into consistent revenue.",
+      description:
+        "Data-led campaigns that convert curiosity into consistent revenue.",
       icon: "📈",
       frontImage: per,
       backColor: "#16213E",
@@ -73,10 +76,23 @@ const CurvedScrollCards = () => {
       backColor: "#16213E",
       link: "/services/website-development",
     },
+    {
+      id: 7,
+      title: "Video Shooting",
+      description:
+        "Digital foundations that support your story, scale, and success.",
+      icon: "💻",
+      frontImage: web,
+      backColor: "#16213E",
+      link: "/services/website-development",
+    },
   ];
 
+  // Duplicate cards for infinite loop effect
   const allCards = [...cardData, ...cardData, ...cardData, ...cardData, ...cardData];
-  const cardWidth = 240 + 16; // card width + margin
+
+  // updated card width (double width, same height)
+  const cardWidth = 480 + 16; // 480px wide + margin
   const totalWidth = cardWidth * cardData.length;
 
   // Auto-scroll
@@ -89,13 +105,13 @@ const CurvedScrollCards = () => {
     if (intervalRef.current) return;
     intervalRef.current = setInterval(() => {
       setPosition((prev) => {
-        const newPos = prev - 1;
+        const newPos = prev - scrollSpeed; // 👈 use scrollSpeed here
         if (Math.abs(newPos) >= totalWidth) {
           return 0;
         }
         return newPos;
       });
-    }, 16);
+    }, 16); // keep ~60fps for smoothness
   };
 
   const stopScroll = () => {
@@ -135,7 +151,7 @@ const CurvedScrollCards = () => {
         <p className="text-gray-300 mt-2">Explore what we offer</p>
       </div>
 
-      <div className="relative w-full h-[420px]">
+      <div className="relative w-full h-[420px]"> {/* same height */}
         <div
           ref={containerRef}
           className="absolute flex gap-4"
@@ -152,15 +168,15 @@ const CurvedScrollCards = () => {
             return (
               <div
                 key={i}
-                className={`card w-60 h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
+                className={`card w-[480px] h-[400px] rounded-2xl flex-shrink-0 transition-all duration-300 ${
                   isActive ? "scale-105 z-10" : "scale-95 opacity-80"
-                }`}style={{
-  boxShadow:
-    isHovered || (!hoveredIndex && isActive)
-      ? "0px 0px 25px rgba(255, 230, 0, 0.9), 0px 0px 60px rgba(255, 230, 0, 0.8)"
-      : "none",
-}}
-
+                }`}
+                style={{
+                  boxShadow:
+                    isHovered || (!hoveredIndex && isActive)
+                      ? "0px 0px 25px rgba(255, 230, 0, 0.9), 0px 0px 60px rgba(255, 230, 0, 0.8)"
+                      : "none",
+                }}
                 onMouseEnter={() => {
                   stopScroll();
                   setHoveredIndex(i);
@@ -177,19 +193,19 @@ const CurvedScrollCards = () => {
                     style={{ backgroundImage: `url(${card.frontImage})` }}
                   >
                     <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
-                    <h2 className="relative z-10 text-xl font-bold text-center px-4">
+                    <h2 className="relative z-10 text-2xl font-bold text-center px-6">
                       {card.title}
                     </h2>
                   </div>
 
                   {/* BACK */}
                   <div
-                    className="card-back flex flex-col items-center justify-center p-4 text-white rounded-2xl"
+                    className="card-back flex flex-col items-center justify-center p-6 text-white rounded-2xl"
                     style={{ backgroundColor: card.backColor }}
                   >
-                    <p className="text-sm mb-4 text-center">{card.description}</p>
+                    <p className="text-base mb-6 text-center">{card.description}</p>
                     <Link to={card.link}>
-                      <button className="bg-[#f0c417] text-black px-4 py-2 rounded-lg text-sm">
+                      <button className="bg-[#f0c417] text-black px-6 py-3 rounded-lg text-base">
                         Learn More
                       </button>
                     </Link>

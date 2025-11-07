@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-
+import top from "../assets/arrowhead-up.png"
 const Top = () => {
   const [visible, setVisible] = useState(false);
 
@@ -36,7 +36,11 @@ const Top = () => {
           cursor: 'pointer',
         }}
       >
-         Top
+          <img 
+      src = {top}   // 👈 replace with your image path
+      alt="Back to top"
+      style={{ width: '24px', height: '24px' }}
+    />
       </button>
     )
   );

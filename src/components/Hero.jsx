@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { scroller } from 'react-scroll';
 import AboutUs from "./AboutUs";
 import CurvedLoop from '../helper/CurvedLoop.jsx';
-
+import img from "../assets/Wed_train.webp";
+import img1 from "../assets/GENZDUO.jpg";
 
 const Hero = () => {
   const buttonRef = useRef(null);
@@ -76,7 +77,7 @@ const Hero = () => {
       </div>
     </div>
     <div className="h-40 overflow-hidden flex items-center justify-center bg-gradient-to-b from-[#000000] to-[#1D4065]">
-  <CurvedLoop
+ <CurvedLoop
     marqueeText="Be ✦ Spark Tech ✦ Digital ✦ Web ✦ Bits ✦"
     speed={3}
     curveAmount={0}
@@ -84,7 +85,13 @@ const Hero = () => {
     interactive={false}
     className="custom-text-style"
   />
+
+
+
+
+
 </div>
+
 </>
   );
 };

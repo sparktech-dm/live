@@ -59,18 +59,36 @@ const DesktopWhyChooseUs = () => {
     if (isInView) {
       iconControls.start("visible");
     } else {
-      contentControls.start("hidden"); // hide content when scrolling down
+      contentControls.start("hidden");
     }
   }, [isInView, iconControls, contentControls]);
 
+  // 🔹 changed — slowed down animation
   const iconVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.2 } }),
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // was 0.5
+        delay: i * 0.4, // was 0.2
+        ease: "easeOut",
+      },
+    }),
   };
 
+  // 🔹 changed — slowed down content animation
   const contentVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // was 0.6
+        staggerChildren: 0.25, // was 0.1
+        ease: "easeOut",
+      },
+    },
   };
 
   const smallCircles = semiCirclePositions(contentItems.length, 0.10);
@@ -113,7 +131,9 @@ const DesktopWhyChooseUs = () => {
               >
                 <div className="w-14 h-0.5 bg-gray-300 mr-4" />
                 <div>
-                  <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent">{contentItems[idx].title}</div>
+                  <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent">
+                    {contentItems[idx].title}
+                  </div>
                   <div className="text-sm text-grey-500">{contentItems[idx].desc}</div>
                 </div>
               </motion.div>
@@ -135,23 +155,59 @@ const MobileWhyChooseUs = () => {
   useEffect(() => {
     if (isInView) {
       iconControls.start("visible");
-      setTimeout(() => contentControls.start("visible"), 400);
+      setTimeout(() => contentControls.start("visible"), 600); // 🔹 changed: added delay for smoother sync
     }
   }, [isInView, iconControls, contentControls]);
 
-  const iconVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.1 } } };
-  const contentVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.1 } } };
+  // 🔹 changed — slowed animations for mobile
+  const iconVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // was 0.5
+        staggerChildren: 0.25, // was 0.1
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // was 0.5
+        staggerChildren: 0.25,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <div ref={containerRef} className="flex flex-col items-center justify-center px-6 py-12 space-y-10 md:hidden">
       <h2 className="text-3xl font-bold text-center text-purple-600">WHY CHOOSE US?</h2>
       {contentItems.map((item, idx) => (
         <div key={idx} className="flex flex-col items-center text-center space-y-3">
-          <motion.div className={`flex justify-center items-center w-16 h-16 rounded-full ${circleColors[idx % circleColors.length]} shadow-lg`} initial="hidden" animate={iconControls} variants={iconVariants}>
+          <motion.div
+            className={`flex justify-center items-center w-16 h-16 rounded-full ${circleColors[idx % circleColors.length]} shadow-lg`}
+            initial="hidden"
+            animate={iconControls}
+            variants={iconVariants}
+          >
             {icons[idx]}
           </motion.div>
-          <motion.div className="flex flex-col items-center" initial="hidden" animate={contentControls} variants={contentVariants}>
-            <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent text-lg">{item.title}</div>
+          <motion.div
+            className="flex flex-col items-center"
+            initial="hidden"
+            animate={contentControls}
+            variants={contentVariants}
+          >
+            <div className="font-bold bg-gradient-to-r from-[#f0c417] to-lime-100 bg-clip-text text-transparent text-lg">
+              {item.title}
+            </div>
             <div className="text-sm text-grey-500">{item.desc}</div>
           </motion.div>
         </div>
