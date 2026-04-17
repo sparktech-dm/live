@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Sanjay from "../assets/team/Sanjay.jpeg";
 import Yukesh from "../assets/team/yukesh.png";
 import Yashwanth from "../assets/team/yash.png";
-import Dominic from "../assets/team/domnic.png";
+import Dominic from "../assets/team/Domnic.png";
 import Varshini from "../assets/team/varshini.png";
 import Nivethika from "../assets/team/nivethika.png";
 import Pertisha from "../assets/team/pertisha.webp";
