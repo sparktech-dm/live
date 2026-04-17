@@ -154,7 +154,9 @@ export const ContactForm1 = () => {
                 />
               </svg>
             </div>
-            <span className="text-white md:text-xl text-base font-normal">+91 9876543210</span>
+            <span className="text-white md:text-xl text-base font-normal">+91 8939892219
+
+</span>
           </div>
 
           {/* Address Box */}

@@ -12,12 +12,12 @@ export default function AboutUs() {
           className="text-center relative"
         >
           {/* Gradient highlight line */}
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full" />
-
-          <h2 className="text-3xl lg:text-4xl font-bold text-amber-300  mb-8">
-            About Us
+        
+           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+          About <span className="text-yellow-400" >Us</span>
           </h2>
-
+        
+        <div className="mt-3 mx-auto w-16 h-1 rounded-full bg-yellow-400 mb-7 p-1"  />
           <div className="bg-gradient-to-r from-gray-100 via-grey to-gray-50 border-l-7 border-indigo-500 shadow-lg rounded-2xl p-8">
             <p className="text-lg text-gray-700 mb-4 font-medium">
               If it doesn’t connect or convert, we don’t do it.
@@ -40,7 +40,7 @@ export default function AboutUs() {
               href="/about"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300  mt-7"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300  mt-7"
             >
               Know More About us
             </motion.a>

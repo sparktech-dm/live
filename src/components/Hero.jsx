@@ -51,18 +51,19 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/40 z-10" />
 
       {/* Content */}
-      <div className="text-center z-20 text-white/80 px-4">
-        <h1 className="text-5xl text-white/80 md:text-7xl font-bold leading-tight tracking-tight">
-          We are the{" "}
+      <div className="text-center z-20 text-white/80 px-4 pt-40">
+        <h1 className="text-4xl text-white/80 md:text-6xl font-bold leading-tight tracking-tight">
+          Struggling to get {" "}
           <span className="inline-block bg-[#f0c417] text-black px-2 rotate-[-2deg]">
-            digital
+            consistent 
           </span>
+          {" "} leads?
         </h1>
-        <h1 className="text-5xl md:text-7xl text-white/80 font-bold leading-tight mt-2">
-          Marketing <span className="text-[#f0c417]">Agency</span> in Chennai
+        <h1 className="text-5xl md:text-6xl text-white/80 font-bold leading-tight mt-2">
+          We <span className="text-[#f0c417]">fix</span> that.
         </h1>
-        {/* <p className="block text-2xl mt-2 text-white/50 md:text-4xl leading-tight md:leading-snug">
-          with more than just digital noise<br />
+        {/* <p className="block text-2xl mt-2 text-white md:text-4xl leading-tight md:leading-snug">
+          with more than just digital noise
           But DIGITAL GROWTH
         </p> */}
 
@@ -71,18 +72,18 @@ const Hero = () => {
           onClick={handleExploreClick}
           className=" mb-40  mt-4 md:mt-10 px-6 py-3 bg-[#f0c417]  text-white font-bold rounded-lg shadow-md"
         >
-          Explore
+          Get More Leads for Your Business
         </button>
       </div>
     </div>
-    <div className="h-40 overflow-hidden flex items-center justify-center bg-gradient-to-b from-[#000000] to-[#1D4065]">
+    <div className="h-40 overflow-hidden flex items-center justify-center bg-black">
   <CurvedLoop
-    marqueeText="Be ✦ Spark Tech ✦ Digital ✦ Web ✦ Bits ✦"
+    marqueeText="We build simple systems using ads, creatives, and funnels that actually convert ✦"
     speed={3}
     curveAmount={0}
     direction="left"
     interactive={false}
-    className="custom-text-style"
+    className="custom-text-style sm:text-3xl text-8xl"
   />
 </div>
 </>

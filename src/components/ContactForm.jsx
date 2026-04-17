@@ -71,7 +71,7 @@ export const ContactForm = () => {
             </h2>
           </div>
 
-          <div className="bg-[#1b222b] backdrop-blur-md rounded-[30px] p-6 sm:p-10 w-full max-w-2xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[30px] p-6 sm:p-10 w-full max-w-2xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name Field */}
               <div className="space-y-2">

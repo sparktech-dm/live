@@ -7,7 +7,7 @@ const Footer = () => {
   const socialLinks = [
      { icon: MapPin, href:'https://maps.app.goo.gl/4sYLYqWiS9KQRijP8',color:'hover:text-[#f0c417]'},
     { icon: Instagram, href: 'https://www.instagram.com/sparktech.dm?igsh=MTA5dzFmNW9uYzVlMg== ', color: 'hover:text-[#f0c417]' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/sparktech-digital-marketing/', color: 'hover:text-[#f0c417]' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/112620752/admin/dashboard/', color: 'hover:text-[#f0c417]' }
   ];
 
   const scrollToSection = (id) => {
@@ -18,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#1b222b] text-white rounded-[30px]">
+    <footer className="bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-[30px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -59,14 +59,14 @@ const Footer = () => {
                   <ul className="space-y-3">
                     <li>
                       <Link
-                        to="/blogs"
+                        to="/services"
                         className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
                         style={{
                           fontFamily:
                             'Satoshi, "Satoshi Placeholder", sans-serif',
                         }}
                       >
-                        Review
+                        Services
                       </Link>
                     </li>
                     <li>
@@ -79,6 +79,18 @@ const Footer = () => {
                         }}
                       >
                         About
+                      </Link>
+                    </li>
+                     <li>
+                      <Link
+                        to="/contact"
+                        className="text-white/80 text-base font-normal hover:text-[#f0c417] transition-colors"
+                        style={{
+                          fontFamily:
+                            'Satoshi, "Satoshi Placeholder", sans-serif',
+                        }}
+                      >
+                        Contact
                       </Link>
                     </li>
                     <li>
@@ -138,7 +150,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © 2025 Sparktech. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            {/* <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
                 Privacy Policy
               </a>
@@ -148,7 +160,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-purple-400 text-sm transition-colors duration-200">
                 Cookie Policy
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

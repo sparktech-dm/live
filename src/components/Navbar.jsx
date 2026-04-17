@@ -65,7 +65,7 @@ const Navbar = () => {
     { name: 'Home', type: 'route', path: '/' },
     { name: 'services', type: 'route', path: '/services' },
     { name: 'about', type: 'route', path: '/about' },
-    { name: 'blogs', type: 'route', path: '/blogs' },
+    // { name: 'blogs', type: 'route', path: '/blogs' },
   ];
 
   const menuItems = [...baseMenuItems, { name: 'contact', type: 'scroll', id: 'contact' }];
@@ -112,7 +112,7 @@ const Navbar = () => {
         </div>
 
         {/* Center: Links */}
-        <ul className="flex gap-15 items-center flex-1 justify-center">
+        <ul className="flex gap-15 items-center flex-1 justify-center pl-30">
           {menuItems.slice(1, -1).map((item) => (
             <li key={item.name} onClick={() => handleItemClick(item)}>
               {item.type === 'route' ? (
@@ -152,7 +152,7 @@ const Navbar = () => {
                transition duration-300 hover:scale-110 hover:shadow-[0_0_50px_rgba(240,196,23,1)] 
                animate-heartbeat"
   >
-    Get in touch
+    Get More Leads
   </button>
 
   <style jsx>{`
