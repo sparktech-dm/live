@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 // Importing team member images based on confirmed available assets
 import Sanjay from "../assets/team/Sanjay.jpeg";
 import Yukesh from "../assets/team/yukesh.png";
-import Yashwanth from "../assets/team/Yash.png";
+import Yashwanth from "../assets/team/yash.png";
 import Dominic from "../assets/team/domnic.png";
 import Varshini from "../assets/team/varshini.png";
 import Nivethika from "../assets/team/nivethika.png";
