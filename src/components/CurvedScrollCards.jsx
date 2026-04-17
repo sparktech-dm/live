@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import "../flip-cards.css";
-import mar from "../assets/services/Marketing.jpg";
+import mar from "../assets/services/marketing.jpg";
 import per from "../assets/services/Performance-Marketing.jpg";
 import seo from "../assets/services/SEO.jpg";
 import brand from "../assets/services/Branding.jpg";

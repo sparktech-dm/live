@@ -13,6 +13,8 @@ import { Faq } from "./components/Faq";
 import ChatBot from "./components/Chat";
 import Top from "./components/Top"; 
 import * as THREE from "three";
+import NET from "vanta/dist/vanta.net.min";
+window.THREE = THREE; // Required for Vanta effects
 import ScrollToTop from "./components/ScrollToTop";
 // import Wuc from "./pages/Wuc";
 import CurvedScrollCards from "./components/CurvedScrollCards";

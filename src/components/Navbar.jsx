@@ -155,24 +155,7 @@ const Navbar = () => {
     Get More Leads
   </button>
 
-  <style jsx>{`
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
-    .animate-heartbeat {
-      animation: heartbeat 2s infinite;
-    }
-    @keyframes ping-slow {
-      0% { transform: scale(0.9); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 0.4; }
-      100% { transform: scale(0.9); opacity: 0.8; }
-    }
-    .animate-ping-slow {
-      animation: ping-slow 3s infinite;
-    }
-  `}</style>
-</div>
+      </div>
 
       </div>
 
